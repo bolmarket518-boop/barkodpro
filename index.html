@@ -137,7 +137,7 @@
     background: rgba(26,108,255,0.12); border: 1px solid var(--border);
     border-radius: 100px; padding: 6px 16px; margin-bottom: 28px;
     font-size: 0.82rem; font-weight: 500; color: var(--cyan);
-    animation: fadeUp 0.6s ease both;
+    
     letter-spacing: 0.04em; text-transform: uppercase;
   }
   .hero-badge-dot { width: 6px; height: 6px; border-radius: 50%; background: var(--cyan); animation: pulse 2s infinite; }
@@ -150,7 +150,7 @@
     line-height: 1.1;
     letter-spacing: -0.03em;
     margin-bottom: 24px;
-    animation: fadeUp 0.7s 0.1s ease both;
+    
   }
   h1 .accent {
     background: linear-gradient(135deg, var(--blue-light), var(--cyan));
@@ -161,11 +161,11 @@
     font-size: clamp(1rem, 2.5vw, 1.2rem);
     color: var(--text-dim); max-width: 620px; margin: 0 auto 40px;
     font-weight: 300; line-height: 1.7;
-    animation: fadeUp 0.7s 0.2s ease both;
+    
   }
   .hero-btns {
     display: flex; gap: 14px; justify-content: center; flex-wrap: wrap;
-    animation: fadeUp 0.7s 0.3s ease both;
+    
   }
   .btn-primary {
     background: linear-gradient(135deg, var(--blue), #0050d0);
@@ -190,7 +190,7 @@
 
   .hero-stats {
     display: flex; gap: 40px; justify-content: center; margin-top: 64px;
-    flex-wrap: wrap; animation: fadeUp 0.7s 0.4s ease both;
+    flex-wrap: wrap; 
   }
   .stat { text-align: center; }
   .stat-num {
@@ -472,7 +472,7 @@
     background: linear-gradient(135deg, #25d366, #128c7e);
     display: flex; align-items: center; justify-content: center;
     font-size: 26px; text-decoration: none; box-shadow: 0 4px 20px rgba(37,211,102,0.4);
-    transition: all 0.25s; animation: fadeUp 1s 0.8s ease both;
+    transition: all 0.25s; 
   }
   .wa-float:hover { transform: scale(1.1); box-shadow: 0 8px 35px rgba(37,211,102,0.6); }
   .wa-float::before {
@@ -487,13 +487,7 @@
     margin: 0 auto; max-width: 900px;
   }
 
-  /* ── SCROLL ANIMATIONS ── */
-  .reveal { opacity: 0; transform: translateY(30px); transition: all 0.7s ease; }
-  .reveal.visible { opacity: 1; transform: translateY(0); }
-  .reveal-delay-1 { transition-delay: 0.1s; }
-  .reveal-delay-2 { transition-delay: 0.2s; }
-  .reveal-delay-3 { transition-delay: 0.3s; }
-  .reveal-delay-4 { transition-delay: 0.4s; }
+  /* animations removed */
 
   /* ── TICKER ── */
   .ticker-wrap { overflow: hidden; border-top: 1px solid var(--border-light); border-bottom: 1px solid var(--border-light); background: rgba(10,25,48,0.5); padding: 14px 0; }
@@ -598,49 +592,49 @@
 <!-- SERVICES -->
 <section class="services" id="services">
   <div class="container">
-    <div class="services-header reveal">
+    <div class="services-header">
       <div class="section-label">Xidmətlər</div>
       <h2 class="section-title">Biznesiniz üçün<br>Kompleks Həllər</h2>
       <p class="section-subtitle">Retail biznesin bütün ehtiyaclarını qarşılayan proqram həlləri</p>
     </div>
     <div class="services-grid">
-      <div class="service-card reveal reveal-delay-1">
+      <div class="service-card-delay-1">
         <div class="service-icon">🖥️</div>
         <h3>POS Sistemləri</h3>
         <p>Sürətli və etibarlı kassa proqramı. Touch screen dəstəyi, endirim sistemi, shift idarəetməsi ilə tam funksional POS həlli.</p>
         <span class="service-tag">Fiskal İnteqrasiya</span>
       </div>
-      <div class="service-card reveal reveal-delay-2">
+      <div class="service-card-delay-2">
         <div class="service-icon">📦</div>
         <h3>Barkod və Satış Proqramları</h3>
         <p>Məhsul qeydiyyatı, barkod skan, çoxlu anbar, toplu və pərakəndə satış əməliyyatları üçün tam həll.</p>
         <span class="service-tag">Barkod Skaner</span>
       </div>
-      <div class="service-card reveal reveal-delay-3">
+      <div class="service-card-delay-3">
         <div class="service-icon">🏭</div>
         <h3>Anbar və Stok İdarəetməsi</h3>
         <p>Real-time stok balansı, giriş/çıxış əməliyyatları, inventarizasiya, ehtiyat bildirişləri — tam anbar nəzarəti.</p>
         <span class="service-tag">Real-time</span>
       </div>
-      <div class="service-card reveal reveal-delay-1">
+      <div class="service-card-delay-1">
         <div class="service-icon">⚖️</div>
         <h3>Tərəzi İnteqrasiyası</h3>
         <p>CAS CL5000, Digi SM100 və digər tərəzi modelləri ilə tam avtomatik inteqrasiya. PLU yükləmə, ağırlıq satışı.</p>
         <span class="service-tag">CAS · Digi · Xprinter</span>
       </div>
-      <div class="service-card reveal reveal-delay-2">
+      <div class="service-card-delay-2">
         <div class="service-icon">🧾</div>
         <h3>Veri Kassa İnteqrasiyası</h3>
         <p>Fiskal aparatlarla tam uyğunluq. Avtomatik çek göndərilməsi, Z-hesabat, Ekassam, Caspos inteqrasiyaları.</p>
         <span class="service-tag">Ekassam · Caspos · OneClick</span>
       </div>
-      <div class="service-card reveal reveal-delay-3">
+      <div class="service-card-delay-3">
         <div class="service-icon">⚙️</div>
         <h3>1C Proqramlaşdırma</h3>
         <p>Fərdi konfigurasiyanın inkişafı, mövcud sistemin genişləndirilməsi, inteqrasiya işləri — 1C:Enterprise üzrə tam xidmət.</p>
         <span class="service-tag">1C:Enterprise</span>
       </div>
-      <div class="service-card reveal reveal-delay-1">
+      <div class="service-card-delay-1">
         <div class="service-icon">🛠️</div>
         <h3>Texniki Dəstək və Servis</h3>
         <p>24/7 dəstək, uzaqdan giriş, yerindəki texniki xidmət, tez müdaxilə — sistemin dayanmadan işləməsi üçün.</p>
@@ -656,7 +650,7 @@
 <section class="integrations" id="integrations">
   <div class="container">
     <div class="integrations-inner">
-      <div class="reveal">
+      <div class="">
         <div class="section-label">İnteqrasiyalar</div>
         <h2 class="section-title">Cihaz və Sistem<br>İnteqrasiyaları</h2>
         <p class="section-subtitle" style="margin-bottom:28px;">Bazarda mövcud olan bütün retail avadanlıqları ilə problemsiz inteqrasiya təmin edirik.</p>
@@ -673,7 +667,7 @@
           <span class="badge">Epson TM</span>
         </div>
       </div>
-      <div class="integrations-devices reveal reveal-delay-2">
+      <div class="integrations-devices-delay-2">
         <div class="device-card">
           <div class="device-emoji">🧾</div>
           <div>
@@ -727,7 +721,7 @@
 <section class="features" id="features">
   <div class="container">
     <div class="features-inner">
-      <div class="feature-visual reveal">
+      <div class="feature-visual">
         <div class="mini-dashboard">
           <div class="dash-header">
             <div class="dash-title">📊 Satış Paneli</div>
@@ -765,7 +759,7 @@
           </div>
         </div>
       </div>
-      <div class="reveal reveal-delay-2">
+      <div class="-delay-2">
         <div class="section-label">Xüsusiyyətlər</div>
         <h2 class="section-title">Biznesinizə<br>Tam Nəzarət</h2>
         <div class="features-list" style="margin-top:32px;">
@@ -815,13 +809,13 @@
 <!-- PRODUCTS -->
 <section class="products" id="products">
   <div class="container">
-    <div class="reveal" style="text-align:center;margin-bottom:0">
+    <div class="" style="text-align:center;margin-bottom:0">
       <div class="section-label">Həllər</div>
       <h2 class="section-title">Sektorunuza Uyğun<br>Hazır Həllər</h2>
       <p class="section-subtitle" style="margin:0 auto;">Hər biznes növü üçün xüsusi olaraq hazırlanmış proqram paketi</p>
     </div>
     <div class="products-grid">
-      <div class="product-card featured reveal reveal-delay-1">
+      <div class="product-card featured-delay-1">
         <div class="product-glow"></div>
         <div class="product-emoji">🍽️</div>
         <h3>Restoran Proqramı</h3>
@@ -834,7 +828,7 @@
           <li>Veri kassa inteqrasiyası</li>
         </ul>
       </div>
-      <div class="product-card reveal reveal-delay-2">
+      <div class="product-card-delay-2">
         <div class="product-glow"></div>
         <div class="product-emoji">🛒</div>
         <h3>Market Proqramı</h3>
@@ -847,7 +841,7 @@
           <li>Fiskal çek sistemi</li>
         </ul>
       </div>
-      <div class="product-card reveal reveal-delay-3">
+      <div class="product-card-delay-3">
         <div class="product-glow"></div>
         <div class="product-emoji">🏪</div>
         <h3>Mağaza Satış Sistemi</h3>
@@ -860,7 +854,7 @@
           <li>Hesabat paneli</li>
         </ul>
       </div>
-      <div class="product-card featured reveal reveal-delay-4">
+      <div class="product-card featured-delay-4">
         <div class="product-glow"></div>
         <div class="product-emoji">💰</div>
         <h3>Fiskal Kassa POS Sistemi</h3>
@@ -882,43 +876,43 @@
 <!-- WHY US -->
 <section class="why" id="why">
   <div class="container">
-    <div class="why-header reveal">
+    <div class="why-header">
       <div class="section-label">Niyə Biz?</div>
       <h2 class="section-title">Azərbaycan Bazarının<br>Etibar Etdiyi Seçim</h2>
       <p class="section-subtitle" style="margin:0 auto;">Lokal biznesin ehtiyaclarını anlayan, lokal komanda tərəfindən inkişaf etdirilmiş həllər</p>
     </div>
     <div class="why-grid">
-      <div class="why-card reveal reveal-delay-1">
+      <div class="why-card-delay-1">
         <div class="why-number">01</div>
         <div class="why-icon">🇦🇿</div>
         <h3>Lokal Bazara Uyğun</h3>
         <p>Azərbaycan vergi qanunvericiliyinə, veri kassa tələblərinə tam uyğun. Yerli dil, yerli dəstək.</p>
       </div>
-      <div class="why-card reveal reveal-delay-2">
+      <div class="why-card-delay-2">
         <div class="why-number">02</div>
         <div class="why-icon">🧾</div>
         <h3>Veri Kassa Tam Uyğunluğu</h3>
         <p>Ekassam, Caspos, OneClick ilə rəsmi inteqrasiya. Fiskal çek əməliyyatları problemsiz işləyir.</p>
       </div>
-      <div class="why-card reveal reveal-delay-3">
+      <div class="why-card-delay-3">
         <div class="why-number">03</div>
         <div class="why-icon">⚡</div>
         <h3>Sürətli Quraşdırma</h3>
         <p>1 iş günü ərzində sistemin tam quraşdırılması. İşçilərin tez öyrənməsi üçün sadə interfeys.</p>
       </div>
-      <div class="why-card reveal reveal-delay-1">
+      <div class="why-card-delay-1">
         <div class="why-number">04</div>
         <div class="why-icon">🛡️</div>
         <h3>24/7 Texniki Dəstək</h3>
         <p>Həftənin 7 günü, günün 24 saatı WhatsApp, zəng və uzaqdan giriş ilə dəstək xidməti.</p>
       </div>
-      <div class="why-card reveal reveal-delay-2">
+      <div class="why-card-delay-2">
         <div class="why-number">05</div>
         <div class="why-icon">🔒</div>
         <h3>Stabil və Təhlükəsiz</h3>
         <p>SQL Server əsaslı verilənlər bazası, avtomatik ehtiyat nüsxə, yüksək uptime zəmanəti.</p>
       </div>
-      <div class="why-card reveal reveal-delay-3">
+      <div class="why-card-delay-3">
         <div class="why-number">06</div>
         <div class="why-icon">🔧</div>
         <h3>Fərdi Həllər</h3>
@@ -934,7 +928,7 @@
 <section class="contact" id="contact">
   <div class="container">
     <div class="contact-inner">
-      <div class="reveal">
+      <div class="">
         <div class="section-label">Əlaqə</div>
         <h2 style="font-family:var(--font-display);font-size:2.2rem;font-weight:800;letter-spacing:-0.03em;margin-bottom:16px;">Bizə<br>Müraciət Edin</h2>
         <p style="color:var(--text-dim);margin-bottom:36px;font-weight:300;">Demo istəyin, suallarınızı verin, qiymət öyrənin — dərhal cavab alırsınız.</p>
@@ -966,7 +960,7 @@
           <div class="map-text">Şamaxı, Azərbaycan — Xəritədə Gör →</div>
         </div>
       </div>
-      <div class="contact-form-wrap reveal reveal-delay-2">
+      <div class="contact-form-wrap-delay-2">
         <h3>🎯 Pulsuz Demo İstə</h3>
         <div class="form-row">
           <div class="form-group">
@@ -1036,12 +1030,7 @@
 <a href="https://wa.me/994516782878" class="wa-float" target="_blank" title="WhatsApp ilə Yazın">💬</a>
 
 <script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script>
-  // Scroll reveal
-  const reveals = document.querySelectorAll('.reveal');
-  const observer = new IntersectionObserver((entries) => {
-    entries.forEach(e => { if(e.isIntersecting) { e.target.classList.add('visible'); } });
-  }, { threshold: 0.1, rootMargin: '0px 0px -50px 0px' });
-  reveals.forEach(r => observer.observe(r));
+  // removed
 
   // Form submit
   function handleSubmit(btn) {
