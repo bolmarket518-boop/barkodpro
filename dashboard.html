@@ -1,0 +1,429 @@
+<!DOCTYPE html>
+<html lang="az">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>BarkodPRO — Müştəri Paneli (Demo)</title>
+<meta name="description" content="BarkodPRO müştəri portalı demosu — anbar, satışlar və yeni satış.">
+<meta name="robots" content="noindex, nofollow">
+<link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>📟</text></svg>">
+
+<script src="https://cdn.tailwindcss.com"></script>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css" integrity="sha512-SnH5WK+bZxgPHs44uWIX+LLJAJ9/2PkPKZ5QiAj6Ta86w+fsb2TkcmfRyVX3pBnMFcV7oQPJkl9QevSCWr3W6A==" crossorigin="anonymous" referrerpolicy="no-referrer">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;600;700&display=swap" rel="stylesheet">
+
+<script>
+  tailwind.config = {
+    theme: {
+      extend: {
+        fontFamily: {
+          sans: ['Space Grotesk', 'sans-serif'],
+          mono: ['JetBrains Mono', 'monospace'],
+        },
+        colors: {
+          ink: '#0a0c10',
+          panel: '#12151b',
+          accent: '#f2a63c',
+          accent2: '#e08a1f',
+          steel: '#5b7a99',
+          mute: '#868c96',
+          fg: '#ece9e2',
+        },
+      }
+    }
+  }
+</script>
+
+<style>
+  :root { color-scheme: dark; }
+  body {
+    background: #0a0c10;
+    color: #ece9e2;
+    font-family: 'Space Grotesk', sans-serif;
+    position: relative;
+    min-height: 100vh;
+    background-image: radial-gradient(rgba(255,255,255,0.05) 1px, transparent 1px);
+    background-size: 26px 26px;
+  }
+  .font-mono { font-family: 'JetBrains Mono', monospace; }
+
+  .panel {
+    position: relative;
+    background: #12151b;
+    border: 1px solid rgba(255,255,255,0.09);
+  }
+  .panel::before, .panel::after {
+    content: '';
+    position: absolute;
+    width: 14px; height: 14px;
+    opacity: 0;
+    transition: opacity .25s ease;
+    pointer-events: none;
+  }
+  .panel::before { top: -1px; left: -1px; border-top: 2px solid #f2a63c; border-left: 2px solid #f2a63c; }
+  .panel::after { bottom: -1px; right: -1px; border-bottom: 2px solid #f2a63c; border-right: 2px solid #f2a63c; }
+  .panel:hover::before, .panel:hover::after { opacity: 1; }
+
+  .btn-fill {
+    position: relative;
+    z-index: 1;
+    overflow: hidden;
+    transition: color .3s ease;
+  }
+  .btn-fill::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: #f2a63c;
+    transform: scaleX(0);
+    transform-origin: left;
+    transition: transform .3s ease;
+    z-index: -1;
+  }
+  .btn-fill:hover::before { transform: scaleX(1); }
+  .btn-fill:hover { color: #0a0c10 !important; }
+
+  .blink { animation: blink 1.4s steps(1) infinite; }
+  @keyframes blink { 50% { opacity: 0; } }
+
+  .tab-btn.active {
+    color: #f2a63c;
+    border-color: #f2a63c;
+  }
+
+  table { border-collapse: collapse; width: 100%; }
+  th, td { text-align: left; padding: 10px 12px; white-space: nowrap; }
+  thead th {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 10px;
+    letter-spacing: 0.12em;
+    color: #868c96;
+    border-bottom: 1px solid rgba(255,255,255,0.1);
+  }
+  tbody tr { border-bottom: 1px solid rgba(255,255,255,0.05); }
+  tbody tr:hover { background: rgba(255,255,255,0.03); }
+
+  .table-wrap { overflow-x: auto; }
+
+  select, input { font-family: 'Space Grotesk', sans-serif; }
+
+  #toast {
+    transition: opacity .3s ease, transform .3s ease;
+  }
+</style>
+</head>
+
+<body class="antialiased">
+
+<!-- DEMO BANNER -->
+<div class="bg-accent/10 border-b border-accent/25 text-center py-2 px-4 text-[11px] sm:text-xs font-mono text-accent tracking-wide">
+  <i class="fa-solid fa-flask mr-1.5"></i>
+  DEMO REJİMİ — bu paneldəki bütün məlumatlar nümunədir, real anbar/satış datası deyil.
+</div>
+
+<!-- HEADER -->
+<header class="border-b border-white/10 bg-ink/90 backdrop-blur-sm">
+  <div class="max-w-7xl mx-auto px-5 sm:px-8 h-16 flex items-center justify-between">
+    <a href="index.html" class="flex items-center gap-2.5">
+      <span class="w-9 h-9 border border-accent flex items-center justify-center text-accent">
+        <i class="fa-solid fa-barcode text-base"></i>
+      </span>
+      <span class="font-mono font-bold text-base tracking-wider text-fg hidden sm:inline">BARKOD<span class="text-accent">/</span>PRO</span>
+    </a>
+
+    <div class="flex items-center gap-4">
+      <div class="hidden sm:flex items-center gap-2 text-xs text-mute font-mono">
+        <span class="w-1.5 h-1.5 rounded-full bg-emerald-400 inline-block blink"></span>
+        <span id="user-label">MÜŞTƏRİ</span>
+      </div>
+      <a href="login.html" id="logout-btn" class="flex items-center gap-2 px-4 py-2 border border-white/15 text-fg font-mono text-[11px] tracking-widest hover:border-accent hover:text-accent transition-colors">
+        <i class="fa-solid fa-right-from-bracket"></i> ÇIXIŞ
+      </a>
+    </div>
+  </div>
+</header>
+
+<main class="max-w-7xl mx-auto px-5 sm:px-8 py-10">
+
+  <div class="mb-8">
+    <div class="font-mono text-[11px] tracking-[0.2em] text-accent mb-2">MÜŞTƏRİ PORTALI // DEMO</div>
+    <h1 class="text-2xl sm:text-3xl font-semibold text-fg">Xoş gəldiniz, <span id="user-name" class="text-accent">Müştəri</span></h1>
+    <p class="text-mute text-sm mt-1">Anbarınıza baxın, satışlarınızı izləyin və yeni satış qeydə alın.</p>
+  </div>
+
+  <!-- STATS -->
+  <div class="grid grid-cols-2 lg:grid-cols-4 gap-4 mb-10">
+    <div class="panel p-5">
+      <div class="text-[10px] font-mono text-mute tracking-widest mb-2">MƏHSUL SAYI</div>
+      <div class="text-2xl font-semibold text-fg" id="stat-products">—</div>
+    </div>
+    <div class="panel p-5">
+      <div class="text-[10px] font-mono text-mute tracking-widest mb-2">ANBAR DƏYƏRİ</div>
+      <div class="text-2xl font-semibold text-fg" id="stat-value">—</div>
+    </div>
+    <div class="panel p-5">
+      <div class="text-[10px] font-mono text-mute tracking-widest mb-2">BUGÜNKÜ SATIŞ</div>
+      <div class="text-2xl font-semibold text-fg" id="stat-today">—</div>
+    </div>
+    <div class="panel p-5">
+      <div class="text-[10px] font-mono text-mute tracking-widest mb-2">AZ QALAN MƏHSUL</div>
+      <div class="text-2xl font-semibold text-accent" id="stat-low">—</div>
+    </div>
+  </div>
+
+  <!-- TABS -->
+  <div class="flex gap-2 border-b border-white/10 mb-6 overflow-x-auto">
+    <button data-tab="warehouse" class="tab-btn active whitespace-nowrap font-mono text-xs tracking-widest px-4 py-3 border-b-2 border-transparent text-mute hover:text-fg transition-colors">
+      <i class="fa-solid fa-warehouse mr-1.5"></i> ANBAR
+    </button>
+    <button data-tab="sales" class="tab-btn whitespace-nowrap font-mono text-xs tracking-widest px-4 py-3 border-b-2 border-transparent text-mute hover:text-fg transition-colors">
+      <i class="fa-solid fa-chart-line mr-1.5"></i> SATIŞLAR
+    </button>
+    <button data-tab="new-sale" class="tab-btn whitespace-nowrap font-mono text-xs tracking-widest px-4 py-3 border-b-2 border-transparent text-mute hover:text-fg transition-colors">
+      <i class="fa-solid fa-plus mr-1.5"></i> YENİ SATIŞ
+    </button>
+  </div>
+
+  <!-- WAREHOUSE TAB -->
+  <div id="tab-warehouse" class="tab-panel">
+    <div class="panel table-wrap">
+      <table>
+        <thead>
+          <tr>
+            <th>Barkod</th>
+            <th>Məhsul</th>
+            <th>Kateqoriya</th>
+            <th>Stok</th>
+            <th>Qiymət</th>
+          </tr>
+        </thead>
+        <tbody id="warehouse-body"></tbody>
+      </table>
+    </div>
+  </div>
+
+  <!-- SALES TAB -->
+  <div id="tab-sales" class="tab-panel hidden">
+    <div class="panel table-wrap">
+      <table>
+        <thead>
+          <tr>
+            <th>Tarix</th>
+            <th>Məhsul</th>
+            <th>Miqdar</th>
+            <th>Məbləğ</th>
+            <th>Status</th>
+          </tr>
+        </thead>
+        <tbody id="sales-body"></tbody>
+      </table>
+    </div>
+  </div>
+
+  <!-- NEW SALE TAB -->
+  <div id="tab-new-sale" class="tab-panel hidden">
+    <div class="panel p-6 sm:p-8 max-w-xl">
+      <h3 class="text-lg font-semibold text-fg mb-1">Yeni Satış Qeydə Al</h3>
+      <p class="text-mute text-sm mb-6">Məhsul seçin, miqdarı daxil edin — satış avtomatik anbardan çıxılacaq.</p>
+      <form id="sale-form" class="space-y-5">
+        <div>
+          <label class="block text-[10px] font-mono text-mute tracking-widest mb-2">MƏHSUL</label>
+          <select id="sale-product" required class="w-full px-4 py-3.5 bg-ink border border-white/15 text-fg focus:outline-none focus:border-accent transition-colors"></select>
+        </div>
+        <div>
+          <label class="block text-[10px] font-mono text-mute tracking-widest mb-2">MİQDAR</label>
+          <input type="number" id="sale-qty" min="1" value="1" required
+                 class="w-full px-4 py-3.5 bg-ink border border-white/15 text-fg focus:outline-none focus:border-accent transition-colors">
+        </div>
+        <div class="flex items-center justify-between font-mono text-sm text-mute border-t border-white/10 pt-4">
+          <span>CƏMİ MƏBLƏĞ</span>
+          <span id="sale-total" class="text-fg font-semibold">0.00 AZN</span>
+        </div>
+        <button type="submit" class="btn-fill w-full flex items-center justify-center gap-2 px-6 py-4 border border-accent text-accent font-mono text-xs tracking-widest">
+          <i class="fa-solid fa-receipt"></i> SATIŞI TAMAMLA
+        </button>
+      </form>
+    </div>
+  </div>
+
+</main>
+
+<!-- TOAST -->
+<div id="toast" class="hidden fixed bottom-6 right-6 left-6 sm:left-auto panel px-5 py-4 flex items-center gap-3 !border-emerald-500/40 z-50">
+  <i class="fa-solid fa-circle-check text-emerald-400"></i>
+  <span id="toast-text" class="text-sm text-fg"></span>
+</div>
+
+<script>
+  // ---- Seed demo data ----
+  let products = [
+    { code: '4870001112223', name: 'Coca-Cola 0.5L', category: 'İçki', stock: 120, price: 1.20 },
+    { code: '4870004445556', name: 'Kartof Çipsi 150g', category: 'Qəlyanaltı', stock: 8, price: 2.50 },
+    { code: '4870007778889', name: 'Tam Yağlı Süd 1L', category: 'Süd Məhsulları', stock: 45, price: 1.80 },
+    { code: '4870002223334', name: 'A4 Kağız Paketi', category: 'Ofis', stock: 200, price: 4.90 },
+    { code: '4870009990001', name: 'Termal Çek Lenti 80mm', category: 'Aksesuar', stock: 5, price: 1.50 },
+    { code: '4870003334445', name: 'Cheeseburger Dəsti', category: 'Restoran', stock: 30, price: 6.90 },
+    { code: '4870005556667', name: 'Mineral Su 1.5L', category: 'İçki', stock: 90, price: 0.80 },
+    { code: '4870006667778', name: 'Yumurta (10-luq)', category: 'Ərzaq', stock: 60, price: 3.20 },
+    { code: '4870008889990', name: 'Barkod Etiketi Rulonu', category: 'Aksesuar', stock: 15, price: 3.00 },
+    { code: '4870001119990', name: 'Salfetka Paketi', category: 'Restoran', stock: 3, price: 1.10 },
+  ];
+
+  function daysAgo(n) {
+    const d = new Date();
+    d.setDate(d.getDate() - n);
+    return d.toLocaleDateString('az-AZ', { day: '2-digit', month: '2-digit', year: 'numeric' });
+  }
+
+  let sales = [
+    { date: daysAgo(0), product: 'Coca-Cola 0.5L', qty: 6, total: 7.20, status: 'Tamamlandı' },
+    { date: daysAgo(0), product: 'Cheeseburger Dəsti', qty: 2, total: 13.80, status: 'Tamamlandı' },
+    { date: daysAgo(1), product: 'Mineral Su 1.5L', qty: 12, total: 9.60, status: 'Tamamlandı' },
+    { date: daysAgo(1), product: 'Kartof Çipsi 150g', qty: 4, total: 10.00, status: 'Tamamlandı' },
+    { date: daysAgo(2), product: 'Tam Yağlı Süd 1L', qty: 8, total: 14.40, status: 'Tamamlandı' },
+  ];
+
+  const todayStr = daysAgo(0);
+
+  // ---- User label ----
+  const user = sessionStorage.getItem('barkodpro_demo_user') || 'Müştəri';
+  document.getElementById('user-name').textContent = user;
+  document.getElementById('user-label').textContent = user.toUpperCase();
+
+  // ---- Renderers ----
+  function fmt(n) { return n.toFixed(2) + ' AZN'; }
+
+  function renderWarehouse() {
+    const body = document.getElementById('warehouse-body');
+    body.innerHTML = '';
+    products.forEach(p => {
+      const low = p.stock <= 10;
+      const tr = document.createElement('tr');
+      tr.innerHTML = `
+        <td class="font-mono text-xs text-mute">${p.code}</td>
+        <td class="text-fg font-medium">${p.name}</td>
+        <td class="text-mute text-sm">${p.category}</td>
+        <td class="${low ? 'text-accent font-semibold' : 'text-fg'}">${p.stock} ${low ? '<i class="fa-solid fa-triangle-exclamation ml-1 text-[10px]"></i>' : ''}</td>
+        <td class="text-fg">${fmt(p.price)}</td>
+      `;
+      body.appendChild(tr);
+    });
+  }
+
+  function renderSales() {
+    const body = document.getElementById('sales-body');
+    body.innerHTML = '';
+    [...sales].reverse().forEach(s => {
+      const tr = document.createElement('tr');
+      tr.innerHTML = `
+        <td class="font-mono text-xs text-mute">${s.date}</td>
+        <td class="text-fg font-medium">${s.product}</td>
+        <td class="text-fg">${s.qty}</td>
+        <td class="text-fg">${fmt(s.total)}</td>
+        <td><span class="font-mono text-[10px] tracking-widest text-emerald-400 border border-emerald-500/30 px-2 py-0.5">${s.status.toUpperCase()}</span></td>
+      `;
+      body.appendChild(tr);
+    });
+  }
+
+  function renderStats() {
+    document.getElementById('stat-products').textContent = products.length;
+    const value = products.reduce((sum, p) => sum + p.stock * p.price, 0);
+    document.getElementById('stat-value').textContent = value.toFixed(0) + ' AZN';
+    const todayTotal = sales.filter(s => s.date === todayStr).reduce((sum, s) => sum + s.total, 0);
+    document.getElementById('stat-today').textContent = todayTotal.toFixed(2) + ' AZN';
+    const lowCount = products.filter(p => p.stock <= 10).length;
+    document.getElementById('stat-low').textContent = lowCount;
+  }
+
+  function renderProductSelect() {
+    const select = document.getElementById('sale-product');
+    select.innerHTML = '';
+    products.forEach((p, i) => {
+      const opt = document.createElement('option');
+      opt.value = i;
+      opt.textContent = `${p.name} — ${fmt(p.price)} (Stok: ${p.stock})`;
+      select.appendChild(opt);
+    });
+  }
+
+  function updateSaleTotal() {
+    const idx = document.getElementById('sale-product').value;
+    const qty = parseInt(document.getElementById('sale-qty').value) || 0;
+    const product = products[idx];
+    const total = product ? product.price * qty : 0;
+    document.getElementById('sale-total').textContent = fmt(total);
+  }
+
+  function renderAll() {
+    renderWarehouse();
+    renderSales();
+    renderStats();
+    renderProductSelect();
+    updateSaleTotal();
+  }
+
+  renderAll();
+
+  // ---- Tabs ----
+  document.querySelectorAll('.tab-btn').forEach(btn => {
+    btn.addEventListener('click', () => {
+      document.querySelectorAll('.tab-btn').forEach(b => b.classList.remove('active'));
+      document.querySelectorAll('.tab-panel').forEach(p => p.classList.add('hidden'));
+      btn.classList.add('active');
+      document.getElementById('tab-' + btn.dataset.tab).classList.remove('hidden');
+    });
+  });
+
+  // ---- New sale form ----
+  document.getElementById('sale-product').addEventListener('change', updateSaleTotal);
+  document.getElementById('sale-qty').addEventListener('input', updateSaleTotal);
+
+  document.getElementById('sale-form').addEventListener('submit', (e) => {
+    e.preventDefault();
+    const idx = document.getElementById('sale-product').value;
+    const qty = parseInt(document.getElementById('sale-qty').value) || 0;
+    const product = products[idx];
+
+    if (!product || qty < 1) return;
+    if (qty > product.stock) {
+      showToast(`Kifayət qədər stok yoxdur (mövcud: ${product.stock})`, false);
+      return;
+    }
+
+    product.stock -= qty;
+    sales.push({
+      date: todayStr,
+      product: product.name,
+      qty: qty,
+      total: product.price * qty,
+      status: 'Tamamlandı',
+    });
+
+    renderAll();
+    document.getElementById('sale-qty').value = 1;
+    showToast(`Satış qeydə alındı: ${product.name} × ${qty} (DEMO)`, true);
+
+    document.querySelector('.tab-btn[data-tab="sales"]').click();
+  });
+
+  function showToast(text, ok) {
+    const toast = document.getElementById('toast');
+    const icon = toast.querySelector('i');
+    icon.className = ok ? 'fa-solid fa-circle-check text-emerald-400' : 'fa-solid fa-circle-exclamation text-accent';
+    document.getElementById('toast-text').textContent = text;
+    toast.classList.remove('hidden');
+    clearTimeout(window.__toastTimer);
+    window.__toastTimer = setTimeout(() => toast.classList.add('hidden'), 3200);
+  }
+
+  // ---- Logout ----
+  document.getElementById('logout-btn').addEventListener('click', () => {
+    sessionStorage.removeItem('barkodpro_demo_user');
+  });
+</script>
+
+</body>
+</html>
