@@ -3,1053 +3,704 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>BarkodPRO – Restoran, Market və Satış Sistemləri üçün Avtomatlaşdırma</title>
-<meta name="description" content="POS sistemi, barkod sistemi, restoran proqramı, market proqramı, veri kassa inteqrasiyası, fiskal kassa proqramı, avtomatlaşdırma sistemi Azərbaycanda.">
-<meta name="keywords" content="POS sistemi, satış proqramı, barkod sistemi, restoran proqramı, market proqramı, veri kassa inteqrasiyası, fiskal kassa proqramı, avtomatlaşdırma sistemi">
+<title>BarkodPRO — 1C, eKASSAM və Barkod Sistemləri üzrə İnteqrasiya</title>
+<meta name="description" content="BarkodPRO — Bakı mərkəzli 1C:Enterprise, eKASSAM vergi kassası, barkod və POS sistemləri, anbar terminalları üzrə peşəkar IT inteqrasiya şirkəti. 24/7 texniki dəstək.">
+<meta name="keywords" content="1C Azərbaycan, eKASSAM, barkod sistemi, POS terminalı, vergi kassası, anbar terminalı, Shopify inteqrasiya, BarkodPRO">
+<meta property="og:type" content="website">
+<meta property="og:title" content="BarkodPRO — 1C, eKASSAM və Barkod Sistemləri üzrə İnteqrasiya">
+<meta property="og:description" content="1C:Enterprise, eKASSAM, barkod/POS sistemləri və anbar terminalları üzrə peşəkar inteqrasiya. 24/7 texniki dəstək.">
+<meta property="og:locale" content="az_AZ">
+<meta name="robots" content="index, follow">
+<link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>📟</text></svg>">
+
+<script src="https://cdn.tailwindcss.com"></script>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css" integrity="sha512-SnH5WK+bZxgPHs44uWIX+LLJAJ9/2PkPKZ5QiAj6Ta86w+fsb2TkcmfRyVX3pBnMFcV7oQPJkl9QevSCWr3W6A==" crossorigin="anonymous" referrerpolicy="no-referrer">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;600;700&display=swap" rel="stylesheet">
+
+<script>
+  tailwind.config = {
+    theme: {
+      extend: {
+        fontFamily: {
+          sans: ['Space Grotesk', 'sans-serif'],
+          mono: ['JetBrains Mono', 'monospace'],
+        },
+        colors: {
+          ink: '#0a0c10',
+          panel: '#12151b',
+          accent: '#f2a63c',
+          accent2: '#e08a1f',
+          steel: '#5b7a99',
+          mute: '#868c96',
+          fg: '#ece9e2',
+        },
+      }
+    }
+  }
+</script>
 
 <style>
-  :root {
-    --bg: #050d1a;
-    --bg2: #071225;
-    --bg3: #0a1930;
-    --blue: #1a6cff;
-    --blue-light: #3d8bff;
-    --blue-glow: rgba(26,108,255,0.18);
-    --cyan: #00d4ff;
-    --cyan-dim: rgba(0,212,255,0.12);
-    --text: #e8f0ff;
-    --text-dim: #7a93b8;
-    --text-muted: #415068;
-    --border: rgba(26,108,255,0.18);
-    --border-light: rgba(255,255,255,0.07);
-    --card: rgba(10,25,48,0.8);
-    --radius: 16px;
-    --font-display: 'Segoe UI', 'SF Pro Display', -apple-system, BlinkMacSystemFont, 'Helvetica Neue', Arial, sans-serif;
-    --font-body: 'Segoe UI', 'SF Pro Text', -apple-system, BlinkMacSystemFont, 'Helvetica Neue', Arial, sans-serif;
-  }
-
-  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
-
+  :root { color-scheme: dark; }
   html { scroll-behavior: smooth; }
-
   body {
-    background: var(--bg);
-    color: var(--text);
-    font-family: var(--font-body);
-    font-size: 16px;
-    line-height: 1.65;
-    overflow-x: hidden;
-  }
-
-  /* ── NOISE OVERLAY ── */
-  body::before {
-    content: '';
-    position: fixed;
-    inset: 0;
-    background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.04'/%3E%3C/svg%3E");
-    pointer-events: none;
-    z-index: 0;
-    opacity: 0.6;
-  }
-
-  /* ── GLOW ORBS ── */
-  .orb {
-    position: fixed;
-    border-radius: 50%;
-    filter: blur(120px);
-    pointer-events: none;
-    z-index: 0;
-  }
-  .orb-1 { width: 700px; height: 700px; background: rgba(26,108,255,0.12); top: -200px; left: -200px; }
-  .orb-2 { width: 500px; height: 500px; background: rgba(0,212,255,0.07); bottom: 10%; right: -150px; }
-  .orb-3 { width: 400px; height: 400px; background: rgba(26,108,255,0.09); top: 50%; left: 30%; }
-
-  /* ── LAYOUT ── */
-  .container { max-width: 1200px; margin: 0 auto; padding: 0 24px; position: relative; z-index: 1; }
-  section { position: relative; z-index: 1; }
-
-  /* ── NAV ── */
-  nav {
-    position: fixed;
-    top: 0; left: 0; right: 0;
-    z-index: 100;
-    padding: 0 24px;
-    backdrop-filter: blur(20px);
-    background: rgba(5,13,26,0.85);
-    border-bottom: 1px solid var(--border);
-    transition: all 0.3s;
-  }
-  .nav-inner {
-    max-width: 1200px; margin: 0 auto;
-    display: flex; align-items: center; justify-content: space-between;
-    height: 68px;
-  }
-  .logo {
-    display: flex; align-items: center; gap: 10px;
-    font-family: var(--font-display); font-weight: 800; font-size: 1.25rem;
-    color: var(--text); text-decoration: none;
-    letter-spacing: -0.02em;
-  }
-  .logo-icon {
-    width: 36px; height: 36px; border-radius: 9px;
-    background: linear-gradient(135deg, var(--blue), var(--cyan));
-    display: flex; align-items: center; justify-content: center;
-    font-size: 18px;
-  }
-  .logo span { color: var(--cyan); }
-  .nav-links { display: flex; align-items: center; gap: 32px; }
-  .nav-links a {
-    color: var(--text-dim); text-decoration: none; font-size: 0.9rem;
-    font-weight: 500; transition: color 0.2s; letter-spacing: 0.01em;
-  }
-  .nav-links a:hover { color: var(--text); }
-  .nav-cta {
-    background: linear-gradient(135deg, var(--blue), #0050d0);
-    color: #fff !important; padding: 9px 20px; border-radius: 8px;
-    font-weight: 600 !important; transition: all 0.2s !important;
-    box-shadow: 0 0 20px rgba(26,108,255,0.3);
-  }
-  .nav-cta:hover { transform: translateY(-1px); box-shadow: 0 0 30px rgba(26,108,255,0.5) !important; color: #fff !important; }
-
-  @media(max-width:768px) {
-    .nav-links { display: none; }
-  }
-
-  /* ── HERO ── */
-  .hero {
-    min-height: 100vh;
-    display: flex; align-items: center; justify-content: center;
-    padding: 120px 24px 80px;
-    text-align: center;
+    background: #0a0c10;
+    color: #ece9e2;
+    font-family: 'Space Grotesk', sans-serif;
     position: relative;
+    overflow-x: hidden;
+    background-image: radial-gradient(rgba(255,255,255,0.05) 1px, transparent 1px);
+    background-size: 26px 26px;
+  }
+  .font-mono { font-family: 'JetBrains Mono', monospace; }
+
+  .panel {
+    position: relative;
+    background: #12151b;
+    border: 1px solid rgba(255,255,255,0.09);
+  }
+  .panel::before, .panel::after {
+    content: '';
+    position: absolute;
+    width: 14px; height: 14px;
+    opacity: 0;
+    transition: opacity .25s ease;
+    pointer-events: none;
+  }
+  .panel::before { top: -1px; left: -1px; border-top: 2px solid #f2a63c; border-left: 2px solid #f2a63c; }
+  .panel::after { bottom: -1px; right: -1px; border-bottom: 2px solid #f2a63c; border-right: 2px solid #f2a63c; }
+  .panel:hover::before, .panel:hover::after { opacity: 1; }
+  .panel:hover { border-color: rgba(242,166,60,0.35); transform: translateY(-2px); }
+  .panel { transition: transform .25s ease, border-color .25s ease; }
+
+  .btn-fill {
+    position: relative;
+    z-index: 1;
     overflow: hidden;
+    transition: color .3s ease;
   }
-  .hero-grid {
-    position: absolute; inset: 0;
-    background-image:
-      linear-gradient(rgba(26,108,255,0.06) 1px, transparent 1px),
-      linear-gradient(90deg, rgba(26,108,255,0.06) 1px, transparent 1px);
-    background-size: 60px 60px;
-    mask-image: radial-gradient(ellipse 80% 60% at 50% 50%, black, transparent);
+  .btn-fill::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: #f2a63c;
+    transform: scaleX(0);
+    transform-origin: left;
+    transition: transform .3s ease;
+    z-index: -1;
   }
-  .hero-badge {
-    display: inline-flex; align-items: center; gap: 8px;
-    background: rgba(26,108,255,0.12); border: 1px solid var(--border);
-    border-radius: 100px; padding: 6px 16px; margin-bottom: 28px;
-    font-size: 0.82rem; font-weight: 500; color: var(--cyan);
-    
-    letter-spacing: 0.04em; text-transform: uppercase;
-  }
-  .hero-badge-dot { width: 6px; height: 6px; border-radius: 50%; background: var(--cyan); animation: pulse 2s infinite; }
-  @keyframes pulse { 0%,100%{opacity:1;transform:scale(1)} 50%{opacity:0.5;transform:scale(1.3)} }
+  .btn-fill:hover::before { transform: scaleX(1); }
+  .btn-fill:hover { color: #0a0c10 !important; }
 
-  h1 {
-    font-family: var(--font-display);
-    font-size: clamp(2.4rem, 6vw, 4.2rem);
-    font-weight: 800;
-    line-height: 1.1;
-    letter-spacing: -0.03em;
-    margin-bottom: 24px;
-    
-  }
-  h1 .accent {
-    background: linear-gradient(135deg, var(--blue-light), var(--cyan));
-    -webkit-background-clip: text; -webkit-text-fill-color: transparent;
-    background-clip: text;
-  }
-  .hero-sub {
-    font-size: clamp(1rem, 2.5vw, 1.2rem);
-    color: var(--text-dim); max-width: 620px; margin: 0 auto 40px;
-    font-weight: 300; line-height: 1.7;
-    
-  }
-  .hero-btns {
-    display: flex; gap: 14px; justify-content: center; flex-wrap: wrap;
-    
-  }
-  .btn-primary {
-    background: linear-gradient(135deg, var(--blue), #0050d0);
-    color: #fff; padding: 14px 32px; border-radius: 10px;
-    font-family: var(--font-body); font-weight: 600; font-size: 1rem;
-    text-decoration: none; border: none; cursor: pointer;
-    box-shadow: 0 0 30px rgba(26,108,255,0.4), 0 4px 15px rgba(0,0,0,0.3);
-    transition: all 0.25s; letter-spacing: 0.01em;
-    display: inline-flex; align-items: center; gap: 8px;
-  }
-  .btn-primary:hover { transform: translateY(-2px); box-shadow: 0 0 50px rgba(26,108,255,0.6), 0 8px 25px rgba(0,0,0,0.4); }
-  .btn-secondary {
-    background: transparent; color: var(--text);
-    padding: 14px 32px; border-radius: 10px;
-    font-family: var(--font-body); font-weight: 500; font-size: 1rem;
-    text-decoration: none; border: 1px solid var(--border);
-    cursor: pointer; transition: all 0.25s;
-    display: inline-flex; align-items: center; gap: 8px;
-    backdrop-filter: blur(10px);
-  }
-  .btn-secondary:hover { border-color: var(--blue); color: var(--blue-light); background: var(--blue-glow); }
-
-  .hero-stats {
-    display: flex; gap: 40px; justify-content: center; margin-top: 64px;
-    flex-wrap: wrap; 
-  }
-  .stat { text-align: center; }
-  .stat-num {
-    font-family: var(--font-display); font-size: 2.2rem; font-weight: 800;
-    background: linear-gradient(135deg, #fff, var(--cyan));
-    -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text;
-    line-height: 1;
-  }
-  .stat-label { font-size: 0.8rem; color: var(--text-muted); margin-top: 4px; text-transform: uppercase; letter-spacing: 0.05em; }
-  .stat-divider { width: 1px; background: var(--border); height: 50px; align-self: center; }
-
-  @keyframes fadeUp { from{opacity:0;transform:translateY(24px)} to{opacity:1;transform:translateY(0)} }
-
-  /* ── SECTION HEADERS ── */
-  .section-label {
-    display: inline-flex; align-items: center; gap: 8px;
-    font-size: 0.75rem; font-weight: 600; letter-spacing: 0.12em;
-    text-transform: uppercase; color: var(--cyan); margin-bottom: 14px;
-  }
-  .section-label::before { content:''; display:inline-block; width:20px; height:2px; background:var(--cyan); }
-  .section-title {
-    font-family: var(--font-display); font-size: clamp(1.8rem, 4vw, 2.8rem);
-    font-weight: 800; letter-spacing: -0.03em; line-height: 1.15; margin-bottom: 16px;
-  }
-  .section-subtitle { color: var(--text-dim); font-size: 1.05rem; max-width: 540px; font-weight: 300; }
-
-  /* ── SERVICES ── */
-  .services { padding: 110px 0; }
-  .services-header { text-align: center; margin-bottom: 64px; }
-  .services-header .section-subtitle { margin: 0 auto; }
-  .services-grid {
-    display: grid; grid-template-columns: repeat(auto-fill, minmax(320px,1fr)); gap: 20px;
-  }
-  .service-card {
-    background: var(--card); border: 1px solid var(--border-light);
-    border-radius: var(--radius); padding: 32px;
-    transition: all 0.3s; cursor: default;
-    position: relative; overflow: hidden;
-    backdrop-filter: blur(12px);
-  }
-  .service-card::before {
-    content: ''; position: absolute; inset: 0;
-    background: linear-gradient(135deg, var(--blue-glow), transparent);
-    opacity: 0; transition: opacity 0.3s;
-    border-radius: var(--radius);
-  }
-  .service-card:hover { border-color: var(--border); transform: translateY(-4px); box-shadow: 0 20px 60px rgba(0,0,0,0.4), 0 0 40px var(--blue-glow); }
-  .service-card:hover::before { opacity: 1; }
-  .service-icon {
-    width: 52px; height: 52px; border-radius: 13px;
-    background: linear-gradient(135deg, var(--blue-glow), var(--cyan-dim));
-    border: 1px solid var(--border); display: flex; align-items: center;
-    justify-content: center; font-size: 24px; margin-bottom: 20px;
-    position: relative; z-index: 1;
-  }
-  .service-card h3 {
-    font-family: var(--font-display); font-size: 1.1rem; font-weight: 700;
-    margin-bottom: 10px; letter-spacing: -0.01em; position: relative; z-index: 1;
-  }
-  .service-card p { color: var(--text-dim); font-size: 0.9rem; line-height: 1.65; position: relative; z-index: 1; }
-  .service-tag {
-    display: inline-block; margin-top: 16px; padding: 3px 10px;
-    background: rgba(26,108,255,0.1); border: 1px solid var(--border);
-    border-radius: 100px; font-size: 0.73rem; color: var(--blue-light);
-    font-weight: 500; letter-spacing: 0.03em; position: relative; z-index: 1;
+  .barcode-rule {
+    height: 16px;
+    background-image: repeating-linear-gradient(90deg,
+      #f2a63c 0 2px, transparent 2px 6px,
+      #f2a63c 6px 7px, transparent 7px 10px,
+      #f2a63c 10px 13px, transparent 13px 19px,
+      #f2a63c 19px 20px, transparent 20px 26px);
+    opacity: 0.45;
   }
 
-  /* ── INTEGRATIONS ── */
-  .integrations {
-    padding: 110px 0;
-    background: linear-gradient(180deg, transparent, rgba(10,25,48,0.6), transparent);
-  }
-  .integrations-inner { display: grid; grid-template-columns: 1fr 1fr; gap: 80px; align-items: center; }
-  @media(max-width:900px) { .integrations-inner { grid-template-columns: 1fr; gap: 50px; } }
-  .integrations-devices { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; }
-  .device-card {
-    background: var(--card); border: 1px solid var(--border-light);
-    border-radius: 14px; padding: 22px 20px;
-    display: flex; align-items: flex-start; gap: 14px;
-    transition: all 0.25s; backdrop-filter: blur(12px);
-  }
-  .device-card:hover { border-color: var(--border); box-shadow: 0 8px 30px rgba(0,0,0,0.3); transform: translateY(-2px); }
-  .device-emoji { font-size: 26px; line-height: 1; flex-shrink: 0; }
-  .device-card h4 { font-family: var(--font-display); font-size: 0.9rem; font-weight: 700; margin-bottom: 4px; }
-  .device-card p { font-size: 0.78rem; color: var(--text-dim); line-height: 1.5; }
+  .blink { animation: blink 1.4s steps(1) infinite; }
+  @keyframes blink { 50% { opacity: 0; } }
 
-  .integration-badges { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 28px; }
-  .badge {
-    padding: 5px 14px; border-radius: 100px;
-    border: 1px solid var(--border); background: rgba(26,108,255,0.08);
-    font-size: 0.78rem; color: var(--text-dim); font-weight: 500;
-  }
+  .nav-link { font-family: 'JetBrains Mono', monospace; }
 
-  /* ── FEATURES ── */
-  .features { padding: 110px 0; }
-  .features-inner { display: grid; grid-template-columns: 1fr 1fr; gap: 80px; align-items: center; }
-  @media(max-width:900px) { .features-inner { grid-template-columns: 1fr; gap: 50px; } }
-  .features-list { display: flex; flex-direction: column; gap: 16px; }
-  .feature-item {
-    display: flex; gap: 16px; align-items: flex-start;
-    padding: 18px 20px; border-radius: 12px;
-    border: 1px solid var(--border-light); background: rgba(10,25,48,0.4);
-    transition: all 0.25s; backdrop-filter: blur(10px);
+  .reveal {
+    opacity: 0;
+    transform: translateY(18px);
+    transition: opacity .6s ease, transform .6s ease;
   }
-  .feature-item:hover { border-color: var(--border); background: var(--card); }
-  .feature-check {
-    width: 32px; height: 32px; border-radius: 8px; flex-shrink: 0;
-    background: linear-gradient(135deg, var(--blue), #003ea8);
-    display: flex; align-items: center; justify-content: center;
-    font-size: 14px; box-shadow: 0 0 15px rgba(26,108,255,0.3);
-  }
-  .feature-item h4 { font-family: var(--font-display); font-weight: 700; font-size: 0.95rem; margin-bottom: 3px; }
-  .feature-item p { font-size: 0.84rem; color: var(--text-dim); }
+  .reveal.in-view { opacity: 1; transform: translateY(0); }
 
-  .feature-visual {
-    background: var(--card); border: 1px solid var(--border);
-    border-radius: 20px; padding: 32px; backdrop-filter: blur(12px);
-    position: relative; overflow: hidden;
-  }
-  .feature-visual::before {
-    content: ''; position: absolute;
-    top: -60px; right: -60px; width: 200px; height: 200px;
-    background: radial-gradient(circle, rgba(26,108,255,0.2), transparent);
-    border-radius: 50%;
-  }
-  .mini-dashboard { position: relative; z-index: 1; }
-  .dash-header {
-    display: flex; align-items: center; justify-content: space-between;
-    margin-bottom: 24px;
-  }
-  .dash-title { font-family: var(--font-display); font-weight: 700; font-size: 0.9rem; }
-  .dash-live {
-    display: flex; align-items: center; gap: 6px; font-size: 0.75rem;
-    color: #00e676; font-weight: 500;
-  }
-  .dash-live-dot { width: 6px; height: 6px; background: #00e676; border-radius: 50%; animation: pulse 1.5s infinite; }
-  .dash-metric {
-    background: rgba(26,108,255,0.08); border: 1px solid var(--border);
-    border-radius: 10px; padding: 16px; margin-bottom: 12px;
-    display: flex; align-items: center; justify-content: space-between;
-  }
-  .metric-label { font-size: 0.78rem; color: var(--text-dim); }
-  .metric-value { font-family: var(--font-display); font-weight: 800; font-size: 1.5rem; }
-  .metric-value.green { color: #00e676; }
-  .metric-value.cyan { color: var(--cyan); }
-  .metric-delta { font-size: 0.72rem; color: #00e676; background: rgba(0,230,118,0.1); padding: 2px 7px; border-radius: 100px; }
-  .bar-chart { display: flex; align-items: flex-end; gap: 6px; height: 70px; margin-top: 20px; }
-  .bar {
-    flex: 1; border-radius: 4px 4px 0 0;
-    background: linear-gradient(180deg, var(--blue), rgba(26,108,255,0.2));
-    transition: height 0.3s;
-  }
+  ::-webkit-scrollbar { width: 9px; }
+  ::-webkit-scrollbar-track { background: #0a0c10; }
+  ::-webkit-scrollbar-thumb { background: #f2a63c; }
 
-  /* ── PRODUCTS ── */
-  .products { padding: 110px 0; }
-  .products-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 20px; margin-top: 60px; }
-  @media(max-width:640px) { .products-grid { grid-template-columns: 1fr; } }
-  .product-card {
-    background: var(--card); border: 1px solid var(--border-light);
-    border-radius: 20px; padding: 40px 36px; position: relative; overflow: hidden;
-    transition: all 0.3s; backdrop-filter: blur(12px);
-  }
-  .product-card:hover { border-color: var(--border); transform: translateY(-4px); box-shadow: 0 30px 70px rgba(0,0,0,0.4); }
-  .product-card.featured { border-color: rgba(26,108,255,0.35); background: linear-gradient(135deg, rgba(26,108,255,0.1), rgba(0,212,255,0.05)); }
-  .product-glow {
-    position: absolute; top: -80px; right: -80px; width: 200px; height: 200px;
-    border-radius: 50%;
-    background: radial-gradient(circle, rgba(26,108,255,0.15), transparent);
-  }
-  .product-emoji { font-size: 40px; margin-bottom: 20px; position: relative; z-index: 1; }
-  .product-card h3 {
-    font-family: var(--font-display); font-size: 1.4rem; font-weight: 800;
-    letter-spacing: -0.02em; margin-bottom: 12px; position: relative; z-index: 1;
-  }
-  .product-card p { color: var(--text-dim); font-size: 0.92rem; line-height: 1.65; margin-bottom: 24px; position: relative; z-index: 1; }
-  .product-features { list-style: none; display: flex; flex-direction: column; gap: 8px; position: relative; z-index: 1; }
-  .product-features li {
-    display: flex; align-items: center; gap: 8px;
-    font-size: 0.85rem; color: var(--text-dim);
-  }
-  .product-features li::before { content: '✓'; color: var(--cyan); font-weight: 700; font-size: 0.9rem; }
+  #mobile-menu { transition: max-height .35s ease, opacity .3s ease; }
 
-  /* ── WHY US ── */
-  .why { padding: 110px 0; background: linear-gradient(180deg, transparent, rgba(7,18,37,0.8), transparent); }
-  .why-header { text-align: center; margin-bottom: 64px; }
-  .why-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(280px,1fr)); gap: 20px; }
-  .why-card {
-    background: var(--card); border: 1px solid var(--border-light);
-    border-radius: var(--radius); padding: 32px;
-    text-align: center; transition: all 0.3s; backdrop-filter: blur(12px);
-    position: relative; overflow: hidden;
-  }
-  .why-card:hover { border-color: var(--border); transform: translateY(-4px); }
-  .why-icon { font-size: 40px; margin-bottom: 16px; }
-  .why-card h3 { font-family: var(--font-display); font-weight: 700; font-size: 1.05rem; margin-bottom: 10px; }
-  .why-card p { color: var(--text-dim); font-size: 0.87rem; line-height: 1.6; }
-  .why-number {
-    position: absolute; top: 20px; right: 20px;
-    font-family: var(--font-display); font-size: 3rem; font-weight: 800;
-    color: rgba(26,108,255,0.08); line-height: 1;
-  }
-
-  /* ── CONTACT ── */
-  .contact { padding: 110px 0; }
-  .contact-inner { display: grid; grid-template-columns: 1fr 1fr; gap: 64px; align-items: start; }
-  @media(max-width:900px) { .contact-inner { grid-template-columns: 1fr; gap: 50px; } }
-  .contact-info h2 { font-family: var(--font-display); font-size: 2.2rem; font-weight: 800; letter-spacing: -0.03em; margin-bottom: 16px; }
-  .contact-info p { color: var(--text-dim); margin-bottom: 36px; font-weight: 300; }
-  .contact-methods { display: flex; flex-direction: column; gap: 16px; }
-  .contact-method {
-    display: flex; align-items: center; gap: 16px;
-    background: var(--card); border: 1px solid var(--border-light);
-    border-radius: 12px; padding: 16px 20px; text-decoration: none;
-    color: var(--text); transition: all 0.25s; backdrop-filter: blur(10px);
-  }
-  .contact-method:hover { border-color: var(--border); transform: translateX(4px); }
-  .method-icon {
-    width: 44px; height: 44px; border-radius: 10px; flex-shrink: 0;
-    display: flex; align-items: center; justify-content: center; font-size: 20px;
-  }
-  .method-icon.phone { background: linear-gradient(135deg, #1a6cff22, #1a6cff11); border: 1px solid var(--border); }
-  .method-icon.whatsapp { background: linear-gradient(135deg, #25d36622, #25d36611); border: 1px solid rgba(37,211,102,0.2); }
-  .method-icon.email { background: linear-gradient(135deg, #ff6b1a22, #ff6b1a11); border: 1px solid rgba(255,107,26,0.2); }
-  .method-label { font-size: 0.75rem; color: var(--text-muted); text-transform: uppercase; letter-spacing: 0.05em; font-weight: 500; }
-  .method-value { font-weight: 500; font-size: 0.95rem; }
-
-  .contact-form-wrap {
-    background: var(--card); border: 1px solid var(--border);
-    border-radius: 20px; padding: 36px; backdrop-filter: blur(12px);
-  }
-  .contact-form-wrap h3 { font-family: var(--font-display); font-size: 1.3rem; font-weight: 700; margin-bottom: 24px; }
-  .form-group { margin-bottom: 16px; }
-  .form-group label { display: block; font-size: 0.82rem; font-weight: 500; color: var(--text-dim); margin-bottom: 7px; letter-spacing: 0.02em; }
-  .form-group input, .form-group textarea, .form-group select {
-    width: 100%; background: rgba(255,255,255,0.03);
-    border: 1px solid var(--border-light); border-radius: 10px;
-    padding: 12px 16px; color: var(--text); font-family: var(--font-body); font-size: 0.9rem;
-    outline: none; transition: border-color 0.2s;
-  }
-  .form-group input:focus, .form-group textarea:focus, .form-group select:focus {
-    border-color: var(--blue);
-    box-shadow: 0 0 0 3px rgba(26,108,255,0.12);
-  }
-  .form-group select option { background: #0a1930; }
-  .form-group textarea { min-height: 100px; resize: vertical; }
-  .form-row { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; }
-  @media(max-width:500px) { .form-row { grid-template-columns: 1fr; } }
-
-  /* ── MAP PLACEHOLDER ── */
-  .map-wrap {
-    border-radius: 14px; overflow: hidden; margin-top: 24px;
-    border: 1px solid var(--border-light); height: 160px;
-    background: linear-gradient(135deg, rgba(10,25,48,0.8), rgba(26,108,255,0.05));
-    display: flex; align-items: center; justify-content: center;
-    flex-direction: column; gap: 8px; cursor: pointer;
-    transition: border-color 0.2s;
-  }
-  .map-wrap:hover { border-color: var(--border); }
-  .map-emoji { font-size: 32px; }
-  .map-text { font-size: 0.82rem; color: var(--text-dim); }
-
-  /* ── FOOTER ── */
-  footer {
-    border-top: 1px solid var(--border-light);
-    padding: 48px 24px;
-    background: rgba(5,13,26,0.8);
-    position: relative; z-index: 1;
-  }
-  .footer-inner { max-width: 1200px; margin: 0 auto; display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 24px; }
-  .footer-links { display: flex; gap: 24px; flex-wrap: wrap; }
-  .footer-links a { color: var(--text-muted); text-decoration: none; font-size: 0.85rem; transition: color 0.2s; }
-  .footer-links a:hover { color: var(--text-dim); }
-  .footer-copy { color: var(--text-muted); font-size: 0.82rem; }
-
-  /* ── WHATSAPP FLOAT ── */
-  .wa-float {
-    position: fixed; bottom: 28px; right: 28px; z-index: 200;
-    width: 58px; height: 58px; border-radius: 50%;
-    background: linear-gradient(135deg, #25d366, #128c7e);
-    display: flex; align-items: center; justify-content: center;
-    font-size: 26px; text-decoration: none; box-shadow: 0 4px 20px rgba(37,211,102,0.4);
-    transition: all 0.25s; 
-  }
-  .wa-float:hover { transform: scale(1.1); box-shadow: 0 8px 35px rgba(37,211,102,0.6); }
-  .wa-float::before {
-    content: ''; position: absolute; inset: -4px; border-radius: 50%;
-    border: 2px solid rgba(37,211,102,0.3); animation: ripple 2s infinite;
-  }
-  @keyframes ripple { 0%{transform:scale(1);opacity:1} 100%{transform:scale(1.5);opacity:0} }
-
-  /* ── DIVIDERS ── */
-  .section-divider {
-    height: 1px; background: linear-gradient(90deg, transparent, var(--border), transparent);
-    margin: 0 auto; max-width: 900px;
-  }
-
-  /* animations removed */
-
-  /* ── TICKER ── */
-  .ticker-wrap { overflow: hidden; border-top: 1px solid var(--border-light); border-bottom: 1px solid var(--border-light); background: rgba(10,25,48,0.5); padding: 14px 0; }
-  .ticker { display: flex; gap: 0; animation: ticker 25s linear infinite; width: max-content; }
-  .ticker-item { white-space: nowrap; padding: 0 40px; font-size: 0.82rem; color: var(--text-muted); display: flex; align-items: center; gap: 12px; }
-  .ticker-item .dot { width: 4px; height: 4px; border-radius: 50%; background: var(--blue); }
-  @keyframes ticker { from{transform:translateX(0)} to{transform:translateX(-50%)} }
+  input, textarea { font-family: 'Space Grotesk', sans-serif; }
 </style>
 </head>
-<body>
 
-<!-- GLOW ORBS -->
-<div class="orb orb-1"></div>
-<div class="orb orb-2"></div>
-<div class="orb orb-3"></div>
+<body class="antialiased">
 
-<!-- NAV -->
-<nav>
-  <div class="nav-inner">
-    <a href="#" class="logo">
-      <div class="logo-icon">📊</div>
-      Barkod<span>PRO</span>
+<!-- ===================== HEADER ===================== -->
+<header class="fixed top-0 inset-x-0 z-50 bg-ink/90 backdrop-blur-sm border-b border-white/10">
+  <div class="max-w-7xl mx-auto px-5 sm:px-8 h-16 flex items-center justify-between">
+    <a href="#home" class="flex items-center gap-2.5">
+      <span class="w-9 h-9 border border-accent flex items-center justify-center text-accent">
+        <i class="fa-solid fa-barcode text-base"></i>
+      </span>
+      <span class="font-mono font-bold text-base tracking-wider text-fg">BARKOD<span class="text-accent">/</span>PRO</span>
     </a>
-    <div class="nav-links">
-      <a href="#services">Xidmətlər</a>
-      <a href="#integrations">İnteqrasiyalar</a>
-      <a href="#products">Həllər</a>
-      <a href="#why">Niyə Biz?</a>
-      <a href="#contact" class="nav-cta">Əlaqə saxla →</a>
+
+    <nav class="hidden lg:flex items-center gap-7 text-[11px] tracking-[0.14em] text-mute">
+      <a href="#home" class="nav-link hover:text-accent transition-colors">[ ANA SƏHİFƏ ]</a>
+      <a href="#services" class="nav-link hover:text-accent transition-colors">[ XİDMƏTLƏR ]</a>
+      <a href="#solutions" class="nav-link hover:text-accent transition-colors">[ SAHƏLƏR ]</a>
+      <a href="#support" class="nav-link hover:text-accent transition-colors">[ DƏSTƏK ]</a>
+      <a href="#about" class="nav-link hover:text-accent transition-colors">[ HAQQIMIZDA ]</a>
+      <a href="#contact" class="nav-link hover:text-accent transition-colors">[ ƏLAQƏ ]</a>
+    </nav>
+
+    <div class="flex items-center gap-3">
+      <a href="https://wa.me/994516782878?text=Salam%2C%20BarkodPRO%20xidm%C9%99tl%C9%99ri%20haqq%C4%B1nda%20m%C9%99lumat%20almaq%20ist%C9%99yir%C9%99m."
+         target="_blank" rel="noopener noreferrer"
+         class="btn-fill hidden sm:flex items-center gap-2 px-4 py-2 border border-accent text-accent font-mono text-[11px] tracking-widest">
+        <i class="fa-brands fa-whatsapp"></i> ƏLAQƏ
+      </a>
+      <button id="menu-btn" aria-label="Menyunu aç" class="lg:hidden w-9 h-9 border border-white/15 flex items-center justify-center text-fg">
+        <i class="fa-solid fa-bars"></i>
+      </button>
     </div>
   </div>
-</nav>
 
-<!-- HERO -->
-<section class="hero">
-  <div class="hero-grid"></div>
-  <div class="container">
-    <div class="hero-badge">
-      <span class="hero-badge-dot"></span>
-      Azərbaycanın Aparıcı Retail IT Şirkəti
+  <div id="mobile-menu" class="lg:hidden overflow-hidden max-h-0 opacity-0 px-5 border-t border-white/10">
+    <nav class="flex flex-col font-mono text-xs tracking-widest text-mute">
+      <a href="#home" class="mobile-link py-3 border-b border-white/5">ANA SƏHİFƏ</a>
+      <a href="#services" class="mobile-link py-3 border-b border-white/5">XİDMƏTLƏR</a>
+      <a href="#solutions" class="mobile-link py-3 border-b border-white/5">SAHƏLƏR</a>
+      <a href="#support" class="mobile-link py-3 border-b border-white/5">DƏSTƏK</a>
+      <a href="#about" class="mobile-link py-3 border-b border-white/5">HAQQIMIZDA</a>
+      <a href="#contact" class="mobile-link py-3">ƏLAQƏ</a>
+      <a href="https://wa.me/994516782878" target="_blank" rel="noopener noreferrer" class="my-4 flex items-center justify-center gap-2 px-4 py-3 border border-accent text-accent">
+        <i class="fa-brands fa-whatsapp"></i> WHATSAPP İLƏ YAZIN
+      </a>
+    </nav>
+  </div>
+</header>
+
+<!-- ===================== HERO ===================== -->
+<section id="home" class="relative pt-32 pb-20 px-5 sm:px-8">
+  <div class="max-w-7xl mx-auto">
+    <div class="grid lg:grid-cols-[1.2fr_0.8fr] gap-12 items-start">
+
+      <div>
+        <div class="reveal font-mono text-[11px] tracking-[0.2em] text-accent mb-6 flex items-center gap-2">
+          <span class="w-1.5 h-1.5 bg-accent inline-block blink"></span>
+          BAKI // 1C VƏ IT İNTEQRASİYA MƏRKƏZİ
+        </div>
+
+        <h1 class="reveal text-4xl sm:text-6xl font-semibold tracking-tight text-fg leading-[1.08] mb-6">
+          Biznesiniz üçün<br>
+          etibarlı <span class="text-accent">rəqəmsal infrastruktur</span>
+        </h1>
+
+        <p class="reveal max-w-xl text-base text-mute leading-relaxed mb-10">
+          1C:Enterprise proqramlaşdırılması, eKASSAM vergi kassası inteqrasiyası,
+          barkod və POS sistemləri, anbar terminalları — mağaza, restoran və
+          logistika sahələri üçün başdan-sona texniki həllər və 24/7 dəstək.
+        </p>
+
+        <div class="reveal flex flex-col sm:flex-row gap-4 mb-12">
+          <a href="#services" class="btn-fill flex items-center justify-center gap-2 px-7 py-3.5 border border-accent text-accent font-mono text-xs tracking-widest">
+            XİDMƏTLƏRƏ BAXIN <i class="fa-solid fa-arrow-right"></i>
+          </a>
+          <a href="https://wa.me/994516782878?text=Salam%2C%20BarkodPRO%20il%C9%99%20layih%C9%99 m%C3%BCzakir%C9%99 etm%C9%99k%20ist%C9%99yir%C9%99m."
+             target="_blank" rel="noopener noreferrer"
+             class="flex items-center justify-center gap-2 px-7 py-3.5 border border-white/15 text-fg font-mono text-xs tracking-widest hover:border-white/40 transition-colors">
+            <i class="fa-brands fa-whatsapp text-accent"></i> WHATSAPP İLƏ YAZIN
+          </a>
+        </div>
+
+        <div class="reveal barcode-rule w-40"></div>
+      </div>
+
+      <div class="reveal panel p-6 font-mono text-xs">
+        <div class="flex items-center justify-between border-b border-white/10 pb-3 mb-4">
+          <span class="text-mute tracking-widest">SYSTEM_STATUS.LOG</span>
+          <span class="flex items-center gap-1.5 text-accent"><span class="w-1.5 h-1.5 bg-accent inline-block blink"></span> ONLINE</span>
+        </div>
+        <ul class="space-y-3 text-mute">
+          <li class="flex justify-between"><span>TƏCRÜBƏ</span><span class="text-fg">5+ İL</span></li>
+          <li class="flex justify-between"><span>TAMAMLANMIŞ OBYEKT</span><span class="text-fg">100+</span></li>
+          <li class="flex justify-between"><span>İXTİSAS</span><span class="text-fg">1C · SQL SERVER · EXCEL</span></li>
+          <li class="flex justify-between"><span>DƏSTƏK REJİMİ</span><span class="text-fg">24/7</span></li>
+          <li class="flex justify-between"><span>REAKSİYA VAXTI</span><span class="text-fg">&lt; 2 SAAT</span></li>
+        </ul>
+        <div class="mt-5 pt-4 border-t border-white/10 text-[10px] text-mute leading-relaxed">
+          &gt; eKASSAM inteqrasiyası, POS avadanlıqları və anbar terminalları
+          üzrə sertifikatlı xidmət.
+        </div>
+      </div>
+
     </div>
-    <h1>
-      Restoran, Market və<br>
-      Satış Sistemləri üçün<br>
-      <span class="accent">Tam Avtomatlaşdırma</span>
-    </h1>
-    <p class="hero-sub">
-      Satış, anbar, barkod və veri kassaların inteqrasiyası ilə biznesinizi tam nəzarət altına alın. Sürətli quraşdırma, 24/7 texniki dəstək.
-    </p>
-    <div class="hero-btns">
-      <a href="#contact" class="btn-primary">🎯 Demo istə</a>
-      <a href="#contact" class="btn-secondary">📞 Əlaqə saxla</a>
+  </div>
+</section>
+
+<div class="barcode-rule max-w-7xl mx-auto mx-5 sm:mx-8"></div>
+
+<!-- ===================== SERVICES ===================== -->
+<section id="services" class="relative py-24 px-5 sm:px-8">
+  <div class="max-w-7xl mx-auto">
+    <div class="reveal flex items-end justify-between border-b border-white/10 pb-5 mb-14">
+      <div>
+        <div class="font-mono text-[11px] tracking-[0.2em] text-accent mb-2">N.01 // XİDMƏTLƏR</div>
+        <h2 class="text-3xl sm:text-4xl font-semibold text-fg">Nə Edirik</h2>
+      </div>
     </div>
-    <div class="hero-stats">
-      <div class="stat">
-        <div class="stat-num">200+</div>
-        <div class="stat-label">Aktiv Müştəri</div>
+
+    <div class="grid md:grid-cols-3 gap-px bg-white/10">
+      <div class="reveal panel !border-0 p-8 bg-panel">
+        <div class="flex items-start justify-between mb-6">
+          <div class="w-11 h-11 border border-accent/40 flex items-center justify-center text-accent">
+            <i class="fa-solid fa-code"></i>
+          </div>
+          <span class="font-mono text-xs text-mute">01</span>
+        </div>
+        <h3 class="text-lg font-semibold text-fg mb-3">1C Proqram Təminatı</h3>
+        <p class="text-mute text-sm leading-relaxed mb-5">
+          1C:Anbar, 1C:Satış və 1C:RMK (Restoran) modullarının qurulması,
+          fərdiləşdirilməsi və inteqrasiyası. Biznes proseslərinizə tam
+          uyğunlaşdırılmış həllər.
+        </p>
+        <ul class="space-y-2 text-sm text-mute font-mono text-xs">
+          <li class="flex items-center gap-2"><span class="text-accent">›</span> Anbar və Satış modulları</li>
+          <li class="flex items-center gap-2"><span class="text-accent">›</span> Restoran (RMK) sistemləri</li>
+          <li class="flex items-center gap-2"><span class="text-accent">›</span> Fərdi konfiqurasiya</li>
+        </ul>
       </div>
-      <div class="stat-divider"></div>
-      <div class="stat">
-        <div class="stat-num">5+</div>
-        <div class="stat-label">İl Təcrübə</div>
+
+      <div class="reveal panel !border-0 p-8 bg-panel">
+        <div class="flex items-start justify-between mb-6">
+          <div class="w-11 h-11 border border-accent/40 flex items-center justify-center text-accent">
+            <i class="fa-solid fa-receipt"></i>
+          </div>
+          <span class="font-mono text-xs text-mute">02</span>
+        </div>
+        <h3 class="text-lg font-semibold text-fg mb-3">Vergi Kassası İnteqrasiyası</h3>
+        <p class="text-mute text-sm leading-relaxed mb-4">
+          Mağaza, restoran və anbarlarınızda satış prosesini sürətləndirin,
+          vergi cərimələrindən tam qorunub qalın. Satış zamanı məlumatların
+          həm kassaya, həm də proqrama ayrı-ayrılıqda daxil edilməsinə ehtiyac
+          yoxdur — çeklər birbaşa ötürülür və avtomatik çap olunur.
+        </p>
+        <div class="flex flex-wrap gap-2 mb-5">
+          <span class="px-2.5 py-1 border border-accent/30 text-accent font-mono text-[10px] tracking-wider">EKASSAM ONECLICK</span>
+          <span class="px-2.5 py-1 border border-accent/30 text-accent font-mono text-[10px] tracking-wider">AZSMART</span>
+          <span class="px-2.5 py-1 border border-accent/30 text-accent font-mono text-[10px] tracking-wider">CASPOS</span>
+          <span class="px-2.5 py-1 border border-accent/30 text-accent font-mono text-[10px] tracking-wider">OMNITECH</span>
+        </div>
+        <ul class="space-y-2 text-sm text-mute font-mono text-xs">
+          <li class="flex items-center gap-2"><span class="text-accent">›</span> Bütün növ vergi kassalarına inteqrasiya</li>
+          <li class="flex items-center gap-2"><span class="text-accent">›</span> Qanunvericiliyə uyğunluq</li>
+          <li class="flex items-center gap-2"><span class="text-accent">›</span> Sınaq və tənzimləmə</li>
+        </ul>
       </div>
-      <div class="stat-divider"></div>
-      <div class="stat">
-        <div class="stat-num">24/7</div>
-        <div class="stat-label">Texniki Dəstək</div>
-      </div>
-      <div class="stat-divider"></div>
-      <div class="stat">
-        <div class="stat-num">99%</div>
-        <div class="stat-label">Uptime</div>
+
+      <div class="reveal panel !border-0 p-8 bg-panel">
+        <div class="flex items-start justify-between mb-6">
+          <div class="w-11 h-11 border border-accent/40 flex items-center justify-center text-accent">
+            <i class="fa-solid fa-plug"></i>
+          </div>
+          <span class="font-mono text-xs text-mute">03</span>
+        </div>
+        <h3 class="text-lg font-semibold text-fg mb-3">Xarici İnteqrasiyalar</h3>
+        <p class="text-mute text-sm leading-relaxed mb-5">
+          Shopify və bütün veb-saytlara inteqrasiya — 1C-dən məlumatların
+          API vasitəsilə ötürülməsi və alınması, WhatsApp və Telegram API
+          servisləri ilə tam inteqrasiya daxil olmaqla.
+        </p>
+        <ul class="space-y-2 text-sm text-mute font-mono text-xs">
+          <li class="flex items-center gap-2"><span class="text-accent">›</span> Shopify və veb-saytlara API inteqrasiyası</li>
+          <li class="flex items-center gap-2"><span class="text-accent">›</span> WhatsApp / Telegram API inteqrasiyası</li>
+          <li class="flex items-center gap-2"><span class="text-accent">›</span> Qaimələrin avtomatik göndərilməsi</li>
+          <li class="flex items-center gap-2"><span class="text-accent">›</span> Satış/silinmədə Telegram bildirişi</li>
+        </ul>
       </div>
     </div>
   </div>
 </section>
 
-<!-- TICKER -->
-<div class="ticker-wrap">
-  <div class="ticker">
-    <div class="ticker-item"><span class="dot"></span>POS Sistemləri</div>
-    <div class="ticker-item"><span class="dot"></span>Veri Kassa İnteqrasiyası</div>
-    <div class="ticker-item"><span class="dot"></span>Barkod Sistemi</div>
-    <div class="ticker-item"><span class="dot"></span>Restoran Proqramı</div>
-    <div class="ticker-item"><span class="dot"></span>Market Proqramı</div>
-    <div class="ticker-item"><span class="dot"></span>Anbar İdarəetməsi</div>
-    <div class="ticker-item"><span class="dot"></span>1C İnteqrasiyası</div>
-    <div class="ticker-item"><span class="dot"></span>Fiskal Kassa</div>
-    <div class="ticker-item"><span class="dot"></span>Tərəzi İnteqrasiyası</div>
-    <div class="ticker-item"><span class="dot"></span>POS Sistemləri</div>
-    <div class="ticker-item"><span class="dot"></span>Veri Kassa İnteqrasiyası</div>
-    <div class="ticker-item"><span class="dot"></span>Barkod Sistemi</div>
-    <div class="ticker-item"><span class="dot"></span>Restoran Proqramı</div>
-    <div class="ticker-item"><span class="dot"></span>Market Proqramı</div>
-    <div class="ticker-item"><span class="dot"></span>Anbar İdarəetməsi</div>
-    <div class="ticker-item"><span class="dot"></span>1C İnteqrasiyası</div>
-    <div class="ticker-item"><span class="dot"></span>Fiskal Kassa</div>
-    <div class="ticker-item"><span class="dot"></span>Tərəzi İnteqrasiyası</div>
+<div class="px-5 sm:px-8 pb-4">
+  <div class="max-w-7xl mx-auto panel p-6 sm:p-8 flex flex-col sm:flex-row items-center justify-between gap-5 text-center sm:text-left">
+    <p class="text-sm sm:text-base text-fg font-medium max-w-2xl">
+      Bütün sahələr üçün peşəkar və etibarlı həllər. Əlavə məlumat və sifariş üçün bizə yaza bilərsiniz!
+    </p>
+    <a href="https://wa.me/994516782878?text=Salam%2C%20BarkodPRO%20xidm%C9%99tl%C9%99ri%20haqq%C4%B1nda%20sifari%C5%9F%20verm%C9%99k%20ist%C9%99yir%C9%99m."
+       target="_blank" rel="noopener noreferrer"
+       class="btn-fill shrink-0 inline-flex items-center justify-center gap-2 px-6 py-3 border border-accent text-accent font-mono text-xs tracking-widest">
+      <i class="fa-brands fa-whatsapp"></i> SİFARİŞ VERİN
+    </a>
   </div>
 </div>
 
-<!-- SERVICES -->
-<section class="services" id="services">
-  <div class="container">
-    <div class="services-header">
-      <div class="section-label">Xidmətlər</div>
-      <h2 class="section-title">Biznesiniz üçün<br>Kompleks Həllər</h2>
-      <p class="section-subtitle">Retail biznesin bütün ehtiyaclarını qarşılayan proqram həlləri</p>
+<!-- ===================== SOLUTIONS ===================== -->
+<section id="solutions" class="relative py-24 px-5 sm:px-8 bg-panel/40 border-y border-white/10">
+  <div class="max-w-7xl mx-auto">
+    <div class="reveal flex items-end justify-between border-b border-white/10 pb-5 mb-14">
+      <div>
+        <div class="font-mono text-[11px] tracking-[0.2em] text-accent mb-2">N.02 // SAHƏLƏR</div>
+        <h2 class="text-3xl sm:text-4xl font-semibold text-fg">Fəaliyyət Sahələri</h2>
+      </div>
     </div>
-    <div class="services-grid">
-      <div class="service-card-delay-1">
-        <div class="service-icon">🖥️</div>
-        <h3>POS Sistemləri</h3>
-        <p>Sürətli və etibarlı kassa proqramı. Touch screen dəstəyi, endirim sistemi, shift idarəetməsi ilə tam funksional POS həlli.</p>
-        <span class="service-tag">Fiskal İnteqrasiya</span>
+
+    <div class="grid md:grid-cols-3 gap-6">
+      <div class="reveal panel p-8">
+        <i class="fa-solid fa-store text-2xl text-accent mb-5"></i>
+        <h3 class="text-lg font-semibold text-fg mb-3">Retail (Pərakəndə)</h3>
+        <p class="text-mute text-sm leading-relaxed">
+          Mağazalar üçün tam avtomatlaşdırılmış satış nöqtəsi (POS) həlləri,
+          barkod skanerləri, tərəzilər (DIGI və s.) və eKASSAM inteqrasiyası
+          ilə sürətli və dəqiq satış prosesi.
+        </p>
       </div>
-      <div class="service-card-delay-2">
-        <div class="service-icon">📦</div>
-        <h3>Barkod və Satış Proqramları</h3>
-        <p>Məhsul qeydiyyatı, barkod skan, çoxlu anbar, toplu və pərakəndə satış əməliyyatları üçün tam həll.</p>
-        <span class="service-tag">Barkod Skaner</span>
+
+      <div class="reveal panel p-8">
+        <i class="fa-solid fa-utensils text-2xl text-accent mb-5"></i>
+        <h3 class="text-lg font-semibold text-fg mb-3">Restoran</h3>
+        <p class="text-mute text-sm leading-relaxed">
+          1C:RMK əsasında sifariş qəbulu, mətbəx idarəetməsi, çek çapı və
+          fiskal qeydiyyat — restoran və kafe biznesinin əməliyyatlarını
+          sadələşdirən tam sistem.
+        </p>
       </div>
-      <div class="service-card-delay-3">
-        <div class="service-icon">🏭</div>
-        <h3>Anbar və Stok İdarəetməsi</h3>
-        <p>Real-time stok balansı, giriş/çıxış əməliyyatları, inventarizasiya, ehtiyat bildirişləri — tam anbar nəzarəti.</p>
-        <span class="service-tag">Real-time</span>
-      </div>
-      <div class="service-card-delay-1">
-        <div class="service-icon">⚖️</div>
-        <h3>Tərəzi İnteqrasiyası</h3>
-        <p>CAS CL5000, Digi SM100 və digər tərəzi modelləri ilə tam avtomatik inteqrasiya. PLU yükləmə, ağırlıq satışı.</p>
-        <span class="service-tag">CAS · Digi · Xprinter</span>
-      </div>
-      <div class="service-card-delay-2">
-        <div class="service-icon">🧾</div>
-        <h3>Veri Kassa İnteqrasiyası</h3>
-        <p>Fiskal aparatlarla tam uyğunluq. Avtomatik çek göndərilməsi, Z-hesabat, Ekassam, Caspos inteqrasiyaları.</p>
-        <span class="service-tag">Ekassam · Caspos · OneClick</span>
-      </div>
-      <div class="service-card-delay-3">
-        <div class="service-icon">⚙️</div>
-        <h3>1C Proqramlaşdırma</h3>
-        <p>Fərdi konfigurasiyanın inkişafı, mövcud sistemin genişləndirilməsi, inteqrasiya işləri — 1C:Enterprise üzrə tam xidmət.</p>
-        <span class="service-tag">1C:Enterprise</span>
-      </div>
-      <div class="service-card-delay-1">
-        <div class="service-icon">🛠️</div>
-        <h3>Texniki Dəstək və Servis</h3>
-        <p>24/7 dəstək, uzaqdan giriş, yerindəki texniki xidmət, tez müdaxilə — sistemin dayanmadan işləməsi üçün.</p>
-        <span class="service-tag">24/7 Dəstək</span>
+
+      <div class="reveal panel p-8">
+        <i class="fa-solid fa-warehouse text-2xl text-accent mb-5"></i>
+        <h3 class="text-lg font-semibold text-fg mb-3">Anbar / Logistika</h3>
+        <p class="text-mute text-sm leading-relaxed">
+          TSD (Android data toplama) terminalları ilə anbar inventarizasiyası,
+          mal qəbulu və yerdəyişməsinin real vaxt rejimində izlənməsi və
+          1C ilə sinxronizasiyası.
+        </p>
       </div>
     </div>
   </div>
 </section>
 
-<div class="section-divider"></div>
+<!-- ===================== SUPPORT & DOWNLOADS ===================== -->
+<section id="support" class="relative py-24 px-5 sm:px-8">
+  <div class="max-w-7xl mx-auto">
+    <div class="reveal border-b border-white/10 pb-5 mb-14">
+      <div class="font-mono text-[11px] tracking-[0.2em] text-accent mb-2">N.03 // DƏSTƏK</div>
+      <h2 class="text-3xl sm:text-4xl font-semibold text-fg mb-3">Dəstək və Yükləmələr</h2>
+      <p class="text-mute text-sm max-w-xl">
+        Uzaqdan dəstək proqramı və avadanlıq drayverlərini bu bölmədən yükləyə bilərsiniz.
+      </p>
+    </div>
 
-<!-- INTEGRATIONS -->
-<section class="integrations" id="integrations">
-  <div class="container">
-    <div class="integrations-inner">
-      <div class="">
-        <div class="section-label">İnteqrasiyalar</div>
-        <h2 class="section-title">Cihaz və Sistem<br>İnteqrasiyaları</h2>
-        <p class="section-subtitle" style="margin-bottom:28px;">Bazarda mövcud olan bütün retail avadanlıqları ilə problemsiz inteqrasiya təmin edirik.</p>
-        <div class="integration-badges">
-          <span class="badge">Ekassam</span>
-          <span class="badge">Caspos</span>
-          <span class="badge">OneClick</span>
-          <span class="badge">Sunmi</span>
-          <span class="badge">CAS CL5000</span>
-          <span class="badge">Digi SM100</span>
-          <span class="badge">Xprinter</span>
-          <span class="badge">1C:Enterprise</span>
-          <span class="badge">OPOS</span>
-          <span class="badge">Epson TM</span>
+    <!-- 5.1 Remote Support Featured Panel -->
+    <div class="reveal panel border-l-4 !border-l-accent p-8 sm:p-10 mb-16">
+      <div class="grid lg:grid-cols-[auto_1fr] gap-8 items-start">
+        <div class="w-16 h-16 border border-accent flex items-center justify-center text-accent shrink-0">
+          <i class="fa-solid fa-headset text-2xl"></i>
+        </div>
+        <div>
+          <div class="inline-flex items-center gap-2 px-3 py-1 border border-accent/40 text-accent font-mono text-[10px] tracking-widest mb-3">
+            <i class="fa-solid fa-star text-[9px]"></i> TÖVSİYƏ OLUNAN
+          </div>
+          <h3 class="text-xl sm:text-2xl font-semibold text-fg mb-3">AnyDesk — Uzaqdan Dəstək Proqramı</h3>
+          <p class="text-mute text-sm sm:text-base leading-relaxed mb-3 max-w-2xl">
+            Obyektinizə gəlmədən, birbaşa AnyDesk vasitəsilə qoşularaq
+            problemi onlayn həll edirik. Sadəcə AnyDesk proqramını yükləyib
+            ekranda görünən ID kodunu bizə göndərməyiniz kifayətdir.
+          </p>
+          <p class="text-mute text-sm sm:text-base leading-relaxed mb-6 max-w-2xl">
+            1C ilə bağlı yaranan bütün problemlərin həllini uzaqdan bağlantı
+            ilə, onlayn rejimdə həyata keçiririk.
+          </p>
+          <div class="flex flex-col sm:flex-row gap-4 mb-5">
+            <a href="https://anydesk.com/en/downloads" target="_blank" rel="noopener noreferrer"
+               class="btn-fill inline-flex items-center justify-center gap-2 px-6 py-3.5 border border-accent text-accent font-mono text-xs tracking-widest">
+              <i class="fa-solid fa-download"></i> ANYDESK PROQRAMINI YÜKLƏ
+            </a>
+          </div>
+          <p class="text-xs text-mute flex items-center gap-2 font-mono">
+            <i class="fa-solid fa-shield-halved text-accent"></i>
+            Rəsmi AnyDesk saytından yüklənir — 100% təhlükəsizdir.
+          </p>
         </div>
       </div>
-      <div class="integrations-devices-delay-2">
-        <div class="device-card">
-          <div class="device-emoji">🧾</div>
-          <div>
-            <h4>Veri Kassalar</h4>
-            <p>Fiskal aparatlarla tam avtomatik çek inteqrasiyası. Ekassam, Caspos və s.</p>
+    </div>
+
+    <!-- 5.2 Driver Grid -->
+    <div class="reveal border-b border-white/10 pb-5 mb-10">
+      <h3 class="font-mono text-xs tracking-widest text-fg">PRINTER VƏ AVADANLIQ DRAYVERLƏRİ</h3>
+      <p class="text-mute text-xs mt-1">1C ilə ən çox işlədilən POS/çek printer brendləri</p>
+    </div>
+
+    <div class="grid sm:grid-cols-2 lg:grid-cols-4 gap-px bg-white/10">
+      <div class="reveal panel !border-0 p-6 bg-panel flex flex-col">
+        <div class="flex items-start justify-between mb-4">
+          <div class="w-10 h-10 border border-accent/40 flex items-center justify-center text-accent">
+            <i class="fa-solid fa-print"></i>
           </div>
+          <span class="font-mono text-[10px] text-mute">01</span>
         </div>
-        <div class="device-card">
-          <div class="device-emoji">📡</div>
-          <div>
-            <h4>Barkod Skanerlər</h4>
-            <p>USB, Bluetooth, 1D/2D barkod, QR kod skanerlər — tam dəstək.</p>
+        <h4 class="font-semibold text-fg mb-1">Xprinter</h4>
+        <p class="text-[11px] text-mute font-mono mb-2">XP-58 / XP-80</p>
+        <p class="text-mute text-sm leading-relaxed mb-5 flex-1">
+          80mm/58mm termal çek printerləri üçün rəsmi drayverlər.
+        </p>
+        <a href="https://www.xprintertech.com/" target="_blank" rel="noopener noreferrer"
+           class="btn-fill text-center px-4 py-2.5 border border-white/15 text-fg font-mono text-[11px] tracking-widest">
+          DRAYVERİ YÜKLƏ <i class="fa-solid fa-arrow-up-right-from-square text-[9px] ml-1"></i>
+        </a>
+        <p class="text-[10px] text-mute mt-3 font-mono">Quraşdırdıqdan sonra kompüterinizi yenidən başladın.</p>
+      </div>
+
+      <div class="reveal panel !border-0 p-6 bg-panel flex flex-col">
+        <div class="flex items-start justify-between mb-4">
+          <div class="w-10 h-10 border border-accent/40 flex items-center justify-center text-accent">
+            <i class="fa-solid fa-print"></i>
           </div>
+          <span class="font-mono text-[10px] text-mute">02</span>
         </div>
-        <div class="device-card">
-          <div class="device-emoji">🖨️</div>
-          <div>
-            <h4>Çek Printerlər</h4>
-            <p>Termal çek printerləri ilə avtomatik çap. Epson, Xprinter, Star modelleri.</p>
+        <h4 class="font-semibold text-fg mb-1">Epson</h4>
+        <p class="text-[11px] text-mute font-mono mb-2">TM-T20 / TM-U220</p>
+        <p class="text-mute text-sm leading-relaxed mb-5 flex-1">
+          Epson TM seriyalı çek printerləri üçün rəsmi dəstək və drayverlər.
+        </p>
+        <a href="https://epson.com/Support/Point-of-Sale/Receipt-Printers/s/Receipt-Printers" target="_blank" rel="noopener noreferrer"
+           class="btn-fill text-center px-4 py-2.5 border border-white/15 text-fg font-mono text-[11px] tracking-widest">
+          DRAYVERİ YÜKLƏ <i class="fa-solid fa-arrow-up-right-from-square text-[9px] ml-1"></i>
+        </a>
+        <p class="text-[10px] text-mute mt-3 font-mono">Quraşdırdıqdan sonra kompüterinizi yenidən başladın.</p>
+      </div>
+
+      <div class="reveal panel !border-0 p-6 bg-panel flex flex-col">
+        <div class="flex items-start justify-between mb-4">
+          <div class="w-10 h-10 border border-accent/40 flex items-center justify-center text-accent">
+            <i class="fa-solid fa-print"></i>
           </div>
+          <span class="font-mono text-[10px] text-mute">03</span>
         </div>
-        <div class="device-card">
-          <div class="device-emoji">🏷️</div>
-          <div>
-            <h4>Etiket Printerlər</h4>
-            <p>Xprinter, TSC, Zebra etiket printerləri ilə barkod/qiymət etiketi çapı.</p>
+        <h4 class="font-semibold text-fg mb-1">HPRT</h4>
+        <p class="text-[11px] text-mute font-mono mb-2">POS/termal printerlər</p>
+        <p class="text-mute text-sm leading-relaxed mb-5 flex-1">
+          HPRT markalı POS və termal printerlər üçün rəsmi drayver mərkəzi.
+        </p>
+        <a href="https://www.hprt.com/" target="_blank" rel="noopener noreferrer"
+           class="btn-fill text-center px-4 py-2.5 border border-white/15 text-fg font-mono text-[11px] tracking-widest">
+          DRAYVERİ YÜKLƏ <i class="fa-solid fa-arrow-up-right-from-square text-[9px] ml-1"></i>
+        </a>
+        <p class="text-[10px] text-mute mt-3 font-mono">Quraşdırdıqdan sonra kompüterinizi yenidən başladın.</p>
+      </div>
+
+      <div class="reveal panel !border-0 p-6 bg-panel flex flex-col">
+        <div class="flex items-start justify-between mb-4">
+          <div class="w-10 h-10 border border-accent/40 flex items-center justify-center text-accent">
+            <i class="fa-solid fa-barcode"></i>
           </div>
+          <span class="font-mono text-[10px] text-mute">04</span>
         </div>
-        <div class="device-card">
-          <div class="device-emoji">⚖️</div>
-          <div>
-            <h4>Tərəzilər</h4>
-            <p>CAS CL5000, Digi SM100 — PLU yükleme, avtomatik çəki ölçümü.</p>
-          </div>
-        </div>
-        <div class="device-card">
-          <div class="device-emoji">💳</div>
-          <div>
-            <h4>POS Terminallar</h4>
-            <p>Sunmi, PAX kart oxuyucuları ilə nağdsız ödəniş inteqrasiyası.</p>
-          </div>
-        </div>
+        <h4 class="font-semibold text-fg mb-1">Barkod Skanerlər</h4>
+        <p class="text-[11px] text-mute font-mono mb-2">Ümumi qeyd</p>
+        <p class="text-mute text-sm leading-relaxed mb-5 flex-1">
+          Barkod skaner drayverini quraşdırmağa ehtiyac yoxdur — USB HID
+          rejimində avtomatik tanınır. Problem yaranarsa bizimlə əlaqə saxlayın.
+        </p>
+        <a href="https://wa.me/994516782878?text=Salam%2C%20barkod%20skaner%20il%C9%99%20probleml%C9%99%20bagl%C4%B1%20d%C9%99st%C9%99y%C9%99%20ehtiyac%C4%B1m%20var."
+           target="_blank" rel="noopener noreferrer"
+           class="btn-fill text-center px-4 py-2.5 border border-white/15 text-fg font-mono text-[11px] tracking-widest">
+          DƏSTƏKLƏ ƏLAQƏ <i class="fa-brands fa-whatsapp text-[9px] ml-1"></i>
+        </a>
+        <p class="text-[10px] text-mute mt-3 font-mono">Drayver tələb olunmur — plug &amp; play.</p>
       </div>
     </div>
   </div>
 </section>
 
-<div class="section-divider"></div>
+<!-- ===================== ABOUT ===================== -->
+<section id="about" class="relative py-24 px-5 sm:px-8 bg-panel/40 border-y border-white/10">
+  <div class="max-w-7xl mx-auto grid lg:grid-cols-2 gap-10 items-start">
+    <div class="reveal">
+      <div class="font-mono text-[11px] tracking-[0.2em] text-accent mb-2">N.04 // HAQQIMIZDA</div>
+      <h2 class="text-3xl sm:text-4xl font-semibold text-fg mb-6">Bizi Tanıyın</h2>
+      <p class="text-mute leading-relaxed mb-4">
+        BarkodPRO — Bakı mərkəzli, 1C:Enterprise və IT inteqrasiya sahəsində
+        ixtisaslaşmış komandadır. Mağaza, restoran və anbar sahiblərinə
+        proqram təminatından tutmuş fiziki avadanlığa qədər tam texniki
+        infrastrukturu quraşdırır və idarə edirik.
+      </p>
+      <p class="text-mute leading-relaxed mb-8">
+        eKASSAM vergi kassası inteqrasiyasından Windows server və SQL Server
+        infrastrukturuna qədər — biznesinizin rəqəmsal əsasını etibarlı
+        əllərdə saxlayırıq. Müştərilərimizə aylıq dəstək müqaviləsi əsasında
+        fasiləsiz 24/7 texniki xidmət göstəririk.
+      </p>
+      <div class="grid grid-cols-2 gap-4 font-mono text-xs text-mute">
+        <div class="flex items-start gap-2"><span class="text-accent">›</span> Sertifikatlı 1C mütəxəssisləri</div>
+        <div class="flex items-start gap-2"><span class="text-accent">›</span> Sürətli reaksiya vaxtı</div>
+        <div class="flex items-start gap-2"><span class="text-accent">›</span> Şəffaf qiymətləndirmə</div>
+        <div class="flex items-start gap-2"><span class="text-accent">›</span> Aylıq dəstək müqaviləsi</div>
+      </div>
+    </div>
 
-<!-- FEATURES -->
-<section class="features" id="features">
-  <div class="container">
-    <div class="features-inner">
-      <div class="feature-visual">
-        <div class="mini-dashboard">
-          <div class="dash-header">
-            <div class="dash-title">📊 Satış Paneli</div>
-            <div class="dash-live"><span class="dash-live-dot"></span> Canlı</div>
-          </div>
-          <div class="dash-metric">
-            <div>
-              <div class="metric-label">Günlük Satış</div>
-              <div class="metric-value cyan">₼ 4,820</div>
-            </div>
-            <span class="metric-delta">+12.4%</span>
-          </div>
-          <div class="dash-metric">
-            <div>
-              <div class="metric-label">Fiskal Çek</div>
-              <div class="metric-value green">247</div>
-            </div>
-            <span class="metric-delta">↑ 23</span>
-          </div>
-          <div class="dash-metric">
-            <div>
-              <div class="metric-label">Stok Xəbərdarlığı</div>
-              <div class="metric-value" style="font-size:1.2rem;color:#ff9800;">3 məhsul</div>
-            </div>
-            <span style="font-size:0.72rem;color:#ff9800;background:rgba(255,152,0,0.1);padding:2px 7px;border-radius:100px;">Azalan</span>
-          </div>
-          <div class="bar-chart">
-            <div class="bar" style="height:40%"></div>
-            <div class="bar" style="height:65%"></div>
-            <div class="bar" style="height:50%"></div>
-            <div class="bar" style="height:80%"></div>
-            <div class="bar" style="height:70%"></div>
-            <div class="bar" style="height:90%;background:linear-gradient(180deg,var(--cyan),rgba(0,212,255,0.2))"></div>
-            <div class="bar" style="height:75%"></div>
-          </div>
-        </div>
+    <div class="reveal panel p-10 text-center">
+      <div class="w-14 h-14 mx-auto border border-accent flex items-center justify-center mb-6 text-accent">
+        <i class="fa-solid fa-comments text-xl"></i>
       </div>
-      <div class="-delay-2">
-        <div class="section-label">Xüsusiyyətlər</div>
-        <h2 class="section-title">Biznesinizə<br>Tam Nəzarət</h2>
-        <div class="features-list" style="margin-top:32px;">
-          <div class="feature-item">
-            <div class="feature-check">📈</div>
-            <div>
-              <h4>Real-time Satış İzləmə</h4>
-              <p>Bütün satışları anlıq olaraq izləyin, canlı hesabatlar əldə edin.</p>
-            </div>
-          </div>
-          <div class="feature-item">
-            <div class="feature-check">🧾</div>
-            <div>
-              <h4>Avtomatik Fiskal Çek</h4>
-              <p>Hər satışda çek avtomatik veri kassaya göndərilir — sürətli, etibarlı.</p>
-            </div>
-          </div>
-          <div class="feature-item">
-            <div class="feature-check">📦</div>
-            <div>
-              <h4>Anbar Nəzarəti</h4>
-              <p>Stok balansı, giriş-çıxış əməliyyatları, ehtiyat xəbərdarlıqları.</p>
-            </div>
-          </div>
-          <div class="feature-item">
-            <div class="feature-check">📊</div>
-            <div>
-              <h4>Hesabatlar və Analiz</h4>
-              <p>Gündəlik, aylıq, məhsul üzrə hesabatlar — biznesi daha yaxşı anlamaq üçün.</p>
-            </div>
-          </div>
-          <div class="feature-item">
-            <div class="feature-check">🏢</div>
-            <div>
-              <h4>Çox Filial Dəstəyi</h4>
-              <p>Bir neçə filialı vahid sistem üzərindən idarə edin, mərkəzləşdirilmiş nəzarət.</p>
-            </div>
-          </div>
-        </div>
-      </div>
+      <h3 class="text-lg font-semibold text-fg mb-3">Suallarınız var?</h3>
+      <p class="text-mute text-sm leading-relaxed mb-7">
+        1C, eKASSAM, POS avadanlıqları və ya digər xidmətlərimiz haqqında
+        sualınız varsa, komandamız sizə məmnuniyyətlə cavab verəcək.
+      </p>
+      <a href="https://wa.me/994516782878?text=Salam%2C%20sualim%20var."
+         target="_blank" rel="noopener noreferrer"
+         class="btn-fill inline-flex items-center justify-center gap-2 w-full px-6 py-3.5 border border-accent text-accent font-mono text-xs tracking-widest">
+        <i class="fa-brands fa-whatsapp"></i> İNDİ YAZIN
+      </a>
     </div>
   </div>
 </section>
 
-<div class="section-divider"></div>
-
-<!-- PRODUCTS -->
-<section class="products" id="products">
-  <div class="container">
-    <div class="" style="text-align:center;margin-bottom:0">
-      <div class="section-label">Həllər</div>
-      <h2 class="section-title">Sektorunuza Uyğun<br>Hazır Həllər</h2>
-      <p class="section-subtitle" style="margin:0 auto;">Hər biznes növü üçün xüsusi olaraq hazırlanmış proqram paketi</p>
+<!-- ===================== CONTACT ===================== -->
+<section id="contact" class="relative py-24 px-5 sm:px-8">
+  <div class="max-w-7xl mx-auto">
+    <div class="reveal border-b border-white/10 pb-5 mb-14">
+      <div class="font-mono text-[11px] tracking-[0.2em] text-accent mb-2">N.05 // ƏLAQƏ</div>
+      <h2 class="text-3xl sm:text-4xl font-semibold text-fg">Bizimlə Əlaqə</h2>
     </div>
-    <div class="products-grid">
-      <div class="product-card featured-delay-1">
-        <div class="product-glow"></div>
-        <div class="product-emoji">🍽️</div>
-        <h3>Restoran Proqramı</h3>
-        <p>Masa idarəetməsi, mətbəx çapı, ofisant əməliyyatları, hesab, fiskal çek — restoran üçün tam həll.</p>
-        <ul class="product-features">
-          <li>Masa və zal idarəetməsi</li>
-          <li>Mətbəx printer (KDS) inteqrasiyası</li>
-          <li>Ofisant əməliyyatları</li>
-          <li>Xidmət haqqı idarəetməsi</li>
-          <li>Veri kassa inteqrasiyası</li>
-        </ul>
-      </div>
-      <div class="product-card-delay-2">
-        <div class="product-glow"></div>
-        <div class="product-emoji">🛒</div>
-        <h3>Market Proqramı</h3>
-        <p>Supermarket, ərzaq mağazası, müxtəlif kateqoriyalı marketlər üçün tam satış sistemi.</p>
-        <ul class="product-features">
-          <li>Çox kassalı iş</li>
-          <li>Tərəzi inteqrasiyası</li>
-          <li>Loyallıq kartı sistemi</li>
-          <li>Endirim idarəetməsi</li>
-          <li>Fiskal çek sistemi</li>
-        </ul>
-      </div>
-      <div class="product-card-delay-3">
-        <div class="product-glow"></div>
-        <div class="product-emoji">🏪</div>
-        <h3>Mağaza Satış Sistemi</h3>
-        <p>Pərakəndə mağaza, butik, aptek, elektronika satışı — barkod əsaslı tam satış həlli.</p>
-        <ul class="product-features">
-          <li>Barkod skan ilə satış</li>
-          <li>Müştəri bazası</li>
-          <li>Qaytarma əməliyyatları</li>
-          <li>Stok izləmə</li>
-          <li>Hesabat paneli</li>
-        </ul>
-      </div>
-      <div class="product-card featured-delay-4">
-        <div class="product-glow"></div>
-        <div class="product-emoji">💰</div>
-        <h3>Fiskal Kassa POS Sistemi</h3>
-        <p>Veri kassa inteqrasiyalı tam POS sistemi. Ekassam, Caspos, OneClick ilə tam uyğunluq.</p>
-        <ul class="product-features">
-          <li>Avtomatik fiskal çek</li>
-          <li>Z/X hesabatları</li>
-          <li>Nağd + kart ödənişi</li>
-          <li>Shift idarəetməsi</li>
-          <li>Vergi xidməti inteqrasiyası</li>
-        </ul>
-      </div>
-    </div>
-  </div>
-</section>
 
-<div class="section-divider"></div>
-
-<!-- WHY US -->
-<section class="why" id="why">
-  <div class="container">
-    <div class="why-header">
-      <div class="section-label">Niyə Biz?</div>
-      <h2 class="section-title">Azərbaycan Bazarının<br>Etibar Etdiyi Seçim</h2>
-      <p class="section-subtitle" style="margin:0 auto;">Lokal biznesin ehtiyaclarını anlayan, lokal komanda tərəfindən inkişaf etdirilmiş həllər</p>
-    </div>
-    <div class="why-grid">
-      <div class="why-card-delay-1">
-        <div class="why-number">01</div>
-        <div class="why-icon">🇦🇿</div>
-        <h3>Lokal Bazara Uyğun</h3>
-        <p>Azərbaycan vergi qanunvericiliyinə, veri kassa tələblərinə tam uyğun. Yerli dil, yerli dəstək.</p>
-      </div>
-      <div class="why-card-delay-2">
-        <div class="why-number">02</div>
-        <div class="why-icon">🧾</div>
-        <h3>Veri Kassa Tam Uyğunluğu</h3>
-        <p>Ekassam, Caspos, OneClick ilə rəsmi inteqrasiya. Fiskal çek əməliyyatları problemsiz işləyir.</p>
-      </div>
-      <div class="why-card-delay-3">
-        <div class="why-number">03</div>
-        <div class="why-icon">⚡</div>
-        <h3>Sürətli Quraşdırma</h3>
-        <p>1 iş günü ərzində sistemin tam quraşdırılması. İşçilərin tez öyrənməsi üçün sadə interfeys.</p>
-      </div>
-      <div class="why-card-delay-1">
-        <div class="why-number">04</div>
-        <div class="why-icon">🛡️</div>
-        <h3>24/7 Texniki Dəstək</h3>
-        <p>Həftənin 7 günü, günün 24 saatı WhatsApp, zəng və uzaqdan giriş ilə dəstək xidməti.</p>
-      </div>
-      <div class="why-card-delay-2">
-        <div class="why-number">05</div>
-        <div class="why-icon">🔒</div>
-        <h3>Stabil və Təhlükəsiz</h3>
-        <p>SQL Server əsaslı verilənlər bazası, avtomatik ehtiyat nüsxə, yüksək uptime zəmanəti.</p>
-      </div>
-      <div class="why-card-delay-3">
-        <div class="why-number">06</div>
-        <div class="why-icon">🔧</div>
-        <h3>Fərdi Həllər</h3>
-        <p>Standart paketə əlavə olaraq xüsusi tələblərə uyğun proqramlaşdırma imkanı.</p>
-      </div>
-    </div>
-  </div>
-</section>
-
-<div class="section-divider"></div>
-
-<!-- CONTACT -->
-<section class="contact" id="contact">
-  <div class="container">
-    <div class="contact-inner">
-      <div class="">
-        <div class="section-label">Əlaqə</div>
-        <h2 style="font-family:var(--font-display);font-size:2.2rem;font-weight:800;letter-spacing:-0.03em;margin-bottom:16px;">Bizə<br>Müraciət Edin</h2>
-        <p style="color:var(--text-dim);margin-bottom:36px;font-weight:300;">Demo istəyin, suallarınızı verin, qiymət öyrənin — dərhal cavab alırsınız.</p>
-        <div class="contact-methods">
-          <a href="tel:+994516782878" class="contact-method">
-            <div class="method-icon phone">📞</div>
-            <div>
-              <div class="method-label">Telefon</div>
-              <div class="method-value">+994 51 678 28 78</div>
-            </div>
-          </a>
-          <a href="https://wa.me/994516782878" class="contact-method" target="_blank">
-            <div class="method-icon whatsapp">💬</div>
-            <div>
-              <div class="method-label">WhatsApp</div>
-              <div class="method-value">+994 51 678 28 78</div>
-            </div>
-          </a>
-          <a href="/cdn-cgi/l/email-protection#2c45424a436c4e4d5e4743485c5e43024d56" class="contact-method">
-            <div class="method-icon email">✉️</div>
-            <div>
-              <div class="method-label">E-mail</div>
-              <div class="method-value"><span class="__cf_email__" data-cfemail="cfa6a1a9a08fadaebda4a0abbfbda0e1aeb5">[email&#160;protected]</span></div>
-            </div>
-          </a>
-        </div>
-        <div class="map-wrap" onclick="window.open('https://maps.google.com/?q=Shamakhi,Azerbaijan','_blank')">
-          <div class="map-emoji">📍</div>
-          <div class="map-text">Şamaxı, Azərbaycan — Xəritədə Gör →</div>
-        </div>
-      </div>
-      <div class="contact-form-wrap-delay-2">
-        <h3>🎯 Pulsuz Demo İstə</h3>
-        <div class="form-row">
-          <div class="form-group">
-            <label>Adınız</label>
-            <input type="text" placeholder="Əli Əliyev">
+    <div class="grid lg:grid-cols-2 gap-8">
+      <div class="reveal panel divide-y divide-white/10">
+        <div class="p-6 flex items-center gap-5">
+          <div class="w-11 h-11 border border-accent/40 flex items-center justify-center text-accent shrink-0">
+            <i class="fa-solid fa-phone"></i>
           </div>
-          <div class="form-group">
-            <label>Telefon</label>
-            <input type="tel" placeholder="+994 50 ...">
+          <div>
+            <div class="text-[10px] text-mute font-mono tracking-widest mb-1">TELEFON / WHATSAPP</div>
+            <a href="tel:+994516782878" class="text-fg font-semibold hover:text-accent transition-colors">+994 51 678 28 78</a>
           </div>
         </div>
-        <div class="form-group">
-          <label>Biznes növü</label>
-          <select>
-            <option value="">Seçin...</option>
-            <option>Restoran / Kafe</option>
-            <option>Market / Supermarket</option>
-            <option>Pərakəndə Mağaza</option>
-            <option>Aptek</option>
-            <option>Digər</option>
-          </select>
+
+        <div class="p-6 flex items-center gap-5">
+          <div class="w-11 h-11 border border-accent/40 flex items-center justify-center text-accent shrink-0">
+            <i class="fa-brands fa-telegram"></i>
+          </div>
+          <div>
+            <div class="text-[10px] text-mute font-mono tracking-widest mb-1">TELEGRAM</div>
+            <a href="https://t.me/BarkodPRO" target="_blank" rel="noopener noreferrer" class="text-fg font-semibold hover:text-accent transition-colors">@BarkodPRO</a>
+          </div>
         </div>
-        <div class="form-group">
-          <label>Maraqlandığınız xidmət</label>
-          <select>
-            <option value="">Seçin...</option>
-            <option>POS Sistemi</option>
-            <option>Veri Kassa İnteqrasiyası</option>
-            <option>Barkod Sistemi</option>
-            <option>Restoran Proqramı</option>
-            <option>Market Proqramı</option>
-            <option>1C Proqramlaşdırma</option>
-            <option>Ümumi məlumat</option>
-          </select>
+
+        <div class="p-6 flex items-center gap-5">
+          <div class="w-11 h-11 border border-accent/40 flex items-center justify-center text-accent shrink-0">
+            <i class="fa-solid fa-location-dot"></i>
+          </div>
+          <div>
+            <div class="text-[10px] text-mute font-mono tracking-widest mb-1">ÜNVAN</div>
+            <div class="text-fg font-semibold">Bakı, Azərbaycan</div>
+          </div>
         </div>
-        <div class="form-group">
-          <label>Mesajınız (ixtiyari)</label>
-          <textarea placeholder="Sisteminizdən, tələblərinizden bizə qısaca bildirin..."></textarea>
+
+        <div class="p-6 flex items-center gap-5">
+          <div class="w-11 h-11 border border-accent/40 flex items-center justify-center text-accent shrink-0">
+            <i class="fa-solid fa-clock"></i>
+          </div>
+          <div>
+            <div class="text-[10px] text-mute font-mono tracking-widest mb-1">İŞ REJİMİ</div>
+            <div class="text-fg font-semibold">24/7 Texniki Dəstək</div>
+          </div>
         </div>
-        <button class="btn-primary" style="width:100%;justify-content:center" onclick="handleSubmit(this)">
-          Göndər — Pulsuz Konsultasiya Al →
+      </div>
+
+      <form id="contact-form" class="reveal panel p-8 space-y-5">
+        <div>
+          <label class="block text-[10px] font-mono text-mute tracking-widest mb-2">ADINIZ</label>
+          <input required type="text" id="cf-name" placeholder="Ad Soyad"
+                 class="w-full px-4 py-3.5 bg-ink border border-white/15 text-fg placeholder-mute/60 focus:outline-none focus:border-accent transition-colors">
+        </div>
+        <div>
+          <label class="block text-[10px] font-mono text-mute tracking-widest mb-2">TELEFON</label>
+          <input required type="tel" id="cf-phone" placeholder="+994 XX XXX XX XX"
+                 class="w-full px-4 py-3.5 bg-ink border border-white/15 text-fg placeholder-mute/60 focus:outline-none focus:border-accent transition-colors">
+        </div>
+        <div>
+          <label class="block text-[10px] font-mono text-mute tracking-widest mb-2">MESAJINIZ</label>
+          <textarea id="cf-message" rows="4" placeholder="Xidmət haqqında qısa məlumat yazın..."
+                    class="w-full px-4 py-3.5 bg-ink border border-white/15 text-fg placeholder-mute/60 focus:outline-none focus:border-accent transition-colors resize-none"></textarea>
+        </div>
+        <button type="submit"
+                class="btn-fill w-full flex items-center justify-center gap-2 px-6 py-4 border border-accent text-accent font-mono text-xs tracking-widest">
+          <i class="fa-brands fa-whatsapp text-base"></i> SORĞUNU GÖNDƏR
         </button>
-      </div>
+      </form>
     </div>
   </div>
 </section>
 
-<!-- FOOTER -->
-<footer>
-  <div class="footer-inner">
-    <a href="#" class="logo">
-      <div class="logo-icon">📊</div>
-      Barkod<span>PRO</span>
+<div class="barcode-rule"></div>
+
+<!-- ===================== FOOTER ===================== -->
+<footer class="relative py-10 px-5 sm:px-8">
+  <div class="max-w-7xl mx-auto flex flex-col sm:flex-row items-center justify-between gap-5">
+    <a href="#home" class="flex items-center gap-2.5">
+      <span class="w-8 h-8 border border-accent flex items-center justify-center text-accent">
+        <i class="fa-solid fa-barcode text-sm"></i>
+      </span>
+      <span class="font-mono font-bold text-sm tracking-wider text-fg">BARKOD<span class="text-accent">/</span>PRO</span>
     </a>
-    <div class="footer-links">
-      <a href="#services">Xidmətlər</a>
-      <a href="#integrations">İnteqrasiyalar</a>
-      <a href="#products">Həllər</a>
-      <a href="#why">Niyə Biz</a>
-      <a href="#contact">Əlaqə</a>
-    </div>
-    <div class="footer-copy">© 2025 BarkodPRO. Bütün hüquqlar qorunur.</div>
+    <p class="text-[11px] font-mono text-mute text-center">&copy; <span id="year"></span> BARKODPRO. BÜTÜN HÜQUQLAR QORUNUR.</p>
+    <a href="https://wa.me/994516782878" target="_blank" rel="noopener noreferrer"
+       class="flex items-center gap-2 text-xs font-mono font-semibold text-accent hover:text-accent2 transition-colors">
+      <i class="fa-brands fa-whatsapp text-base"></i> +994 51 678 28 78
+    </a>
   </div>
 </footer>
 
-<!-- WHATSAPP FLOAT -->
-<a href="https://wa.me/994516782878" class="wa-float" target="_blank" title="WhatsApp ilə Yazın">💬</a>
-
-<script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script>
-  // removed
-
-  // Form submit
-  function handleSubmit(btn) {
-    const original = btn.innerHTML;
-    btn.innerHTML = '⏳ Göndərilir...';
-    btn.style.opacity = '0.7';
-    setTimeout(() => {
-      btn.innerHTML = '✅ Göndərildi! Tezliklə əlaqə saxlayacağıq.';
-      btn.style.background = 'linear-gradient(135deg,#00c853,#009624)';
-      setTimeout(() => { btn.innerHTML = original; btn.style.background=''; btn.style.opacity=''; }, 4000);
-    }, 1200);
-  }
-
-  // Navbar scroll effect
-  window.addEventListener('scroll', () => {
-    const nav = document.querySelector('nav');
-    nav.style.boxShadow = window.scrollY > 50 ? '0 4px 30px rgba(0,0,0,0.5)' : 'none';
+<script>
+  // Mobile menu toggle
+  const menuBtn = document.getElementById('menu-btn');
+  const mobileMenu = document.getElementById('mobile-menu');
+  let menuOpen = false;
+  menuBtn.addEventListener('click', () => {
+    menuOpen = !menuOpen;
+    if (menuOpen) {
+      mobileMenu.style.maxHeight = mobileMenu.scrollHeight + 'px';
+      mobileMenu.style.opacity = '1';
+      menuBtn.innerHTML = '<i class="fa-solid fa-xmark"></i>';
+    } else {
+      mobileMenu.style.maxHeight = '0';
+      mobileMenu.style.opacity = '0';
+      menuBtn.innerHTML = '<i class="fa-solid fa-bars"></i>';
+    }
+  });
+  document.querySelectorAll('.mobile-link').forEach(link => {
+    link.addEventListener('click', () => {
+      menuOpen = false;
+      mobileMenu.style.maxHeight = '0';
+      mobileMenu.style.opacity = '0';
+      menuBtn.innerHTML = '<i class="fa-solid fa-bars"></i>';
+    });
   });
 
-  // Animated bar chart
-  const bars = document.querySelectorAll('.bar');
-  const heights = ['40%','65%','50%','80%','7
+  // Scroll reveal animations
+  const revealEls = document.querySelectorAll('.reveal');
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        entry.target.classList.add('in-view');
+        observer.unobserve(entry.target);
+      }
+    });
+  }, { threshold: 0.12, rootMargin: '0px 0px -60px 0px' });
+  revealEls.forEach((el, i) => {
+    el.style.transitionDelay = (i % 3) * 0.06 + 's';
+    observer.observe(el);
+  });
+
+  // Contact form -> WhatsApp redirect
+  document.getElementById('contact-form').addEventListener('submit', (e) => {
+    e.preventDefault();
+    const name = document.getElementById('cf-name').value.trim();
+    const phone = document.getElementById('cf-phone').value.trim();
+    const message = document.getElementById('cf-message').value.trim();
+    let text = `Salam, mənim adım ${name}.`;
+    if (phone) text += ` Əlaqə nömrəm: ${phone}.`;
+    if (message) text += ` Mesaj: ${message}`;
+    else text += ` Xidmətləriniz haqqında məlumat almaq istəyirəm.`;
+    window.open(`https://wa.me/994516782878?text=${encodeURIComponent(text)}`, '_blank', 'noopener,noreferrer');
+  });
+
+  // Footer year
+  document.getElementById('year').textContent = new Date().getFullYear();
+</script>
+
+</body>
+</html>
