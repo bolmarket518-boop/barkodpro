@@ -253,6 +253,127 @@ tr:hover td{background:rgba(255,255,255,.02)}
   .form-grid{grid-template-columns:1fr}
   .form-grid .full{grid-column:auto}
 }
+
+/* === ERP / POS WORKSPACE LAYER === */
+.erp-toolbar{margin:12px 16px 0;padding:7px 10px;border:1px solid var(--line2);background:rgba(15,17,20,.78);display:flex;align-items:center;gap:6px;flex-wrap:wrap;box-shadow:0 12px 35px rgba(0,0,0,.18)}
+.erp-menu{display:inline-flex;align-items:center;gap:7px;padding:8px 11px;border:1px solid transparent;color:var(--steel);font:700 10px var(--mono);letter-spacing:.08em;text-transform:uppercase;background:transparent;cursor:pointer}
+.erp-menu:hover{border-color:var(--line2);color:var(--bone);background:var(--surface)}
+.erp-menu.hot{color:var(--acc);border-color:rgba(255,90,46,.32);background:rgba(255,90,46,.06)}
+.docbar{margin:12px 16px 0;display:flex;align-items:center;gap:2px;overflow:auto;border:1px solid var(--line2);background:linear-gradient(180deg,rgba(46,50,55,.5),rgba(20,23,26,.85));white-space:nowrap}
+.doc-tab{padding:10px 14px;border-right:1px solid var(--line);font:700 10px var(--mono);color:var(--muted);cursor:pointer}
+.doc-tab.active{color:var(--bone);background:rgba(255,90,46,.07);box-shadow:inset 0 -2px var(--acc)}
+.doc-icon{color:var(--acc);margin-right:6px}
+.erp-window{border:1px solid var(--line2);background:rgba(19,22,25,.72);box-shadow:var(--shadow);overflow:hidden}
+.window-title{display:flex;align-items:center;justify-content:space-between;gap:10px;padding:7px 10px;border-bottom:1px solid var(--line);background:rgba(255,255,255,.025);font:700 11px var(--mono);color:var(--steel)}
+.window-actions{display:flex;gap:6px;align-items:center}
+.window-dot{width:8px;height:8px;border-radius:50%;background:var(--acc);box-shadow:0 0 10px rgba(255,90,46,.45)}
+.classic-bar{display:flex;align-items:center;gap:6px;padding:7px;border-bottom:1px solid var(--line);background:#181b1f;overflow:auto;white-space:nowrap}
+.classic-btn{border:1px solid var(--line2);background:rgba(255,255,255,.025);color:var(--bone);padding:7px 10px;font:700 10px var(--mono);cursor:pointer}
+.classic-btn:hover{border-color:var(--acc);color:var(--acc)}
+.classic-btn.fill{border-color:var(--acc);color:var(--acc);background:rgba(255,90,46,.07)}
+.classic-btn.red{color:#ff7b7b;border-color:rgba(255,107,107,.25)}
+.classic-btn.green{color:#5ce0a0;border-color:rgba(57,217,138,.25)}
+.info-strip{display:grid;grid-template-columns:1.3fr repeat(4, minmax(120px,.6fr));border:1px solid var(--line2);border-top:0;background:#14171a}
+.info-cell{padding:9px 12px;border-right:1px solid var(--line);min-width:0}
+.info-cell:last-child{border-right:0}
+.info-cell .lab{display:block;font:700 9px var(--mono);color:var(--muted);letter-spacing:.1em;margin-bottom:4px}
+.info-cell .val{display:block;font-size:12px;font-weight:750;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.split-pos{display:grid;grid-template-columns:minmax(0,1fr) 380px;gap:10px;align-items:stretch}
+.pos-document{min-width:0}
+.doc-body{padding:8px}
+.grid-toolbar{display:flex;align-items:center;gap:6px;padding:7px;border:1px solid var(--line);border-bottom:0;background:#171a1e;overflow:auto;white-space:nowrap}
+.grid-tool{border:1px solid var(--line);background:rgba(255,255,255,.02);padding:6px 9px;color:var(--steel);font:700 9px var(--mono);cursor:pointer}
+.grid-tool:hover{color:var(--bone);border-color:var(--acc)}
+.sales-grid{border:1px solid var(--line2);height:450px;overflow:auto;background:#121519}
+.sales-grid table{min-width:760px}
+.sales-grid thead th{position:sticky;top:0;z-index:2;background:#25292d;color:#d2d7dc;font-size:10px;text-transform:none;letter-spacing:.03em}
+.sales-grid tbody tr{background:rgba(255,255,255,.008)}
+.sales-grid tbody tr.sel{background:rgba(255,90,46,.09);box-shadow:inset 2px 0 var(--acc)}
+.sales-grid td{padding:8px 10px;font-size:12px;border-bottom:1px solid rgba(255,255,255,.045)}
+.num{text-align:right;font-variant-numeric:tabular-nums}
+.unit{color:var(--muted);font:10px var(--mono)}
+.product-mini{display:flex;align-items:center;gap:9px}
+.product-mini-mark{width:28px;height:28px;display:grid;place-items:center;border:1px solid rgba(255,90,46,.28);background:linear-gradient(135deg,rgba(255,90,46,.12),rgba(255,255,255,.02));color:var(--acc);font:700 9px var(--mono);flex:none}
+.sale-total-bar{display:grid;grid-template-columns:1fr auto auto;align-items:center;gap:14px;padding:12px 14px;border:1px solid var(--line2);border-top:0;background:linear-gradient(180deg,#1b1e22,#121519)}
+.sale-total-label{font:700 11px var(--mono);color:var(--muted);letter-spacing:.12em}
+.sale-grand{font:800 30px var(--font);letter-spacing:-.03em}
+.sale-grand em{color:var(--acc);font-style:normal}
+.catalog-panel{min-width:0}
+.catalog-search{display:grid;grid-template-columns:1fr auto;gap:6px;padding:8px;border:1px solid var(--line2);border-bottom:0;background:#15181b}
+.catalog-search input{width:100%;height:38px}
+.catalog-list{height:520px;overflow:auto;border:1px solid var(--line2);background:#121519}
+.catalog-row{display:grid;grid-template-columns:38px 1fr auto;align-items:center;gap:9px;padding:9px;border-bottom:1px solid var(--line);cursor:pointer}
+.catalog-row:hover{background:rgba(255,90,46,.07)}
+.catalog-row.low{box-shadow:inset 3px 0 #ff5e5e}
+.catalog-row.zero{opacity:.55}
+.catalog-thumb{width:34px;height:34px;border:1px solid var(--line2);display:grid;place-items:center;background:#1c2024;color:var(--acc);font:700 10px var(--mono)}
+.catalog-name{font-size:11px;font-weight:750;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.catalog-meta{font:9px var(--mono);color:var(--muted);margin-top:2px}
+.catalog-price{font-weight:800;font-size:12px}
+.catalog-stock{font:9px var(--mono);margin-top:2px;text-align:right}
+.catalog-stock.low{color:#ff8b8b}
+.catalog-stock.ok{color:var(--green)}
+.catalog-footer{padding:7px 9px;border:1px solid var(--line2);border-top:0;display:flex;gap:6px;flex-wrap:wrap}
+.status-pill{display:inline-flex;align-items:center;gap:5px;padding:4px 7px;border:1px solid var(--line);font:700 9px var(--mono);color:var(--muted)}
+.status-pill b{color:var(--bone)}
+.status-pill.live b{color:var(--green)}
+.form-header{display:grid;grid-template-columns:120px 170px minmax(220px,1fr) 110px;gap:8px;align-items:end;margin-bottom:10px}
+.form-label{display:block;font:700 9px var(--mono);letter-spacing:.1em;color:var(--muted);margin-bottom:5px}
+.form-box{min-width:0}
+.erp-input,.erp-select,.erp-textarea{width:100%;height:34px;background:#111417;border:1px solid var(--line2);color:var(--bone);padding:0 9px;outline:none}
+.erp-input:focus,.erp-select:focus,.erp-textarea:focus{border-color:var(--acc)}
+.receipt-workspace{display:grid;grid-template-columns:minmax(0,1fr) 300px;gap:10px}
+.doc-table{border:1px solid var(--line2);overflow:auto;background:#111417}
+.doc-table table{min-width:900px}
+.doc-table thead th{position:sticky;top:0;background:#22262a;color:#d4d8dc;font-size:10px}
+.doc-table td{font-size:11px;padding:7px 9px}
+.flag-low{background:rgba(255,75,75,.9);color:#fff}
+.flag-sel{background:rgba(101,130,214,.8);color:#fff}
+.report-shell{border:1px solid var(--line2);background:#111417;overflow:hidden}
+.report-head{padding:12px 14px;border-bottom:1px solid var(--line);display:flex;justify-content:space-between;align-items:flex-end;gap:10px}
+.report-title{font-size:18px;font-weight:800}
+.report-sub{font:10px var(--mono);color:var(--muted);margin-top:3px}
+.report-kpis{display:grid;grid-template-columns:repeat(5,1fr);border-bottom:1px solid var(--line)}
+.report-kpi{padding:11px 12px;border-right:1px solid var(--line)}
+.report-kpi:last-child{border-right:0}
+.report-kpi b{display:block;font-size:17px}
+.report-kpi span{display:block;font:9px var(--mono);color:var(--muted);margin-top:3px}
+.report-scroll{max-height:470px;overflow:auto}
+.report-scroll table{min-width:920px}
+.report-scroll thead th{position:sticky;top:0;background:#24282d}
+.cash-form{display:grid;grid-template-columns:400px 1fr;gap:12px}
+.cash-fields{border:1px solid var(--line2);background:#111417}
+.cash-row{display:grid;grid-template-columns:150px 1fr auto;gap:8px;align-items:center;padding:6px 10px;border-bottom:1px solid var(--line)}
+.cash-row:last-child{border-bottom:0}
+.cash-row .lab{font-size:12px;font-weight:750}
+.cash-row input{height:30px;text-align:right}
+.cash-row .action{padding:6px 9px;border:1px solid var(--acc);color:var(--acc);font:700 9px var(--mono);background:rgba(255,90,46,.05)}
+.cash-total{margin-top:10px;border:1px solid var(--line2);background:#171a1e;padding:12px 14px}
+.cash-total .big{font-size:24px;font-weight:850}
+.denom-grid{border:1px solid var(--line2);background:#111417;overflow:auto}
+.denom-grid table{min-width:650px}
+.denom-grid thead th{position:sticky;top:0;background:#22262a}
+.denom-grid td,.denom-grid th{border-right:1px solid var(--line);border-bottom:1px solid var(--line);padding:8px 10px}
+.denom-grid td input{width:100%;height:30px;text-align:right;background:#0e1012;border:1px solid var(--line2);color:var(--bone)}
+.denom-total{padding:11px 12px;border-top:1px solid var(--line);display:flex;justify-content:flex-end;gap:20px;font:700 12px var(--mono)}
+.action-footer{display:flex;align-items:center;justify-content:flex-end;gap:8px;padding:8px;border:1px solid var(--line2);border-top:0;background:#171a1e}
+@media(max-width:1160px){
+  .split-pos{grid-template-columns:1fr}
+  .catalog-list{height:360px}
+  .info-strip{grid-template-columns:1.5fr repeat(2,1fr)}
+  .info-cell:nth-child(n+4){display:none}
+  .receipt-workspace{grid-template-columns:1fr}
+  .cash-form{grid-template-columns:1fr}
+  .report-kpis{grid-template-columns:repeat(3,1fr)}
+}
+@media(max-width:780px){
+  .erp-toolbar,.docbar{margin-left:10px;margin-right:10px}
+  .form-header{grid-template-columns:1fr 1fr}
+  .form-header .wide{grid-column:1/-1}
+  .report-kpis{grid-template-columns:1fr 1fr}
+  .sale-total-bar{grid-template-columns:1fr;gap:8px}
+}
+
 </style>
 </head>
 <body>
@@ -300,138 +421,218 @@ tr:hover td{background:rgba(255,255,255,.02)}
       </div>
     </header>
 
+    
+<div class="erp-toolbar">
+  <button class="erp-menu hot" onclick="switchScreen('pos')">▣ KASSA</button>
+  <button class="erp-menu" onclick="switchScreen('warehouse')">▦ MALLAR</button>
+  <button class="erp-menu" onclick="switchScreen('receiving')">⇩ MAL ALIŞI</button>
+  <button class="erp-menu" onclick="switchScreen('sales')">⇧ MAL SATIŞI</button>
+  <button class="erp-menu" onclick="switchScreen('reports')">◫ SATIŞ HESABATI</button>
+  <button class="erp-menu" onclick="switchScreen('overview')">◎ KASSA HESABATI</button>
+  <button class="erp-menu" onclick="switchScreen('count')">▤ SAYIM</button>
+  <button class="erp-menu" onclick="switchScreen('customers')">◉ MÜŞTƏRİLƏR</button>
+  <button class="erp-menu" onclick="toast('Parametrlər','Demo parametrlər paneli')">⚙ PARAMETRLƏR</button>
+</div>
+<div class="docbar">
+  <div class="doc-tab active" data-doc="pos" onclick="switchScreen('pos')"><span class="doc-icon">●</span>Kassir: Kassa</div>
+  <div class="doc-tab" data-doc="overview" onclick="switchScreen('overview')"><span class="doc-icon">◇</span>Kassa hesabatı</div>
+  <div class="doc-tab" data-doc="receiving" onclick="switchScreen('receiving')"><span class="doc-icon">⇩</span>Malların alınması</div>
+  <div class="doc-tab" data-doc="reports" onclick="switchScreen('reports')"><span class="doc-icon">▥</span>Satış hesabatı</div>
+  <div class="doc-tab" data-doc="warehouse" onclick="switchScreen('warehouse')"><span class="doc-icon">▦</span>Mallar</div>
+</div>
+
     <div class="page">
-      <!-- POS -->
+      <!-- POS / KASSİR -->
       <section class="screen active" id="screen-pos">
-        <div class="section-head">
+        <div class="section-head" style="margin-bottom:10px">
           <div>
-            <div class="eyebrow">01 // POS TERMINAL</div>
-            <h1>Sürətli satış</h1>
-            <p>Mağaza kassası kimi işləyən demo ekranı — barkod, məhsul, müştəri, ödəniş və çek bir yerdə.</p>
+            <div class="eyebrow">01 // KASSA / SALES TERMINAL</div>
+            <h1>Satış kassası</h1>
+            <p>Klassik mağaza kassa iş axını + BarkodPRO premium interfeysi.</p>
           </div>
-          <div style="display:flex;gap:8px">
-            <button class="btn" onclick="openHeldModal()">GÖZLƏYƏN SATIŞLAR <span id="held-count">0</span></button>
+          <div style="display:flex;gap:6px;flex-wrap:wrap">
+            <button class="btn" onclick="openHeldModal()">ÇEKLƏRƏ BAXIŞ <span id="held-count">0</span></button>
             <button class="btn" onclick="newTicket()">+ YENİ ÇEK</button>
           </div>
         </div>
 
-        <div class="shift-strip" style="margin-bottom:12px">
-          <div class="shift-item"><div class="lbl">NÖVBƏ STATUSU</div><div class="val shift-live">● AÇIQ · 09:00–18:00</div></div>
+        <div class="erp-window">
+          <div class="window-title">
+            <div style="display:flex;align-items:center;gap:8px"><span class="window-dot"></span><span>BarkodPRO · Kassir: Kassa</span></div>
+            <div class="window-actions"><span class="status-pill live"><b>● LIVE</b></span><span class="status-pill">KASSA <b>01</b></span><span class="status-pill">OPERATOR <b id="operator-mini">MÜŞTƏRİ</b></span></div>
+          </div>
+
+          <div class="classic-bar">
+            <button class="classic-btn" onclick="toast('eKASSAM','Demo fiskal modul aktivdir')">t/v</button>
+            <button class="classic-btn fill" onclick="toast('eKASSAM','Elektron kassa bağlantısı aktivdir')">eKASSAM</button>
+            <button class="classic-btn" onclick="openHeldModal()">ÇEKLƏRƏ BAXIŞ</button>
+            <button class="classic-btn" onclick="toast('Növbə','Növbə açıqdır · 09:00–18:00')">NÖVBƏDƏ OLAN...</button>
+            <button class="classic-btn" onclick="newTicket()">+ YENİ NÖVBƏ</button>
+            <button class="classic-btn" onclick="toast('Kassa','Kassa 01 · Online')">KASSA 01</button>
+            <button class="classic-btn red" onclick="clearCart()">ÇIXIŞ / TƏMİZLƏ</button>
+          </div>
+
+          <div class="info-strip">
+            <div class="info-cell"><span class="lab">MÜŞTƏRİ</span><select id="customer-select" class="erp-select" style="height:28px" onchange="renderCustomerSelect()"></select><span id="current-customer-label" style="display:none">Müştəri seçilməyib</span></div>
+            <div class="info-cell"><span class="lab">ÇEK №</span><span class="val">#<span id="ticket-no">10482</span></span></div>
+            <div class="info-cell"><span class="lab">NÖVBƏ</span><span class="val">AKTİV · 09:00–18:00</span></div>
+            <div class="info-cell"><span class="lab">SAAT</span><span class="val" id="pos-clock">--:--:--</span></div>
+            <div class="info-cell"><span class="lab">1C / FİSKAL</span><span class="val" style="color:var(--green)">SYNC / ONLINE</span></div>
+          </div>
+
+          <div class="doc-body">
+            <div class="classic-bar" style="margin-bottom:8px">
+              <button class="classic-btn" onclick="openCustomerModal()">MÜŞTƏRİ SEÇ</button>
+              <button class="classic-btn" onclick="openDiscount()">ENDİRİM</button>
+              <button class="classic-btn" onclick="openTicketNote()">QEYD</button>
+              <button class="classic-btn" onclick="applyLoyalty()">LOYALTY</button>
+              <button class="classic-btn" onclick="openCashDrawer()">KASSA ÇEKMƏCƏSİ</button>
+              <button class="classic-btn" onclick="openReceipt()">ÇEK ÖNİZLƏMƏ</button>
+              <input id="discount-value" class="erp-input" style="width:74px;height:30px" type="number" min="0" max="100" step="1" value="0" title="Endirim faiz">
+              <button id="discount-toggle" class="grid-tool" onclick="toggleDiscount()">% ENDİRİM</button>
+              <span class="status-pill" style="margin-left:auto">BARKOD <b>ENTER</b></span>
+              <span class="status-pill">SCAN <b>F4</b></span>
+            </div>
+
+            <div class="split-pos">
+              <div class="pos-document">
+                <div class="grid-toolbar">
+                  <button class="grid-tool" onclick="addQuickLine()">＋ MAL ƏLAVƏ ET</button>
+                  <button class="grid-tool" onclick="changeSelectedQty(-1)">− MİQDAR</button>
+                  <button class="grid-tool" onclick="changeSelectedQty(1)">＋ MİQDAR</button>
+                  <button class="grid-tool" onclick="removeSelected()">SİL</button>
+                  <button class="grid-tool" onclick="clearCart()">SƏBƏTİ TƏMİZLƏ</button>
+                  <span class="status-pill" style="margin-left:auto">SƏTİR <b id="cart-line-count">0</b></span>
+                </div>
+
+                <div class="sales-grid">
+                  <table>
+                    <thead>
+                      <tr>
+                        <th style="width:44px">N</th>
+                        <th>MAL</th>
+                        <th style="width:85px">ÖLÇÜ VAHİDİ</th>
+                        <th class="num" style="width:90px">MİQDAR</th>
+                        <th class="num" style="width:100px">QİYMƏT</th>
+                        <th class="num" style="width:90px">ENDİRİM</th>
+                        <th class="num" style="width:120px">MƏBLƏĞ</th>
+                      </tr>
+                    </thead>
+                    <tbody id="pos-sales-grid"></tbody>
+                  </table>
+                </div>
+
+                <div class="sale-total-bar">
+                  <div>
+                    <div class="sale-total-label">ÜMUMİ CƏMİ</div>
+                    <div style="margin-top:6px;color:var(--muted);font:10px var(--mono)" id="sale-summary-mini">0 sətir · 0 məhsul</div>
+                  </div>
+                  <div style="text-align:right"><div class="sale-total-label">ENDİRİM</div><div style="font-size:18px;font-weight:800" id="sale-discount-mini">0.00</div></div>
+                  <div style="text-align:right"><div class="sale-total-label">ÖDƏNİLƏCƏK</div><div class="sale-grand"><em id="sale-grand">0.00</em> <span style="font-size:14px;color:var(--muted)">man.</span></div></div>
+                </div>
+
+                <div style="display:grid;grid-template-columns:1.1fr .8fr .8fr;gap:8px;margin-top:8px;padding:8px;border:1px solid var(--line2);background:#14171a">
+                  <div style="display:flex;gap:5px;align-items:center;flex-wrap:wrap">
+                    <span class="sale-total-label" style="margin-right:4px">ÖDƏNİŞ:</span>
+                    <button class="classic-btn pay active" data-pay="cash"><b>NAĞD</b></button>
+                    <button class="classic-btn pay" data-pay="card"><b>KART</b></button>
+                    <button class="classic-btn pay" data-pay="qr"><b>QR</b></button>
+                  </div>
+                  <div><span class="form-label">VERİLƏN MƏBLƏĞ</span><input id="paid-amount" class="erp-input" type="number" min="0" step="0.01" placeholder="0.00"></div>
+                  <div><span class="form-label">QAYTARILACAQ</span><div class="cash-change" style="height:34px"><span>AZN</span><b id="change-amount">0.00</b></div></div>
+                </div>
+                <div class="action-footer">
+                  <button class="classic-btn red" onclick="newTicket()">GERİ</button>
+                  <button class="classic-btn green" style="padding:11px 20px;font-size:11px" onclick="checkoutCart()">SATIŞ</button>
+                </div>
+              </div>
+
+              <aside class="catalog-panel">
+                <div class="catalog-search">
+                  <input id="catalog-search" class="erp-input" placeholder="Mal adı / barkod...">
+                  <button class="classic-btn" onclick="simulateScan()">SCAN</button>
+                </div>
+                <div style="padding:7px 8px;border:1px solid var(--line2);border-bottom:0;background:#171a1e;display:flex;gap:5px;overflow:auto" id="pos-category-mini"></div>
+                <div class="catalog-list" id="catalog-list"></div>
+                <div class="catalog-footer">
+                  <span class="status-pill">SEÇİLƏN <b id="catalog-selected">0</b></span>
+                  <span class="status-pill">STOK <b id="catalog-stock-total">0</b></span>
+                  <button class="grid-tool" onclick="openDiscount()" style="margin-left:auto">% ENDİRİM</button>
+                </div>
+              </aside>
+            </div>
+          </div>
+        </div>
+
+        <div class="shift-strip" style="margin-top:10px">
           <div class="shift-item"><div class="lbl">NÖVBƏ SATIŞI</div><div class="val" id="shift-total">0.00 AZN</div></div>
           <div class="shift-item"><div class="lbl">ÇEKLƏR</div><div class="val" id="shift-count">0</div></div>
           <div class="shift-item"><div class="lbl">ORTA ÇEK</div><div class="val" id="shift-avg">0.00 AZN</div></div>
           <div class="shift-item"><div class="lbl">KASSA QALIQ</div><div class="val" id="cash-balance">350.00 AZN</div></div>
+          <div class="shift-item"><div class="lbl">GÖZLƏYƏN</div><div class="val" id="held-mini-count">0</div></div>
         </div>
 
-        <div class="pos-shell">
-          <div class="pos-left">
-            <div class="panel command-bar">
-              <div class="search">
-                <input id="pos-search" autocomplete="off" placeholder="Məhsul adı / barkod — Enter = səbətə əlavə et">
-                <div class="scan-dot">⌁</div>
-              </div>
-              <button class="short-btn" onclick="simulateScan()"><b>SCAN</b><span>F4</span></button>
-              <button class="short-btn" onclick="openCustomerModal()">MÜŞTƏRİ</button>
-              <button class="short-btn" onclick="openDiscount()">ENDİRİM</button>
-            </div>
-
-            <div class="category-row" id="category-row"></div>
-
-            <div class="panel product-area">
-              <div class="product-head">
-                <strong>VİTRİN / SÜRƏTLİ MƏHSULLAR</strong>
-                <span id="result-count">0 məhsul</span>
-              </div>
-              <div class="product-grid" id="product-grid"></div>
-            </div>
-
-            <div class="quick-row">
-              <button class="quick" onclick="openCashDrawer()"><b>KASSA ÇEKMƏCƏSİ</b><span>Çekməcə aç</span></button>
-              <button class="quick" onclick="openReceipt()"><b>ÇEK ÖNİZLƏMƏ</b><span>Termal görünüş</span></button>
-              <button class="quick" onclick="holdTicket()"><b>GÖZLƏT</b><span>Çeki sonra davam etdir</span></button>
-              <button class="quick" onclick="openTicketNote()"><b>QEYD</b><span>Sifarişə qeyd əlavə et</span></button>
-              <button class="quick" onclick="applyLoyalty()"><b>LOYALTY</b><span>Müştəri bonusu</span></button>
-              <button class="quick" onclick="refundLast()"><b>QAYTARMA</b><span>Son satışı demo qaytar</span></button>
-            </div>
-
-            <div class="hotkeys">
-              <span><kbd>F2</kbd> Sürətli satış</span>
-              <span><kbd>F4</kbd> Skan</span>
-              <span><kbd>F8</kbd> Gözlət</span>
-              <span><kbd>+</kbd>/<kbd>−</kbd> Miqdar</span>
-              <span><kbd>Enter</kbd> Skan et</span>
-              <span><kbd>Esc</kbd> Təmizlə</span>
-            </div>
-          </div>
-
-          <aside class="pos-right">
-            <div class="panel cart-panel">
-              <div class="cart-head">
-                <div><div class="cart-title">ÇEK / SƏBƏT</div><div class="cart-sub">BARKODPRO POS · DEMO · KASSA 01</div></div>
-                <div class="ticket">#<span id="ticket-no">10482</span></div>
-              </div>
-
-              <div class="cart-scroll" id="cart"></div>
-
-              <div class="customer-box">
-                <select id="customer-select" class="field"></select>
-                <button class="btn" onclick="openCustomerModal()">+</button>
-              </div>
-
-              <div class="summary">
-                <div class="summary-row"><span>Ara cəm</span><b id="sum-sub">0.00 AZN</b></div>
-                <div class="summary-row"><span>Endirim</span><b id="sum-discount">0.00 AZN</b></div>
-                <div class="summary-row total"><span>ÖDƏNİLƏCƏK</span><b id="sum-total">0.00 AZN</b></div>
-              </div>
-
-              <div class="discount-row" style="padding:0 12px 12px">
-                <input class="field" id="discount-value" type="number" min="0" max="100" step="1" value="0" placeholder="Endirim %">
-                <button class="discount-toggle" id="discount-toggle" onclick="toggleDiscount()">% ENDİRİM</button>
-              </div>
-
-              <div class="pay-grid">
-                <button class="pay active" data-pay="cash"><b>NAĞD</b><span>kassa</span></button>
-                <button class="pay" data-pay="card"><b>KART</b><span>terminal</span></button>
-                <button class="pay" data-pay="qr"><b>QR</b><span>mobil</span></button>
-              </div>
-
-              <div class="cash-box">
-                <div class="cash-field">
-                  <label>VERİLƏN MƏBLƏĞ</label>
-                  <input class="field" id="paid-amount" type="number" min="0" step="0.01" placeholder="0.00">
-                </div>
-                <div class="cash-field">
-                  <label>QAYTARILACAQ</label>
-                  <div class="cash-change"><span>AZN</span><b id="change-amount">0.00</b></div>
-                </div>
-              </div>
-
-              <div class="checkout">
-                <button class="btn primary" onclick="checkoutCart()">SATIŞI TAMAMLA <span style="opacity:.55">→</span></button>
-                <div class="checkout-sub"><span>Vergi kassası: AKTİV</span><span>1C: SYNC</span></div>
-              </div>
-            </div>
-
-            <div class="panel box">
-              <h3>SON SATIŞLAR</h3>
-              <div class="list" id="mini-sales"></div>
-            </div>
-          </aside>
+        <div class="hotkeys">
+          <span><kbd>F2</kbd> Kassa</span><span><kbd>F4</kbd> Skan</span><span><kbd>F8</kbd> Gözlət</span><span><kbd>+</kbd>/<kbd>−</kbd> Miqdar</span><span><kbd>Enter</kbd> Barkod</span><span><kbd>Esc</kbd> Təmizlə</span>
         </div>
       </section>
 
-      <!-- OVERVIEW -->
+      <!-- OVERVIEW / KASSA HESABATI -->
       <section class="screen" id="screen-overview">
-        <div class="section-head"><div><div class="eyebrow">02 // CONTROL CENTER</div><h1>Ümumi baxış</h1><p>Kassa, anbar və satış performansını bir ekranda izləyin.</p></div></div>
-        <div class="kpi-grid">
-          <div class="panel kpi"><div class="k-lbl">BU GÜNKÜ SATIŞ</div><div class="k-val" id="ov-today">0 AZN</div><div class="k-note">demo növbə məlumatı</div></div>
-          <div class="panel kpi"><div class="k-lbl">ÇEK SAYI</div><div class="k-val" id="ov-sales">0</div><div class="k-note">tamamlanmış satışlar</div></div>
-          <div class="panel kpi"><div class="k-lbl">ANBAR DƏYƏRİ</div><div class="k-val" id="ov-stock">0 AZN</div><div class="k-note">mövcud stok</div></div>
-          <div class="panel kpi"><div class="k-lbl">AZ QALAN</div><div class="k-val" id="ov-low" style="color:var(--yellow)">0</div><div class="k-note">10 ədəd və daha az</div></div>
+        <div class="section-head" style="margin-bottom:10px">
+          <div><div class="eyebrow">02 // CASH REPORT</div><h1>Kassa hesabatı</h1><p>Kassanın gün sonu qalığı, ödəniş axını və nominal sayımı.</p></div>
+          <div><button class="btn primary" onclick="toast('Kassa hesabatı','Demo sənəd yadda saxlanıldı.')">YADDA SAXLA</button></div>
         </div>
-        <div class="grid2">
-          <div class="panel box"><h3>GÜNÜN AXINI</h3><div class="list" id="overview-feed"></div></div>
-          <div class="panel box"><h3>AZ QALAN MƏHSULLAR</h3><div class="list" id="overview-low"></div></div>
+
+        <div class="erp-window">
+          <div class="window-title"><span>Kassa hesabatı · #00000010</span><span class="status-pill">TARİX <b id="cash-report-date">26.09.2026</b></span></div>
+          <div class="classic-bar">
+            <button class="classic-btn" onclick="toast('Əməliyyat','Hesabat redaktə rejimi')">DÜZƏLİŞ ET</button>
+            <button class="classic-btn green" onclick="toast('Yaddaş','Sənəd yadda saxlanıldı')">YADDAŞA...</button>
+            <button class="classic-btn red" onclick="toast('İmtina','Sənəd bağlandı')">İMTİNA</button>
+          </div>
+          <div class="cash-form" style="padding:10px">
+            <div>
+              <div class="cash-fields">
+                <div class="cash-row"><div class="lab">Avans:</div><input class="erp-input num" value="0.00"><button class="action">Dəyiş</button></div>
+                <div class="cash-row"><div class="lab">Ümumi satış:</div><input class="erp-input num" id="cash-total-sales" value="45.29"><button class="action">Dəyiş</button></div>
+                <div class="cash-row"><div class="lab">Nisyə satış:</div><input class="erp-input num" value="0.00" style="border-color:#ff5757"><button class="action">Dəyiş</button></div>
+                <div class="cash-row"><div class="lab">Nağdsız satış:</div><input class="erp-input num" value="0.00"><button class="action">Dəyiş</button></div>
+                <div class="cash-row"><div class="lab">Nağd satış:</div><input class="erp-input num" id="cash-total-cash" value="45.29"><button class="action">Dəyiş</button></div>
+                <div class="cash-row"><div class="lab">Hesablanan pul:</div><input class="erp-input num" value="1460.00"><span></span></div>
+                <div class="cash-row"><div class="lab">Xərclər:</div><input class="erp-input num" value="0.00"><button class="action">Dəyiş</button></div>
+                <div class="cash-row"><div class="lab">Fərq:</div><input class="erp-input num" value="1414.71"><span></span></div>
+              </div>
+              <div class="cash-total">
+                <div style="font:700 11px var(--mono);color:var(--muted);letter-spacing:.08em">KASSA QALIQ</div>
+                <div class="big">1 414,71 <span style="font-size:12px;color:var(--acc)">manat artıqdı</span></div>
+              </div>
+            </div>
+            <div>
+              <div style="margin-bottom:8px;font:700 10px var(--mono);color:var(--muted);letter-spacing:.1em">NOMİNAL / SAY / MƏBLƏĞ</div>
+              <div class="denom-grid">
+                <table>
+                  <thead><tr><th>NOMİNAL</th><th class="num">SAY</th><th class="num">MƏBLƏĞ</th></tr></thead>
+                  <tbody>
+                    <tr><td class="num">200,00</td><td><input value="5"></td><td class="num">1 000,00</td></tr>
+                    <tr><td class="num">100,00</td><td><input value="2"></td><td class="num">200,00</td></tr>
+                    <tr><td class="num">50,00</td><td><input value="1"></td><td class="num">50,00</td></tr>
+                    <tr><td class="num">20,00</td><td><input value="10"></td><td class="num">200,00</td></tr>
+                    <tr><td class="num">10,00</td><td><input value="1"></td><td class="num">10,00</td></tr>
+                    <tr><td class="num">5,00</td><td><input value=""></td><td class="num">—</td></tr>
+                    <tr><td class="num">1,00</td><td><input value=""></td><td class="num">—</td></tr>
+                  </tbody>
+                </table>
+                <div class="denom-total"><span>ÜMUMİ</span><b>1 460,00 AZN</b></div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="kpi-grid" style="margin-top:10px">
+          <div class="panel kpi"><div class="k-lbl">BU GÜNKÜ SATIŞ</div><div class="k-val" id="ov-today">45.29 AZN</div><div class="k-note">demo növbə məlumatı</div></div>
+          <div class="panel kpi"><div class="k-lbl">ÇEK SAYI</div><div class="k-val" id="ov-sales">5</div><div class="k-note">tamamlanmış satışlar</div></div>
+          <div class="panel kpi"><div class="k-lbl">ANBAR DƏYƏRİ</div><div class="k-val" id="ov-stock">0 AZN</div><div class="k-note">mövcud stokun dəyəri</div></div>
+          <div class="panel kpi"><div class="k-lbl">AZ QALAN</div><div class="k-val" id="ov-low" style="color:var(--yellow)">0</div><div class="k-note">10 ədəd və daha az</div></div>
         </div>
       </section>
 
@@ -442,21 +643,44 @@ tr:hover td{background:rgba(255,255,255,.02)}
         <div class="panel table-wrap"><table><thead><tr><th>BARKOD</th><th>MƏHSUL</th><th>KATEQORİYA</th><th>TƏCHİZATÇI</th><th>STOK</th><th>QİYMƏT</th></tr></thead><tbody id="warehouse-body"></tbody></table></div>
       </section>
 
-      <!-- RECEIVING -->
+      <!-- RECEIVING / MALLARIN ALINMASI -->
       <section class="screen" id="screen-receiving">
-        <div class="section-head"><div><div class="eyebrow">04 // INBOUND</div><h1>Mal qəbulu</h1><p>Barkodla qəbul edin, stok avtomatik artsın.</p></div></div>
-        <div class="grid2">
-          <div class="panel box">
-            <h3>YENİ MAL QƏBULU</h3>
-            <div class="form-grid">
-              <div class="full"><label class="label">MƏHSUL</label><select class="field" id="recv-product" style="width:100%"></select></div>
-              <div><label class="label">MİQDAR</label><input class="field" id="recv-qty" type="number" value="1" min="1" style="width:100%"></div>
-              <div><label class="label">ALIŞ QİYMƏTİ</label><input class="field" id="recv-cost" type="number" value="0" step=".01" style="width:100%"></div>
-              <div class="full"><label class="label">TƏDARÜKÇÜ</label><select class="field" id="recv-supplier" style="width:100%"></select></div>
-              <div class="full"><button class="btn primary" style="width:100%;height:46px" onclick="receiveStock()">ANBARA DAXİL ET</button></div>
+        <div class="section-head" style="margin-bottom:10px">
+          <div><div class="eyebrow">04 // INBOUND DOCUMENT</div><h1>Malların alınması</h1><p>Alış qiyməti, miqdar, satış qiyməti və təchizatçı sənədini bir pəncərədə idarə edin.</p></div>
+          <div><button class="btn primary" onclick="receiveStock()">MALI QƏBUL ET</button></div>
+        </div>
+        <div class="erp-window">
+          <div class="window-title"><span>Malların alınması · yeni</span><span class="status-pill live"><b>Qəbul rejimi</b></span></div>
+          <div class="classic-bar">
+            <button class="classic-btn">Qiymət və valyuta</button><button class="classic-btn">Əməliyyat</button><button class="classic-btn">Keçid</button>
+            <button class="classic-btn fill" onclick="toast('Yeni mal','Yeni sətr əlavə etmək üçün məhsul seçin')">+ YENİ MAL</button>
+            <button class="classic-btn green" onclick="toast('Alış yazıldı','Demo olaraq alış qiyməti tətbiq edildi')">ALİŞ YAZ</button>
+            <button class="classic-btn" onclick="toast('Satış yazıldı','Demo olaraq satış qiyməti tətbiq edildi')">SATIŞ YAZ</button>
+          </div>
+          <div style="padding:10px">
+            <div class="form-header">
+              <div class="form-box"><label class="form-label">№</label><input class="erp-input" value="000000522"></div>
+              <div class="form-box"><label class="form-label">TARİX</label><input class="erp-input" value="26.09.2026 11:06:38"></div>
+              <div class="form-box"><label class="form-label">TƏDARÜKÇÜ</label><select class="erp-select" id="recv-supplier2"></select></div>
+              <div class="form-box"><label class="form-label">MİQDAR</label><input class="erp-input" id="recv-qty" type="number" min="1" value="1"></div>
+            </div>
+            <div style="display:grid;grid-template-columns:1fr auto;gap:8px;margin-bottom:9px">
+              <div><label class="form-label">MƏHSUL</label><select class="erp-select" id="recv-product"></select></div>
+              <div style="display:flex;align-items:end"><button class="classic-btn fill" onclick="receiveStock()">ANBARA DAXİL ET</button></div>
+            </div>
+
+            <div class="doc-table">
+              <table>
+                <thead><tr><th>№</th><th>PLU</th><th>MAL</th><th>ŞTRİXKOD</th><th>MİQDAR</th><th>ÖLÇÜ VAHİDİ</th><th>QİYMƏT</th><th>%</th><th>ENDİRİM</th><th>MƏBLƏĞ</th><th>%</th><th>SATIŞ QİYMƏTİ</th><th>SATIŞ MƏBLƏĞİ</th></tr></thead>
+                <tbody id="receiving-demo-rows"></tbody>
+              </table>
+            </div>
+
+            <div class="action-footer">
+              <span class="status-pill" style="margin-right:auto">CƏMİ <b id="receiving-demo-total">0.00</b></span>
+              <button class="classic-btn">CAP / EXPORT</button><button class="classic-btn">OK</button><button class="classic-btn green">QEYD ET</button><button class="classic-btn">REGİSTRASİYA ET</button><button class="classic-btn red">BAĞLA</button>
             </div>
           </div>
-          <div class="panel box"><h3>SON QƏBULLAR</h3><div class="table-wrap"><table><thead><tr><th>TARİX</th><th>MƏHSUL</th><th>MİQDAR</th><th>TƏCHİZATÇI</th></tr></thead><tbody id="receiving-body"></tbody></table></div></div>
         </div>
       </section>
 
@@ -476,18 +700,39 @@ tr:hover td{background:rgba(255,255,255,.02)}
         <div class="panel table-wrap"><table><thead><tr><th>TARİX</th><th>ÇEK</th><th>MƏHSUL</th><th>MİQDAR</th><th>MƏBLƏĞ</th><th>MÜŞTƏRİ</th><th>ÖDƏNİŞ</th><th>STATUS</th></tr></thead><tbody id="sales-body"></tbody></table></div>
       </section>
 
-      <!-- REPORTS -->
+      <!-- REPORTS / SATIŞ HESABATI -->
       <section class="screen" id="screen-reports">
-        <div class="section-head"><div><div class="eyebrow">07 // ANALYTICS</div><h1>Hesabatlar</h1><p>Satışların məhsul və kateqoriya üzrə görüntüsü.</p></div></div>
-        <div class="kpi-grid">
-          <div class="panel kpi"><div class="k-lbl">DÖVR ÜZRƏ SATIŞ</div><div class="k-val" id="rep-total">0 AZN</div></div>
-          <div class="panel kpi"><div class="k-lbl">ORTA ÇEK</div><div class="k-val" id="rep-avg">0 AZN</div></div>
-          <div class="panel kpi"><div class="k-lbl">ƏN ÇOX SATILAN</div><div class="k-val" id="rep-top" style="font-size:17px">—</div></div>
-          <div class="panel kpi"><div class="k-lbl">MƏHSUL SAYI</div><div class="k-val" id="rep-products">0</div></div>
+        <div class="section-head" style="margin-bottom:10px">
+          <div><div class="eyebrow">07 // SALES REPORT</div><h1>Satış hesabatı</h1><p>Tarix aralığı üzrə məhsul, dövriyyə, maya və mənfəət görünüşü.</p></div>
+          <div style="display:flex;gap:6px"><button class="btn">TƏRTİB ET</button><button class="btn primary" onclick="toast('Hesabat','CSV/Excel ixracı demo olaraq hazırlandı')">EXPORT</button></div>
         </div>
-        <div class="grid2">
-          <div class="panel box"><h3>ƏN ÇOX SATILAN MƏHSULLAR</h3><div id="rep-products-list"></div></div>
-          <div class="panel box"><h3>KATEQORİYA ÜZRƏ ANBAR</h3><div id="rep-cat-list"></div></div>
+
+        <div class="erp-window">
+          <div class="classic-bar">
+            <div style="display:flex;align-items:center;gap:6px"><input class="erp-input" style="width:120px" value="26.09.2026"><span style="color:var(--muted)">→</span><input class="erp-input" style="width:120px" value="26.09.2026"></div>
+            <button class="classic-btn">PARAMETRLƏR</button>
+            <button class="classic-btn fill">ƏSAS VAHDİLƏ</button>
+            <button class="classic-btn">BAZA VAHDİLƏRİ İLƏ</button>
+          </div>
+          <div class="report-shell">
+            <div class="report-head">
+              <div><div class="report-title">Satış hesabatı</div><div class="report-sub">26.09.2026 — 26.09.2026</div></div>
+              <div class="status-pill">KASSA <b>01</b></div>
+            </div>
+            <div class="report-kpis">
+              <div class="report-kpi"><b id="rep-total">45.29 AZN</b><span>DÖVRİYYƏ</span></div>
+              <div class="report-kpi"><b>51.000</b><span>MİQDAR</span></div>
+              <div class="report-kpi"><b>34.17</b><span>MAYA DƏYƏRİ</span></div>
+              <div class="report-kpi"><b>11.12</b><span>MƏNFƏƏT</span></div>
+              <div class="report-kpi"><b>32.54%</b><span>MƏNFƏƏT (%)</span></div>
+            </div>
+            <div class="report-scroll">
+              <table>
+                <thead><tr><th>MAL</th><th>ŞTRİXKOD</th><th>MİQDAR</th><th>DÖVRİYYƏ</th><th>ENDİRİMSİZ DÖVRİYYƏ</th><th>MAYA DƏYƏRİ</th><th>MƏNFƏƏT</th><th>MƏNFƏƏT (%)</th></tr></thead>
+                <tbody id="report-detail-body"></tbody>
+              </table>
+            </div>
+          </div>
         </div>
       </section>
 
@@ -587,34 +832,14 @@ function switchScreen(name){
   document.querySelectorAll('.nav-btn,.mobile-nav button').forEach(b=>b.classList.toggle('active',b.dataset.screen===name));
   const names={pos:'SÜRƏTLİ SATIŞ',overview:'ÜMUMİ BAXIŞ',warehouse:'MƏHSULLAR',receiving:'MAL QƏBULU',count:'SAYIM / TSD',sales:'SATIŞ TARİXÇƏSİ',reports:'HESABATLAR',customers:'MÜŞTƏRİLƏR',suppliers:'TƏDARÜKÇÜLƏR'};
   document.getElementById('top-screen').textContent=names[name]||name.toUpperCase();
+  document.querySelectorAll('.doc-tab').forEach(t=>t.classList.toggle('active',t.dataset.doc===name));
   renderAll();
 }
 document.querySelectorAll('.nav-btn,.mobile-nav button').forEach(b=>b.addEventListener('click',()=>switchScreen(b.dataset.screen)));
 
-function renderCategories(){
-  const cats=['HAMISI',...new Set(products.map(p=>p.category))];
-  document.getElementById('category-row').innerHTML=cats.map(c=>`<button class="cat ${activeCategory===c?'active':''}" data-cat="${esc(c)}">${esc(c)}</button>`).join('');
-  document.querySelectorAll('.cat').forEach(b=>b.onclick=()=>{activeCategory=b.dataset.cat;renderProducts()});
-}
-function renderProducts(){
-  const q=(document.getElementById('pos-search').value||'').trim().toLowerCase();
-  const list=products.filter(p=>(activeCategory==='HAMISI'||p.category===activeCategory)&&(!q||p.name.toLowerCase().includes(q)||p.code.includes(q)));
-  document.getElementById('result-count').textContent=list.length+' məhsul';
-  document.getElementById('product-grid').innerHTML=list.map(p=>{
-    const idx=products.indexOf(p),low=p.stock<=10;
-    return `<button class="pcard ${p.stock<=0?'disabled':''}" onclick="addToCart(${idx})" ${p.stock<=0?'disabled':''}>
-      <div class="p-art"><div class="p-initial">${esc(initials(p.name))}</div></div>
-      <div><div class="p-meta"><div><div class="p-name">${esc(p.name)}</div><div class="p-cat">${esc(p.category)}</div></div><div class="p-price">${money(p.price).replace(' AZN','')}</div></div>
-      <div class="p-stock"><span>${p.code.slice(-6)}</span><span class="${low?'stock-low':'stock-ok'}">${p.stock} əd</span></div></div>
-    </button>`
-  }).join('') || `<div style="grid-column:1/-1;padding:40px;text-align:center;color:var(--muted)">Məhsul tapılmadı.</div>`;
-}
-document.getElementById('pos-search').addEventListener('input',renderProducts);
-document.getElementById('pos-search').addEventListener('keydown',e=>{
-  if(e.key==='Enter'){const q=e.target.value.trim();const p=products.find(x=>x.code===q)||products.find(x=>x.name.toLowerCase()===q.toLowerCase());if(p){addToCart(products.indexOf(p));e.target.value='';renderProducts()}else if(q)toast('Tapılmadı','Bu barkoda uyğun məhsul yoxdur.')}
-  if(e.key==='Escape'){e.target.value='';renderProducts()}
-})
-
+function renderCategories(){const row=document.getElementById('category-row');if(!row)return;const cats=['HAMISI',...new Set(products.map(p=>p.category))];row.innerHTML=cats.map(c=>`<button class="cat ${activeCategory===c?'active':''}" data-cat="${esc(c)}">${esc(c)}</button>`).join('');document.querySelectorAll('.cat').forEach(b=>b.onclick=()=>{activeCategory=b.dataset.cat;renderERPProductCatalog()})}
+function renderProducts(){const old=document.getElementById('product-grid');if(!old)return;}
+document.getElementById('pos-search')?.addEventListener('input',renderProducts);
 function addToCart(idx){
   const p=products[idx];if(!p||p.stock<=0){toast('Stok yoxdur','Bu məhsul hazırda satış üçün mövcud deyil.');return}
   const item=cart.find(x=>x.idx===idx);if(item){if(item.qty>=p.stock){toast('Stok limiti','Mövcud miqdar: '+p.stock);return}item.qty++}else cart.push({idx,qty:1});
@@ -622,30 +847,24 @@ function addToCart(idx){
 }
 function cartTotals(){
   const sub=cart.reduce((s,i)=>s+products[i.idx].price*i.qty,0);
-  const pct=Math.min(100,Math.max(0,Number(document.getElementById('discount-value').value)||0));
+  const dv=document.getElementById('discount-value');const pct=Math.min(100,Math.max(0,Number(dv?.value)||0));
   const dis=discountOn?sub*pct/100:0;
   return {sub,dis,total:Math.max(0,sub-dis)}
 }
 function renderCart(){
-  const el=document.getElementById('cart');
-  if(!cart.length){el.innerHTML=`<div class="empty-cart"><div><div style="font-size:28px;color:var(--acc)">＋</div><strong>Səbət boşdur</strong><span>Barkodu skan edin və ya<br>məhsul kartına toxunun.</span></div></div>`}
-  else el.innerHTML=cart.map((it,ci)=>{const p=products[it.idx];return `<div class="cart-line">
-    <div><div class="line-top"><span class="line-name">${esc(p.name)}</span><span class="line-price">${money(p.price*it.qty)}</span></div><div class="line-sub">${money(p.price)} × ${it.qty}</div></div>
-    <div class="qty"><button onclick="changeQty(${ci},-1)">−</button><input value="${it.qty}" onchange="setQty(${ci},this.value)"><button onclick="changeQty(${ci},1)">+</button></div>
-  </div>`}).join('');
-  const {sub,dis,total}=cartTotals();
-  document.getElementById('sum-sub').textContent=money(sub);
-  document.getElementById('sum-discount').textContent='-'+money(dis);
-  document.getElementById('sum-total').textContent=money(total);
+  const totals=cartTotals();
+  renderDenseSalesGrid();
+  const ss=document.getElementById('sale-grand'); if(ss)ss.textContent=totals.total.toFixed(2);
+  const sd=document.getElementById('sale-discount-mini'); if(sd)sd.textContent=totals.dis.toFixed(2);
   updateChange();
 }
 function changeQty(ci,d){const it=cart[ci],p=products[it.idx];if(!it)return;it.qty+=d;if(it.qty<=0)cart.splice(ci,1);if(it.qty>p.stock)it.qty=p.stock;renderCart()}
 function setQty(ci,v){const n=Math.max(0,parseInt(v)||0);const it=cart[ci];if(!it)return;if(n===0)cart.splice(ci,1);else it.qty=Math.min(n,products[it.idx].stock);renderCart()}
 document.getElementById('discount-value').addEventListener('input',renderCart)
-function toggleDiscount(){discountOn=!discountOn;document.getElementById('discount-toggle').classList.toggle('active',discountOn);renderCart()}
-document.querySelectorAll('.pay').forEach(b=>b.onclick=()=>{document.querySelectorAll('.pay').forEach(x=>x.classList.remove('active'));b.classList.add('active');payment=b.dataset.pay;document.getElementById('paid-amount').value='';updateChange()})
-document.getElementById('paid-amount').addEventListener('input',updateChange)
-function updateChange(){const total=cartTotals().total,paid=Number(document.getElementById('paid-amount').value)||0;document.getElementById('change-amount').textContent=Math.max(0,paid-total).toFixed(2)}
+function toggleDiscount(){discountOn=!discountOn;const e=document.getElementById('discount-toggle');if(e)e.classList.toggle('active',discountOn);renderCart()}
+document.querySelectorAll('.pay').forEach(b=>b.onclick=()=>{document.querySelectorAll('.pay').forEach(x=>x.classList.remove('active'));b.classList.add('active');payment=b.dataset.pay;const p=document.getElementById('paid-amount');if(p)p.value='';updateChange()})
+document.getElementById('paid-amount')?.addEventListener('input',updateChange)
+function updateChange(){const total=cartTotals().total,paid=Number(document.getElementById('paid-amount')?.value)||0;const e=document.getElementById('change-amount');if(e)e.textContent=Math.max(0,paid-total).toFixed(2)}
 function clearCart(){cart=[];renderCart()}
 function newTicket(){clearCart();ticketNo++;document.getElementById('ticket-no').textContent=ticketNo;document.getElementById('discount-value').value=0;discountOn=false;document.getElementById('discount-toggle').classList.remove('active');toast('Yeni çek','Yeni satış üçün kassa hazırdır.')}
 function checkoutCart(){
@@ -653,13 +872,13 @@ function checkoutCart(){
   const total=cartTotals().total,paid=Number(document.getElementById('paid-amount').value)||0;
   if(payment==='cash'&&paid+0.0001<total){toast('Ödəniş çatmır','Nağd məbləğ ödəniləcək məbləğdən azdır.');return}
   const cidx=document.getElementById('customer-select').value;const cname=cidx!==''?customers[Number(cidx)].name:'—';
-  cart.forEach(it=>{const p=products[it.idx];const line=p.price*it.qty*(1-(discountOn?(Number(document.getElementById('discount-value').value)||0)/100:0));p.stock-=it.qty;sales.push({date:today(),ticket:String(ticketNo),product:p.name,qty:it.qty,total:line,customer:cname,payment:payment==='cash'?'Nağd':payment==='card'?'Kart':'QR',status:'Tamamlandı'})});
+  cart.forEach(it=>{const p=products[it.idx];const line=p.price*it.qty*(1-(discountOn?(Number(document.getElementById('discount-value')?.value)||0)/100:0));p.stock-=it.qty;sales.push({date:today(),ticket:String(ticketNo),product:p.name,qty:it.qty,total:line,customer:cname,payment:payment==='cash'?'Nağd':payment==='card'?'Kart':'QR',status:'Tamamlandı'})});
   if(cidx!==''){const c=customers[Number(cidx)];c.purchases=(c.purchases||0)+1;c.spent=(c.spent||0)+total;c.lastDate=today()}
   if(payment==='cash'){const bal=Number(document.getElementById('cash-balance').textContent.split(' ')[0])||350;document.getElementById('cash-balance').textContent=(bal+paid).toFixed(2)+' AZN'}
   const paidText=payment==='cash'?`Ödəniş: ${paid.toFixed(2)} AZN · Qaytar: ${(paid-total).toFixed(2)} AZN`:`Ödəniş: ${payment==='card'?'Kart':'QR'}`;
   clearCart();document.getElementById('paid-amount').value='';renderAll();toast('Satış tamamlandı',`${money(total)} · ${paidText} · Çek #${ticketNo}`);ticketNo++;document.getElementById('ticket-no').textContent=ticketNo;
 }
-function holdTicket(){if(!cart.length){toast('Səbət boşdur','Gözlətmək üçün satış olmalıdır.');return}held.push({ticket:ticketNo,cart:structuredClone(cart),customer:document.getElementById('customer-select').value});clearCart();document.getElementById('held-count').textContent=held.length;ticketNo++;document.getElementById('ticket-no').textContent=ticketNo;toast('Satış gözlədildi','Çeki sonradan davam etdirə bilərsiniz.')}
+function holdTicket(){if(!cart.length){toast('Səbət boşdur','Gözlətmək üçün satış olmalıdır.');return}held.push({ticket:ticketNo,cart:structuredClone(cart),customer:document.getElementById('customer-select').value});clearCart();document.getElementById('held-count').textContent=held.length;{const e=document.getElementById('held-mini-count');if(e)e.textContent=held.length;}ticketNo++;document.getElementById('ticket-no').textContent=ticketNo;toast('Satış gözlədildi','Çeki sonradan davam etdirə bilərsiniz.')}
 function openHeldModal(){
   const body=held.length?held.map((h,i)=>`<div class="list-row"><div><strong>Çek #${h.ticket}</strong><span>${h.cart.length} məhsul</span></div><button class="btn" onclick="resumeHeld(${i})">DAVAM ET</button></div>`).join(''):`<div style="padding:30px;text-align:center;color:var(--muted)">Gözləyən satış yoxdur.</div>`;
   openModal('GÖZLƏYƏN SATIŞLAR',body,'')
@@ -673,7 +892,7 @@ function openCustomerModal(){
 }
 function saveCustomer(){const n=document.getElementById('new-cus-name').value.trim(),p=document.getElementById('new-cus-phone').value.trim();if(!n||!p){toast('Məlumat çatmır','Ad və telefon daxil edin.');return}customers.push({name:n,phone:p,purchases:0,spent:0,lastDate:null});renderAll();document.getElementById('customer-select').value=String(customers.length-1);closeModal();toast('Müştəri əlavə edildi',n)}
 function openDiscount(){document.getElementById('discount-value').focus();toast('Endirim','Faiz daxil edin və % ENDİRİM düyməsini aktiv edin.')}
-function applyLoyalty(){document.getElementById('discount-value').value=5;discountOn=true;document.getElementById('discount-toggle').classList.add('active');renderCart();toast('Loyalty tətbiq olundu','Demo olaraq 5% loyalty endirimi verildi.')}
+function applyLoyalty(){const e=document.getElementById('discount-value');if(e)e.value=5;discountOn=true;const t=document.getElementById('discount-toggle');if(t)t.classList.add('active');renderCart();toast('Loyalty tətbiq olundu','Demo olaraq 5% loyalty endirimi verildi.')}
 function openCashDrawer(){toast('Kassa çekməcəsi','Demo rejimində çekməcə açılışı simulyasiya edildi.')}
 function openReceipt(){
   const {sub,dis,total}=cartTotals();
@@ -685,16 +904,20 @@ function refundLast(){const last=sales[sales.length-1];if(!last){toast('Satış 
 function openReceiving(){switchScreen('receiving')}
 
 function renderCustomerSelect(){
-  document.getElementById('customer-select').innerHTML='<option value="">Müştəri seçilməyib</option>'+customers.map((c,i)=>`<option value="${i}">${esc(c.name)} · ${esc(c.phone)}</option>`).join('')
+  const selected=document.getElementById('customer-select')?.value||'';
+  const sel=document.getElementById('customer-select');
+  sel.innerHTML='<option value="">Müştəri seçilməyib</option>'+customers.map((c,i)=>`<option value="${i}">${esc(c.name)} · ${esc(c.phone)}</option>`).join('');
+  if(selected) sel.value=selected;
+  const c=sel.value!==''?customers[Number(sel.value)]:null;
+  {const e=document.getElementById('current-customer-label');if(e)e.textContent=c?c.name:'Müştəri seçilməyib';}
+  {const e=document.getElementById('operator-mini');if(e)e.textContent=user;}
 }
 function renderOverview(){
   const total=sales.reduce((s,x)=>s+x.total,0),stock=products.reduce((s,p)=>s+p.stock*p.price,0),low=products.filter(p=>p.stock<=10);
-  document.getElementById('ov-today').textContent=money(total);
-  document.getElementById('ov-sales').textContent=sales.length;
-  document.getElementById('ov-stock').textContent=money(stock);
-  document.getElementById('ov-low').textContent=low.length;
-  document.getElementById('overview-feed').innerHTML=[...sales].slice(-6).reverse().map(s=>`<div class="list-row"><div><strong>${esc(s.product)}</strong><span>${esc(s.payment)} · #${s.ticket}</span></div><b>${money(s.total)}</b></div>`).join('');
-  document.getElementById('overview-low').innerHTML=low.map(p=>`<div class="list-row"><div><strong>${esc(p.name)}</strong><span>${esc(p.category)}</span></div><b style="color:var(--yellow)">${p.stock} əd</b></div>`).join('')||'<div class="box-sub">Az qalan məhsul yoxdur.</div>';
+  const a=document.getElementById('ov-today'); if(a)a.textContent=money(total);
+  const b=document.getElementById('ov-sales'); if(b)b.textContent=sales.length;
+  const c=document.getElementById('ov-stock'); if(c)c.textContent=money(stock);
+  const d=document.getElementById('ov-low'); if(d)d.textContent=low.length;
 }
 function renderWarehouse(q=''){
   const x=(q||'').toLowerCase().trim();const rows=products.filter(p=>!x||p.name.toLowerCase().includes(x)||p.category.toLowerCase().includes(x)||p.code.includes(x));
@@ -702,13 +925,20 @@ function renderWarehouse(q=''){
 }
 document.getElementById('warehouse-search').addEventListener('input',e=>renderWarehouse(e.target.value))
 function renderReceiving(){
-  document.getElementById('recv-product').innerHTML=products.map((p,i)=>`<option value="${i}">${esc(p.name)} · stok ${p.stock}</option>`).join('');
-  document.getElementById('recv-supplier').innerHTML=suppliers.map((s,i)=>`<option value="${i}">${esc(s.name)}</option>`).join('');
-  document.getElementById('receiving-body').innerHTML=[...receivingLog].reverse().map(r=>`<tr><td>${r.date}</td><td>${esc(r.product)}</td><td>+${r.qty}</td><td>${esc(r.supplier)}</td></tr>`).join('');
+  const body=document.getElementById('receiving-body');
+  if(body)body.innerHTML=[...receivingLog].reverse().map(r=>`<tr><td>${r.date}</td><td>${esc(r.product)}</td><td>+${r.qty}</td><td>${esc(r.supplier)}</td></tr>`).join('');
 }
 function receiveStock(){
-  const idx=Number(document.getElementById('recv-product').value),qty=Math.max(1,parseInt(document.getElementById('recv-qty').value)||0),si=Number(document.getElementById('recv-supplier').value);
-  const p=products[idx],s=suppliers[si];if(!p)return;p.stock+=qty;receivingLog.push({date:today(),product:p.name,qty,supplier:s?s.name:'—'});renderAll();toast('Mal qəbulu',''+p.name+' +'+qty+' ədəd anbara daxil edildi (DEMO).')
+  const prodEl=document.getElementById('recv-product'), qtyEl=document.getElementById('recv-qty'), supEl=document.getElementById('recv-supplier2');
+  if(!prodEl)return;
+  const idx=Number(prodEl.value),qty=Math.max(1,parseInt(qtyEl?.value)||0),si=Number(supEl?.selectedIndex||0);
+  const p=products[idx],s=suppliers[si];
+  if(!p)return;
+  p.stock+=qty;
+  if(s)s.lastDate=today();
+  receivingLog.push({date:today(),product:p.name,qty,supplier:s?s.name:'—'});
+  renderAll();
+  toast('Mal qəbulu',`${p.name} +${qty} ədəd anbara daxil edildi (DEMO).`);
 }
 function renderCount(){
   const q=(document.getElementById('count-search').value||'').toLowerCase().trim();const rows=products.filter(p=>!q||p.name.toLowerCase().includes(q)||p.code.includes(q));
@@ -721,29 +951,123 @@ function countChange(i,d){if(!countSession[i])return;countSession[i].qty=Math.ma
 function finishCount(){if(!countSession.length){toast('Sayım boşdur','Məhsul əlavə edin.');return}countSession.forEach(it=>products[it.idx].stock=it.qty);countSession=[];renderAll();toast('Sayım təsdiqləndi','Demo stokları sayım nəticəsinə uyğunlaşdırıldı.')}
 
 function renderSales(){
-  document.getElementById('sales-body').innerHTML=[...sales].reverse().map(s=>`<tr><td>${s.date}</td><td>#${s.ticket}</td><td><b>${esc(s.product)}</b></td><td>${s.qty}</td><td>${money(s.total)}</td><td>${esc(s.customer||'—')}</td><td>${esc(s.payment)}</td><td><span class="badge ok">${esc(s.status).toUpperCase()}</span></td></tr>`).join('');
-  const total=sales.reduce((a,s)=>a+s.total,0);document.getElementById('shift-total').textContent=money(total);document.getElementById('shift-count').textContent=sales.length;document.getElementById('shift-avg').textContent=money(sales.length?total/sales.length:0);
-  document.getElementById('mini-sales').innerHTML=[...sales].slice(-4).reverse().map(s=>`<div class="list-row"><div><strong>#${s.ticket} · ${esc(s.product)}</strong><span>${esc(s.payment)}</span></div><b>${money(s.total)}</b></div>`).join('');
+  const body=document.getElementById('sales-body');
+  if(body)body.innerHTML=[...sales].reverse().map(s=>`<tr><td>${s.date}</td><td>#${s.ticket}</td><td><b>${esc(s.product)}</b></td><td>${s.qty}</td><td>${money(s.total)}</td><td>${esc(s.customer||'—')}</td><td>${esc(s.payment)}</td><td><span class="badge ok">${esc(s.status).toUpperCase()}</span></td></tr>`).join('');
+  const total=sales.reduce((a,s)=>a+s.total,0);
+  const st=document.getElementById('shift-total'); if(st)st.textContent=money(total);
+  const sc=document.getElementById('shift-count'); if(sc)sc.textContent=sales.length;
+  const sa=document.getElementById('shift-avg'); if(sa)sa.textContent=money(sales.length?total/sales.length:0);
+  const mini=document.getElementById('mini-sales'); if(mini)mini.innerHTML=[...sales].slice(-4).reverse().map(s=>`<div class="list-row"><div><strong>#${s.ticket} · ${esc(s.product)}</strong><span>${esc(s.payment)}</span></div><b>${money(s.total)}</b></div>`).join('');
 }
 function renderReports(){
   const total=sales.reduce((s,x)=>s+x.total,0), avg=sales.length?total/sales.length:0;
   const byProduct={};sales.forEach(s=>byProduct[s.product]=(byProduct[s.product]||0)+s.qty);
-  const tops=Object.entries(byProduct).sort((a,b)=>b[1]-a[1]);const max=tops[0]?.[1]||1;
-  const cat={};products.forEach(p=>cat[p.category]=(cat[p.category]||0)+p.stock*p.price);const ce=Object.entries(cat).sort((a,b)=>b[1]-a[1]);const maxc=ce[0]?.[1]||1;
-  document.getElementById('rep-total').textContent=money(total);document.getElementById('rep-avg').textContent=money(avg);document.getElementById('rep-top').textContent=tops[0]?.[0]||'—';document.getElementById('rep-products').textContent=products.length;
-  document.getElementById('rep-products-list').innerHTML=tops.map(([n,q])=>`<div style="margin-bottom:14px"><div class="list-row"><div><strong>${esc(n)}</strong></div><b>${q} əd</b></div><div class="bar"><i style="width:${q/max*100}%"></i></div></div>`).join('');
-  document.getElementById('rep-cat-list').innerHTML=ce.map(([n,v])=>`<div style="margin-bottom:14px"><div class="list-row"><div><strong>${esc(n)}</strong></div><b>${money(v)}</b></div><div class="bar"><i style="width:${v/maxc*100}%"></i></div></div>`).join('');
+  const tops=Object.entries(byProduct).sort((a,b)=>b[1]-a[1]);
+  const cat={};products.forEach(p=>cat[p.category]=(cat[p.category]||0)+p.stock*p.price);
+  const ce=Object.entries(cat).sort((a,b)=>b[1]-a[1]);
+  const e=document.getElementById('rep-total'); if(e)e.textContent=money(total);
+  const avgEl=document.getElementById('rep-avg'); if(avgEl)avgEl.textContent=money(avg);
+  const topEl=document.getElementById('rep-top'); if(topEl)topEl.textContent=tops[0]?.[0]||'—';
+  const prodEl=document.getElementById('rep-products'); if(prodEl)prodEl.textContent=products.length;
+  renderReportDetail();
 }
 function renderCustomers(){document.getElementById('customers-body').innerHTML=customers.map(c=>`<tr><td><b>${esc(c.name)}</b></td><td>${esc(c.phone)}</td><td>${c.purchases||0}</td><td>${money(c.spent||0)}</td><td>${c.lastDate||'—'}</td></tr>`).join('')}
 function renderSuppliers(){document.getElementById('suppliers-body').innerHTML=suppliers.map(s=>`<tr><td><b>${esc(s.name)}</b></td><td>${esc(s.phone)}</td><td>${esc(s.category||'—')}</td><td>${s.lastDate||'—'}</td></tr>`).join('')}
 
+
+let selectedCartLine = -1;
+
+function addCatalog(idx){const p=products[idx];if(!p)return;if(p.stock<=0){toast('Stok yoxdur','Bu məhsul satış üçün mövcud deyil.');return}addToCart(idx);}
+
+function renderERPProductCatalog(){
+  const q=(document.getElementById('catalog-search')?.value||'').toLowerCase().trim();
+  const list=products.filter(p=>(activeCategory==='HAMISI'||p.category===activeCategory)&&(!q||p.name.toLowerCase().includes(q)||p.code.includes(q)));
+  const cats=['HAMISI',...new Set(products.map(p=>p.category))];
+  const catEl=document.getElementById('pos-category-mini');
+  if(catEl) catEl.innerHTML=cats.map(c=>`<button class="grid-tool ${activeCategory===c?'hot':''}" onclick="activeCategory='${esc(c)}';renderAll()">${esc(c)}</button>`).join('');
+  const el=document.getElementById('catalog-list');
+  if(!el)return;
+  el.innerHTML=list.map(p=>{
+    const i=products.indexOf(p),low=p.stock<=10,zero=p.stock<=0;
+    return `<div class="catalog-row ${low?'low':''} ${zero?'zero':''}" onclick="addCatalog(${i})">
+      <div class="catalog-thumb">${esc(initials(p.name))}</div>
+      <div><div class="catalog-name">${esc(p.name)}</div><div class="catalog-meta">${esc(p.category)} · ${p.code}</div></div>
+      <div><div class="catalog-price">${money(p.price).replace(' AZN','')}</div><div class="catalog-stock ${low?'low':'ok'}">${p.stock} əd</div></div>
+    </div>`
+  }).join('');
+  const stock=list.reduce((s,p)=>s+p.stock,0);
+  {const e=document.getElementById('catalog-stock-total');if(e)e.textContent=stock;}
+  {const e=document.getElementById('catalog-selected');if(e)e.textContent=list.length;}
+}
+
+function renderDenseSalesGrid(){
+  const el=document.getElementById('pos-sales-grid'); if(!el)return;
+  el.innerHTML=cart.map((it,ci)=>{
+    const p=products[it.idx], line=p.price*it.qty*(1-(discountOn?(Number(document.getElementById('discount-value')?.value)||0)/100:0));
+    return `<tr class="${ci===selectedCartLine?'sel':''}" onclick="selectedCartLine=${ci};renderDenseSalesGrid()">
+      <td class="num">${ci+1}</td>
+      <td><div class="product-mini"><div class="product-mini-mark">${esc(initials(p.name))}</div><div><div style="font-weight:800">${esc(p.name)}</div><div class="unit">${p.code}</div></div></div></td>
+      <td class="unit">əd.</td>
+      <td class="num"><b>${it.qty.toFixed(3).replace(/\\.000$/,'')}</b></td>
+      <td class="num">${p.price.toFixed(2)}</td>
+      <td class="num">${discountOn?(Number(document.getElementById('discount-value')?.value)||0):0}%</td>
+      <td class="num"><b>${line.toFixed(2)}</b></td>
+    </tr>`
+  }).join('') || `<tr><td colspan="7" style="padding:70px;text-align:center;color:var(--muted)"><div style="font-size:34px;color:var(--acc)">＋</div><div style="font-weight:800;color:var(--bone);margin-top:7px">Satış siyahısı boşdur</div><div style="font:10px var(--mono);margin-top:4px">Sağdakı məhsula toxunun və ya barkodu skan edin</div></td></tr>`;
+  const totals=cartTotals();
+  {const e=document.getElementById('cart-line-count');if(e)e.textContent=cart.length;}
+  {const e=document.getElementById('sale-summary-mini');if(e)e.textContent=`${cart.length} sətir · ${cart.reduce((s,i)=>s+i.qty,0)} məhsul`;}
+  {const e=document.getElementById('sale-discount-mini');if(e)e.textContent=totals.dis.toFixed(2);}
+  {const e=document.getElementById('sale-grand');if(e)e.textContent=totals.total.toFixed(2);}
+}
+
+function changeSelectedQty(d){if(selectedCartLine<0 || !cart[selectedCartLine]){toast('Sətir seçin','Dəyişmək üçün əvvəl məhsul sətrinə klikləyin.');return}changeQty(selectedCartLine,d);if(selectedCartLine>=cart.length)selectedCartLine=cart.length-1}
+function removeSelected(){if(selectedCartLine<0 || !cart[selectedCartLine]){toast('Sətir seçin','Silmək üçün əvvəl məhsul sətrinə klikləyin.');return}cart.splice(selectedCartLine,1);selectedCartLine=Math.min(selectedCartLine,cart.length-1);renderCart()}
+function addQuickLine(){document.getElementById('catalog-search')?.focus();toast('Məhsul əlavə et','Sağdakı kataloqdan məhsul seçin.')}
+function renderReceivingDemo(){
+  const body=document.getElementById('receiving-demo-rows'); if(!body)return;
+  const rows=products.slice(0,13);
+  body.innerHTML=rows.map((p,i)=>{
+    const buy=(p.price*.71);
+    const sale=p.price;
+    const qty=i%3===0?2:1;
+    const total=buy*qty;
+    return `<tr><td>${i+1}</td><td class="unit">${300+i}</td><td><b>${esc(p.name)}</b></td><td class="unit">${p.code}</td><td class="num">${qty.toFixed(3)}</td><td class="unit">əd.</td><td class="num">${buy.toFixed(5)}</td><td></td><td></td><td class="num">${total.toFixed(5)}</td><td class="num">${((sale-buy)/buy*100).toFixed(2)}</td><td class="num"><b>${sale.toFixed(2)}</b></td><td class="num"><b>${(sale*qty).toFixed(2)}</b></td></tr>`
+  }).join('');
+  document.getElementById('receiving-demo-total').textContent=rows.reduce((s,p,i)=>s+(p.price*.71*(i%3===0?2:1)),0).toFixed(5);
+  const prod=document.getElementById('recv-product'); if(prod)prod.innerHTML=products.map((p,i)=>`<option value="${i}">${esc(p.name)} · stok ${p.stock}</option>`).join('');
+  const sel=document.getElementById('recv-supplier2'); if(sel)sel.innerHTML=suppliers.map(s=>`<option>${esc(s.name)}</option>`).join('');
+}
+function renderReportDetail(){
+  const el=document.getElementById('report-detail-body'); if(!el)return;
+  const rows=products.slice(0,18);
+  el.innerHTML=rows.map((p,i)=>{
+    const qty=i%4===0?3:i%3===0?2:1, rev=p.price*qty, cost=rev*.675, profit=rev-cost;
+    return `<tr><td><b>${esc(p.name)}</b></td><td class="unit">${p.code}</td><td class="num">${qty.toFixed(3)}</td><td class="num">${rev.toFixed(2)}</td><td class="num">${rev.toFixed(2)}</td><td class="num">${cost.toFixed(2)}</td><td class="num">${profit.toFixed(2)}</td><td class="num">${(profit/cost*100).toFixed(2)}</td></tr>`
+  }).join('');
+}
+
 function renderAll(){
-  renderCategories();renderProducts();renderCart();renderCustomerSelect();renderOverview();renderWarehouse(document.getElementById('warehouse-search').value);renderReceiving();renderCount();renderSales();renderReports();renderCustomers();renderSuppliers();document.getElementById('held-count').textContent=held.length;
+  renderCart();
+  renderERPProductCatalog();
+  renderDenseSalesGrid();
+  renderCustomerSelect();
+  renderOverview();
+  const ws=document.getElementById('warehouse-search'); if(ws)renderWarehouse(ws.value);
+  renderReceiving();
+  renderReceivingDemo();
+  renderCount();
+  renderSales();
+  renderReports();
+  renderCustomers();
+  renderSuppliers();
+  const hc=document.getElementById('held-count');if(hc)hc.textContent=held.length;
+  const hm=document.getElementById('held-mini-count');if(hm)hm.textContent=held.length;
 }
 renderAll();
 
 function openReceiving(){switchScreen('receiving')}
-function updateClock(){const s=new Date().toLocaleTimeString('az-AZ');document.getElementById('side-clock').textContent=s}
+function updateClock(){const s=new Date().toLocaleTimeString('az-AZ');document.getElementById('side-clock').textContent=s;{const e=document.getElementById('pos-clock');if(e)e.textContent=s;}{const e=document.getElementById('cash-report-date');if(e)e.textContent=today()}}
 setInterval(updateClock,1000);updateClock();
 
 document.addEventListener('keydown',e=>{
@@ -751,6 +1075,9 @@ document.addEventListener('keydown',e=>{
   if(e.key==='F4'){e.preventDefault();simulateScan()}
   if(e.key==='F8'){e.preventDefault();holdTicket()}
   if(e.key==='Escape' && document.getElementById('modal').classList.contains('show'))closeModal();
+  if((e.key==='+'||e.key==='=')){e.preventDefault();changeSelectedQty(1)}
+  if(e.key==='-'){e.preventDefault();changeSelectedQty(-1)}
+  if(e.key==='Delete'){e.preventDefault();removeSelected()}
 });
 
 </script>
