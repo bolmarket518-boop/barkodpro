@@ -188,6 +188,23 @@
     @media(max-width:860px){header .nav,header .head-actions .pill{display:none}.menu{display:grid;place-items:center}.drawer{position:absolute;left:0;right:0;top:76px;display:none;background:rgba(17,19,22,.96);backdrop-filter:blur(16px);border-bottom:1px solid var(--line);padding:10px clamp(20px,5vw,90px) 20px}.drawer.open{display:block}.drawer a{display:flex;align-items:center;justify-content:space-between;padding:14px 0;border-bottom:1px solid var(--line);font:.65rem var(--mono)}.drawer a:last-child{border-bottom:0;color:var(--acc)}.hero-grid{grid-template-columns:1fr}.hero h1{max-width:11.5ch}.path-row{grid-template-columns:1fr 1fr}.path-intro{grid-column:1/-1;border-bottom:1px solid var(--line);padding:14px 0}.path:nth-child(3){border-right:0}.platform-shell{grid-template-columns:1fr}.platform-nav{border-right:0;border-bottom:1px solid var(--line);display:grid;grid-template-columns:repeat(2,1fr);gap:6px}.module-map{grid-template-columns:repeat(6,1fr);grid-template-rows:repeat(6,45px)}.n1{grid-column:1/4;grid-row:1/3}.n2{grid-column:4/7;grid-row:1}.n3{grid-column:4/7;grid-row:2/4}.n4{grid-column:1/4;grid-row:3/5}.n5{grid-column:4/7;grid-row:4/6}.n6{grid-column:1/4;grid-row:5/7}.n7{grid-column:4/7;grid-row:6}.wire{display:none}.support-grid{grid-template-columns:1fr}.numbers-grid{grid-template-columns:1fr 1fr}.num{border-bottom:1px solid var(--line)}.num:nth-child(2){border-right:0}.num:nth-child(3){border-bottom:0}.num:nth-child(4){border-right:0;border-bottom:0}.contact{padding-top:80px}}
     @media(max-width:620px){.section{padding-top:85px;padding-bottom:85px}.section-head{grid-template-columns:1fr;gap:20px}.section-note{justify-self:start}.hero{padding-top:104px}.hero h1{font-size:clamp(3.1rem,16vw,5rem)}.hero-copy{font-size:.94rem}.hero-cta .cta{width:100%;justify-content:center}.hero-meta{gap:18px}.core-screen{height:285px}.core-readouts b{font-size:1rem}.path-row{grid-template-columns:1fr 1fr}.service-grid,.sector-grid{grid-template-columns:1fr}.sector.large{grid-column:auto}.sector,.sector.large{min-height:390px}.sector-visual,.sector.large .sector-visual{top:210px}.platform-nav{grid-template-columns:1fr}.platform-view{padding:23px;min-height:420px}.module-map{margin-top:24px}.view-title{font-size:1.6rem}.view-bottom{grid-template-columns:1fr}.process{grid-template-columns:1fr}.step,.step:nth-child(3){border-right:0;border-bottom:1px solid var(--line)}.step:nth-child(3),.step:nth-child(4),.step:nth-child(5){border-top:0}.step:last-child{border-bottom:0}.step:after{display:none}.contact-title{font-size:clamp(3.4rem,18vw,6.6rem)}.foot{align-items:flex-start;flex-direction:column}.toast{right:12px;bottom:12px}.nav{display:none}}
     @media(prefers-reduced-motion:reduce){*,*:before,*:after{animation-duration:.001ms!important;animation-iteration-count:1!important;scroll-behavior:auto!important;transition-duration:.001ms!important}}
+  
+    /* ANBAR TERMINAL — shared */
+    .phone{position:relative;flex:none;width:var(--pw,270px);padding:calc(var(--pw,270px)*.045);border-radius:calc(var(--pw,270px)*.17);background:#0b0d10;border:1px solid var(--line2);box-shadow:0 40px 90px rgba(0,0,0,.5),0 0 0 6px rgba(255,255,255,.02)}
+    .phone img{display:block;width:100%;height:auto;aspect-ratio:4/9;object-fit:cover;object-position:top;border-radius:calc(var(--pw,270px)*.13);background:#f0f4f8}
+    .phone.tilt-l{transform:rotate(-4deg)}.phone.tilt-r{transform:rotate(4deg)}
+    .tm-band{display:grid;grid-template-columns:1.05fr .95fr;gap:40px;align-items:center;border:1px solid rgba(255,90,46,.35);border-radius:var(--radius);background:linear-gradient(145deg,rgba(255,90,46,.10),rgba(255,255,255,.012));padding:clamp(26px,4vw,54px);overflow:hidden;position:relative}
+    .tm-kicker{color:var(--acc);font:700 .62rem var(--mono);letter-spacing:2px}
+    .tm-band h3{font-size:clamp(2rem,4vw,3.6rem);font-weight:800;line-height:.95;letter-spacing:-.05em;margin:16px 0 16px;max-width:13ch}
+    .tm-band p{color:var(--muted);line-height:1.62;font-size:.95rem;max-width:52ch}
+    .tm-points{display:grid;grid-template-columns:1fr 1fr;gap:10px 18px;margin:24px 0 28px}
+    .tm-points div{color:var(--soft);font:.64rem var(--mono);line-height:1.5}.tm-points div:before{content:"↳";color:var(--acc);margin-right:8px}
+    .tm-actions{display:flex;gap:10px;flex-wrap:wrap}
+    .tm-phones{display:flex;justify-content:center;align-items:center;gap:0;min-height:460px}
+    .tm-a{--pw:240px}.tm-b{--pw:210px}
+    .tm-phones .phone+.phone{margin-left:-46px;margin-top:70px}
+    @media(max-width:860px){.tm-band{grid-template-columns:minmax(0,1fr)}.tm-band>*{min-width:0}.tm-phones{min-height:0}.tm-a{--pw:200px}.tm-b{--pw:175px}}
+    @media(max-width:620px){.tm-points{grid-template-columns:1fr}.tm-a{--pw:160px}.tm-b{--pw:140px}.tm-phones .phone+.phone{margin-left:-30px;margin-top:50px}}
   </style>
 </head>
 <body>
@@ -198,10 +215,10 @@
     <div class="wrap pad headrow">
       <a class="brand" href="#home" aria-label="BarkodPRO ana səhifə"><span class="brand-mark"><span></span></span><span>BARKOD<b>PRO</b></span></a>
       <nav class="nav">
-        <a href="#services">XİDMƏTLƏR</a><a href="#platform">PLATFORM</a><a href="#sectors">SAHƏLƏR</a><a href="#support">DƏSTƏK</a><a href="#faq">FAQ</a><a href="#contact">ƏLAQƏ</a>
+        <a href="#services">XİDMƏTLƏR</a><a href="#terminal">TERMİNAL</a><a href="#platform">PLATFORM</a><a href="#sectors">SAHƏLƏR</a><a href="#support">DƏSTƏK</a><a href="#faq">FAQ</a><a href="#contact">ƏLAQƏ</a>
       </nav>
       <div class="head-actions"><a class="pill" href="login.html">GİRİŞ</a><a class="pill solid" href="https://wa.me/994516782878?text=Salam%2C%20BarkodPRO%20haqq%C4%B1nda%20m%C9%99lumat%20almaq%20ist%C9%99yir%C9%99m." target="_blank" rel="noopener noreferrer">WHATSAPP ↗</a><button class="menu" id="menuBtn" aria-label="Menyunu aç" aria-expanded="false">☰</button></div>
-      <nav class="drawer" id="drawer"><a href="#services">01 / XİDMƏTLƏR <span>↘</span></a><a href="#platform">02 / PLATFORM <span>↘</span></a><a href="#sectors">03 / SAHƏLƏR <span>↘</span></a><a href="#support">04 / DƏSTƏK <span>↘</span></a><a href="#faq">05 / FAQ <span>↘</span></a><a href="#contact">06 / ƏLAQƏ <span>↘</span></a><a href="login.html">GİRİŞ ET <span>↗</span></a></nav>
+      <nav class="drawer" id="drawer"><a href="#services">01 / XİDMƏTLƏR <span>↘</span></a><a href="#platform">02 / PLATFORM <span>↘</span></a><a href="#sectors">03 / SAHƏLƏR <span>↘</span></a><a href="#support">04 / DƏSTƏK <span>↘</span></a><a href="#faq">05 / FAQ <span>↘</span></a><a href="#contact">06 / ƏLAQƏ <span>↘</span></a><a href="anbar-terminal.html">★ / ANBAR TERMİNAL <span>↗</span></a><a href="login.html">GİRİŞ ET <span>↗</span></a></nav>
     </div>
   </header>
 
@@ -240,10 +257,28 @@
       <div class="service-grid" id="serviceGrid">
         <article class="service reveal" data-cat="1C"><div class="service-top"><span class="service-num">01 / CORE</span><span class="service-icon">1C</span></div><h3>1C Proqram Təminatı</h3><p>1C:Anbar, 1C:Satış və 1C:Restoran modullarının qurulması, fərdiləşdirilməsi və biznes proseslərinə uyğunlaşdırılması.</p><div class="service-tags"><span class="tag">ANBAR</span><span class="tag">SATIŞ</span><span class="tag">RESTORAN</span></div><span class="service-arrow">↗</span></article>
         <article class="service reveal" data-cat="POS"><div class="service-top"><span class="service-num">02 / FISCAL</span><span class="service-icon">POS</span></div><h3>Vergi Kassası + POS</h3><p>Satış axınının kassaya və proqrama eyni anda ötürülməsi, çek çapı və fiskal əməliyyatların inteqrasiyası.</p><div class="service-tags"><span class="tag">ONECLICK</span><span class="tag">AZSMART</span><span class="tag">CASPOS</span><span class="tag">OMNITECH</span></div><span class="service-arrow">↗</span></article>
-        <article class="service reveal" data-cat="ANBAR"><div class="service-top"><span class="service-num">03 / STOCK</span><span class="service-icon">TSD</span></div><h3>Anbar & TSD</h3><p>Android məlumat toplama terminalları ilə inventarizasiya, mal qəbulu, yerdəyişmə və 1C ilə sinxronizasiya.</p><div class="service-tags"><span class="tag">ANDROID</span><span class="tag">STOCK</span><span class="tag">SQL</span></div><span class="service-arrow">↗</span></article>
+        <article class="service reveal" data-cat="ANBAR"><div class="service-top"><span class="service-num">03 / STOCK</span><span class="service-icon">TSD</span></div><h3><a href="anbar-terminal.html">Anbar & TSD</a></h3><p>Android məlumat toplama terminalları ilə inventarizasiya, mal qəbulu, yerdəyişmə və 1C ilə sinxronizasiya.</p><div class="service-tags"><span class="tag">ANDROID</span><span class="tag">STOCK</span><span class="tag">SQL</span></div><span class="service-arrow">↗</span></article>
         <article class="service reveal" data-cat="API"><div class="service-top"><span class="service-num">04 / CONNECT</span><span class="service-icon">API</span></div><h3>API & Web İnteqrasiyası</h3><p>Shopify və digər veb sistemləri ilə məlumat mübadiləsi, 1C-dən məlumatların API üzərindən ötürülməsi və alınması.</p><div class="service-tags"><span class="tag">SHOPIFY</span><span class="tag">REST API</span><span class="tag">WEB</span></div><span class="service-arrow">↗</span></article>
         <article class="service reveal" data-cat="API"><div class="service-top"><span class="service-num">05 / MESSAGING</span><span class="service-icon">MSG</span></div><h3>WhatsApp & Telegram</h3><p>Avtomatik qaimə göndərişləri, satış/silinmə bildirişləri və iş prosesinə uyğun mesajlaşma axınlarının qurulması.</p><div class="service-tags"><span class="tag">WHATSAPP</span><span class="tag">TELEGRAM</span><span class="tag">BOT</span></div><span class="service-arrow">↗</span></article>
         <article class="service reveal" data-cat="SUPPORT"><div class="service-top"><span class="service-num">06 / CARE</span><span class="service-icon">24/7</span></div><h3>Uzaqdan Texniki Dəstək</h3><p>AnyDesk üzərindən 1C, server, SQL, POS və inteqrasiyalarla bağlı problemlərin diaqnostikası və onlayn həlli.</p><div class="service-tags"><span class="tag">ANYDESK</span><span class="tag">SQL</span><span class="tag">24/7</span></div><span class="service-arrow">↗</span></article>
+      </div>
+    </section>
+
+
+    <!-- ANBAR TERMINAL -->
+    <section id="terminal" class="section pad" style="padding-top:20px">
+      <div class="tm-band reveal">
+        <div>
+          <span class="tm-kicker">YENİ MƏHSUL / ANBAR TERMİNAL</span>
+          <h3>Barkodu oxut — sənəd 1C-də hazırdır.</h3>
+          <p>Android telefon və məlumat toplama terminalları üçün öz anbar proqramımız. Mal qəbulu, sayım, qaytarma, silinmə və satış birbaşa 1C-yə düşür — internet olmayanda belə.</p>
+          <div class="tm-points"><div>Mal qəbulu və qaytarma</div><div>Qrup üzrə sayım</div><div>Oflayn rejim və FTP</div><div>Kassa və hesabatlar</div><div>Telefon və PDA terminallar</div><div>AZ · RU · TR · EN</div></div>
+          <div class="tm-actions"><a class="cta main" href="anbar-terminal.html">ƏTRAFLI BAX <span>→</span></a><a class="cta ghost" href="https://wa.me/994516782878?text=Salam%2C%20Anbar%20Terminal%20proqram%C4%B1%20il%C9%99%20maraqlan%C4%B1ram.%20Demo%20g%C3%B6rm%C9%99k%20ist%C9%99yir%C9%99m." target="_blank" rel="noopener noreferrer">DEMO İSTƏ ↗</a></div>
+        </div>
+        <div class="tm-phones" aria-label="Anbar Terminal ekranları">
+          <div class="phone tilt-l tm-a"><img src="img/anbar-terminal/home.webp" alt="Anbar Terminal ana ekranı" width="600" height="1350" loading="lazy"></div>
+          <div class="phone tilt-r tm-b"><img src="img/anbar-terminal/sayim.webp" alt="Mal sayımı ekranı" width="600" height="1350" loading="lazy"></div>
+        </div>
       </div>
     </section>
 
